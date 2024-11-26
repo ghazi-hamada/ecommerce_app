@@ -1,30 +1,31 @@
 import 'package:ecommerce_app/core/constant/image_asset.dart';
+import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:ecommerce_app/features/onboarding/data/models/onboarding_model.dart';
 import 'package:get/get.dart';
 
 List<OnBoardingModel> onBoardingData = [
   OnBoardingModel(
-    title: "Choose Product",
+    title: StringsKeys.chooseProduct.tr,
     description:
-        "We Have a 100K+ Products. Choose\n Your product from our\n E-commerce shop.",
+       StringsKeys.productDescription.tr,
     image: AppImageAsset.onBoardingImage4,
   ),
   OnBoardingModel(
-    title: "Easy & Safe Payment",
+    title: StringsKeys.easyPayment.tr,
     description:
-        "Easy Checkout & Safe Payment\n method. Trusted by our Customers\n from all over the world.",
+        StringsKeys.paymentDescription.tr,
     image: AppImageAsset.onBoardingImage1,
   ),
   OnBoardingModel(
-    title: "Track Your Order",
+    title: StringsKeys.trackOrder.tr,
     description:
-        "Best Tracker has been Used For\n Track your order. You'll know where\n your product is at the moment.",
+        StringsKeys.trackDescription.tr,
     image: AppImageAsset.onBoardingImage2,
   ),
   OnBoardingModel(
-    title: "Fast Delivery",
+    title: StringsKeys.fastDelivery.tr,
     description:
-        "Reliable And Fast Delivery. We\n Deliver your product the fastest\n way possible.",
+        StringsKeys.deliveryDescription.tr,
     image: AppImageAsset.onBoardingImage3,
   ),
 ];

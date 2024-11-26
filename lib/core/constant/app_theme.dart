@@ -2,7 +2,7 @@ import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
 ThemeData themeEnglish = ThemeData(
-    fontFamily: "PlayfairDisplay",
+    fontFamily: "Poppins",
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColor.primaryColor),
     appBarTheme: AppBarTheme(
@@ -12,11 +12,21 @@ ThemeData themeEnglish = ThemeData(
       titleTextStyle: const TextStyle(
           color: AppColor.primaryColor,
           fontWeight: FontWeight.bold,
-          fontFamily: "PlayfairDisplay",
+          fontFamily: "Poppins",
           fontSize: 25),
       backgroundColor: Colors.grey[50],
     ),
     textTheme: const TextTheme(
+      titleMedium: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: AppColor.black,
+          ),
+          displaySmall: TextStyle(
+              height: 2,
+              color: AppColor.grey,
+              fontWeight: FontWeight.bold,
+              fontSize: 16),
         // ignore: deprecated_member_use
         displayLarge: TextStyle(
             fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
@@ -36,6 +46,16 @@ ThemeData themeEnglish = ThemeData(
 ThemeData themeArabic = ThemeData(
   fontFamily: "Cairo",
   textTheme: const TextTheme(
+    titleMedium: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: AppColor.black,
+          ),
+          displaySmall: TextStyle(
+              height: 2,
+              color: AppColor.grey,
+              fontWeight: FontWeight.bold,
+              fontSize: 16),
       // ignore: deprecated_member_use
       displayLarge: TextStyle(
           fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
