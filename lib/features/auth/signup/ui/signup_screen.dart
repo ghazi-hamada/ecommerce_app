@@ -38,7 +38,7 @@ class SignupScreen extends StatelessWidget {
               CustomButton(
                 text: StringsKeys.signUp.tr,
                 onPress: () {
-                  // controller.login();
+                  controller.signup();
                 },
               ),
 

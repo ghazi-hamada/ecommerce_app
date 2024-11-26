@@ -2,6 +2,9 @@ import 'package:ecommerce_app/features/auth/forget_password/forget_password_scre
 import 'package:ecommerce_app/features/auth/login/ui/login_screen.dart';
 import 'package:ecommerce_app/features/auth/reset_password/reset_password_screen.dart';
 import 'package:ecommerce_app/features/auth/signup/ui/signup_screen.dart';
+import 'package:ecommerce_app/features/auth/success_reset_password/success_reset_password_screen.dart';
+import 'package:ecommerce_app/features/auth/sucsses_signup/sucsess_signup_screen.dart';
+import 'package:ecommerce_app/features/auth/verify_code_signup/verify_code_signup_Screen.dart';
 import 'package:ecommerce_app/features/auth/verifycode/verifycode_screen.dart';
 import 'package:ecommerce_app/features/lang/language_screen.dart';
 import 'package:ecommerce_app/features/onboarding/ui/onboarding_screen.dart';
@@ -34,7 +37,9 @@ abstract class AppRoutes {
     GetPage(name: kSignup, page: () => const SignupScreen()),
     GetPage(name: kForgetPassword, page: () => const ForgetPasswordScreen()),
     GetPage(name: kVerfiyCode, page: () => const VerifyCodeScreen()),
+    GetPage(name: kVerfiyCodesignup, page: () => VerifyCodeSignUpScreen()),
     GetPage(name: kResetpassword, page: () => const ResetPasswordScreen()),
-
+    GetPage(name: kSuccessSignup, page: () => const SuccessSignUp()),
+    GetPage(name: kSuccessResetPassword, page: () => const SuccessResetPassword()),
   ];
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/routing/routes_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,7 @@ class ResetPasswordControllerImpl extends ResetPasswordController {
       return Get.defaultDialog(
           title: "warning", middleText: "Password Not Match");
     }
+    Get.offAllNamed(AppRoutes.kSuccessResetPassword);
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/routing/routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,7 @@ class SignupControllerImpl extends SignupController {
 
   @override
   signup() {
-    print('signup');
+    Get.toNamed(AppRoutes.kVerfiyCodesignup);
   }
 
   @override

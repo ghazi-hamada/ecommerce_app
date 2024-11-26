@@ -67,7 +67,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   ),
 
                   CustomButton(
-                    text: "35".tr,
+                    text: StringsKeys.save.tr,
                     onPress: () => controller.successResetPasssword(),
                   ),
                   const SizedBox(height: 30),
