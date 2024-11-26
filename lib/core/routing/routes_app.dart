@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/features/auth/forget_password/forget_password_screen.dart';
 import 'package:ecommerce_app/features/auth/login/ui/login_screen.dart';
+import 'package:ecommerce_app/features/auth/reset_password/reset_password_screen.dart';
 import 'package:ecommerce_app/features/auth/signup/ui/signup_screen.dart';
+import 'package:ecommerce_app/features/auth/verifycode/verifycode_screen.dart';
 import 'package:ecommerce_app/features/lang/language_screen.dart';
 import 'package:ecommerce_app/features/onboarding/ui/onboarding_screen.dart';
 import 'package:get/get.dart';
@@ -31,5 +33,8 @@ abstract class AppRoutes {
     GetPage(name: kLogin, page: () => const LoginScreen()),
     GetPage(name: kSignup, page: () => const SignupScreen()),
     GetPage(name: kForgetPassword, page: () => const ForgetPasswordScreen()),
+    GetPage(name: kVerfiyCode, page: () => const VerifyCodeScreen()),
+    GetPage(name: kResetpassword, page: () => const ResetPasswordScreen()),
+
   ];
 }

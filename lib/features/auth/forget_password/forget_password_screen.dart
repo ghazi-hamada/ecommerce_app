@@ -14,7 +14,6 @@ class ForgetPasswordScreen extends StatelessWidget {
     final controller = Get.put(ForgetPasswordControllerImpl());
     return Scaffold(
         appBar: AppBar(
-       
           title: Text(
             StringsKeys.passwordRecovery.tr,
           ),
@@ -63,7 +62,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 CustomButton(
                   text: StringsKeys.send.tr,
                   onPress: () {
-                    controller.checkEmail();
+                    controller.proceedToVerifyCode();
                   },
                 ),
               ],

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/routing/routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +12,9 @@ class ForgetPasswordControllerImpl extends ForgetPasswordController {
     late GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
-  proceedToVerifyCode() {}
+  proceedToVerifyCode() {
+    Get.toNamed(AppRoutes.kVerfiyCode);
+  }
 
   @override
   void onInit() {
