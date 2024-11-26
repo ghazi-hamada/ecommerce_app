@@ -12,25 +12,22 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 30, top: 10),
-        width: 255,
-        child: MaterialButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          minWidth: double.infinity,
-          color: AppColor.primaryColor,
-          textColor: Colors.white,
-          onPressed: onPress,
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 30, top: 10),
+      width: double.infinity,
+      height: 50,
+      child: MaterialButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        minWidth: double.infinity,
+        color: AppColor.primaryColor,
+        textColor: Colors.white,
+        onPressed: onPress,
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

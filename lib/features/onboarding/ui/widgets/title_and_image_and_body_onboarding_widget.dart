@@ -29,9 +29,11 @@ class TitleAndImageAndBodyOnboardingWidget
             const SizedBox(height: 10),
             SizedBox(
               width: double.infinity,
-              child: Text(onBoardingData[index].description!,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.displaySmall),
+              child: Text(
+                onBoardingData[index].description!,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
             ),
           ],
         ),

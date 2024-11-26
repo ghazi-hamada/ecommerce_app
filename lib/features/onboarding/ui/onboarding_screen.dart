@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:ecommerce_app/features/onboarding/controller/onboarding_controller.dart';
 import 'package:ecommerce_app/features/onboarding/data/datasource/static/stasic.dart';
 import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
@@ -23,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
             const PointIndicator(),
             //custom button
             CustomButton(
-                text: 'Continue',
+                text: StringsKeys.next.tr,
                 onPress: () {
                   controller.next();
                 }),

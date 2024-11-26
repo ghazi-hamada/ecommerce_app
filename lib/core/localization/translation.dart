@@ -28,7 +28,7 @@ class MyTranslations extends Translations {
           StringsKeys.forgotPassword: "هل نسيت كلمة السر",
           StringsKeys.signIn: "تسجيل الدخول",
           StringsKeys.signUp: "تسجيل",
-          StringsKeys.dontHaveAccount: "ليس لديك حساب ؟",
+          StringsKeys.dontHaveAccount: " ليس لديك حساب ؟",
           StringsKeys.passwordRecovery: "استرجاع كلمة المرور",
           StringsKeys.verifyEmail: "التأكد من البريد الإلكتروني",
           StringsKeys.emailVerificationDescription:
@@ -68,6 +68,13 @@ class MyTranslations extends Translations {
           StringsKeys.favorite: "المفضلة",
           StringsKeys.person: "شخص",
           StringsKeys.settings: "الاعدادات",
+          StringsKeys.welcomeBack: "مرحبا بعودتك",
+          StringsKeys.rememberMe: "تذكرني",
+          StringsKeys.send: "ارسال",
+          StringsKeys.welcomeStartJourney:
+              "ابدأ رحلتك معنا الآن عن طريق إنشاء حسابك.",
+          StringsKeys.signInWithEmail:
+              "تسجيل الدخول باستخدام بريدك الإلكتروني\n وكلمة المرور أو المتابعة باستخدام وسائل التواصل الاجتماعي",
         },
         "en": {
           StringsKeys.lang: "Choose Language",
@@ -93,7 +100,7 @@ class MyTranslations extends Translations {
           StringsKeys.forgotPassword: "Forgot Password",
           StringsKeys.signIn: "Sign In",
           StringsKeys.signUp: "Sign Up",
-          StringsKeys.dontHaveAccount: "Don't have an account?",
+          StringsKeys.dontHaveAccount: "Don't have an account? ",
           StringsKeys.passwordRecovery: "Password Recovery",
           StringsKeys.verifyEmail: "Check Email",
           StringsKeys.emailVerificationDescription:
@@ -134,6 +141,13 @@ class MyTranslations extends Translations {
           StringsKeys.favorite: "Favorite",
           StringsKeys.person: "Person",
           StringsKeys.settings: "Settings",
+          StringsKeys.welcomeBack: "Welcome Back",
+          StringsKeys.welcomeStartJourney:
+              "Start your journey with us now by creating your account.",
+          StringsKeys.signInWithEmail:
+              "Sign in with your email and password\nor continue with social media",
+          StringsKeys.rememberMe: "Remember Me",
+          StringsKeys.send: "send",
         },
       };
 }

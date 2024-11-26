@@ -23,6 +23,7 @@ class StringsKeys {
   static const forgotPassword = "forgot_password";
   static const signIn = "sign_in";
   static const signUp = "sign_up";
+  static const welcomeStartJourney = "welcomeStartJourney"; 
   static const dontHaveAccount = "dont_have_account";
   static const passwordRecovery = "password_recovery";
   static const verifyEmail = "verify_email";
@@ -42,6 +43,7 @@ class StringsKeys {
   static const enterNewPassword = "enter_new_password";
   static const confirmPassword = "confirm_password";
   static const accountCreated = "account_created";
+  static const  rememberMe = "rememberMe"; 
   static const save = "save";
   static const emailForVerification = "email_for_verification";
   static const check = "check";
@@ -53,6 +55,9 @@ class StringsKeys {
   static const confirmExit = "confirm_exit";
   static const goToLogin = "go_to_login";
   static const passwordResetSuccess = "password_reset_success";
+  static const welcomeBack = "Welcome_Back";
+   static const  signInWithEmail = "signInWithEmail";
+   static const  send = "send";
 
   // Home Screen
   static const categories = "categories";
