@@ -1,12 +1,27 @@
+import 'dart:math';
+
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/get_utils/get_utils.dart';
 
-enum InputType { username, email, phone, password }
+enum InputType { username, email, phone, password, confirmPassword }
 
 String? validInput(String val, InputType type) {
   if (val.isEmpty) {
-    return StringsKeys.fieldEmpty.tr; // استخدام الترجمة هنا
+    if (type == InputType.username) {
+      return StringsKeys.usernameRequired.tr; //يرجى إدخال اسمك الكامل
+      
+    }else if (type == InputType.phone) {
+      return StringsKeys.phoneRequired.tr; //يرجى إدخال رقم الجوال
+      
+  } else if (type == InputType.email) {
+      return StringsKeys.emailRequired.tr; //يرجى إدخال البريد الألكتروني
+      
+    } else if (type == InputType.password) {
+      return StringsKeys.passwordRequired.tr; //يرجى إدخال كلمة المرور
+    }else if (type == InputType.confirmPassword) {
+      return StringsKeys.confirmPasswordRequired.tr; //يرجى إدخال تأكيد كلمة المرور
+    }
   }
 
   if (val.length < 8) {
@@ -50,6 +65,19 @@ String? validInput(String val, InputType type) {
         return StringsKeys.passwordDigit.tr;
       }
       break;
+    case InputType.confirmPassword:
+      if (val.length < 8) {
+        return StringsKeys.passwordTooShort.tr;
+      }
+      if (!RegExp(r'[A-Z]').hasMatch(val)) {
+        return StringsKeys.passwordUppercase.tr;
+      }
+      if (!RegExp(r'[a-z]').hasMatch(val)) {
+        return StringsKeys.passwordLowercase.tr;
+      }
+      if (!RegExp(r'[0-9]').hasMatch(val)) {
+        return StringsKeys.passwordDigit.tr;
+      }
   }
 
   return null;

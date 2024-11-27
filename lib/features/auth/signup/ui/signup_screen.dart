@@ -22,7 +22,7 @@ class SignupScreen extends StatelessWidget {
     final controller = Get.put(SignupControllerImpl());
     return Scaffold(
       appBar: AppBar(
-        title: Text(StringsKeys.signUp.tr),
+        title: Text(StringsKeys.createNewAccount.tr),
       ),
       body: SingleChildScrollView(
         child: Padding(

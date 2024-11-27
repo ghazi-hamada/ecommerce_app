@@ -8,12 +8,14 @@ abstract class LoginController extends GetxController {
   login();
   dontHaveAccount();
   forgotPassword();
+  showPassword();
 }
 
 class LoginControllerImpl extends LoginController {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool isShowPassword = false;
   @override
   dontHaveAccount() {
     Get.toNamed(AppRoutes.kSignup);
@@ -44,5 +46,12 @@ class LoginControllerImpl extends LoginController {
   @override
   forgotPassword() {
     Get.toNamed(AppRoutes.kForgetPassword);
+  }
+
+  @override
+  showPassword() {
+    isShowPassword = !isShowPassword;
+
+    update();
   }
 }

@@ -23,6 +23,7 @@ class StringsKeys {
   static const forgotPassword = "forgot_password";
   static const signIn = "sign_in";
   static const signUp = "sign_up";
+  static const createNewAccount = "create_new_account";//إنشاء حساب جديد
   static const welcomeStartJourney = "welcomeStartJourney"; 
   static const dontHaveAccount = "dont_have_account";
   static const passwordRecovery = "password_recovery";
@@ -68,6 +69,12 @@ class StringsKeys {
   static const String passwordUppercase = "passwordUppercase";
   static const String passwordLowercase = "passwordLowercase";
   static const String passwordDigit = "passwordDigit";
+  static const String usernameRequired = "usernameRequired";
+  static const String phoneRequired = "phoneRequired";
+  static const String emailRequired = "emailRequired";
+  static const String passwordRequired = "passwordRequired";
+  static const String confirmPasswordRequired = "confirmPasswordRequired";
+
 
   // Home Screen
   static const categories = "categories";

@@ -16,19 +16,22 @@ class OnboardingScreen extends StatelessWidget {
     final controller = Get.put(OnboardingControllerImpl());
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            //onboarding widget
-            const TitleAndImageAndBodyOnboardingWidget(),
-            //point indicator
-            const PointIndicator(),
-            //custom button
-            CustomButton(
-                text: StringsKeys.next.tr,
-                onPress: () {
-                  controller.next();
-                }),
-          ],
+        child: Container(
+          margin: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              //onboarding widget
+              const TitleAndImageAndBodyOnboardingWidget(),
+              //point indicator
+              const PointIndicator(),
+              //custom button
+              CustomButton(
+                  text: StringsKeys.next.tr,
+                  onPress: () {
+                    controller.next();
+                  }),
+            ],
+          ),
         ),
       ),
     );

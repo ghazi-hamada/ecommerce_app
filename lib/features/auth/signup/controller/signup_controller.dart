@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 abstract class SignupController extends GetxController {
   signup();
   haveAccount();
+  showPassword();
 }
 
 class SignupControllerImpl extends SignupController {
@@ -14,7 +15,9 @@ class SignupControllerImpl extends SignupController {
   late TextEditingController phoneController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late TextEditingController passwordConfirmController;
 
+  bool isShowPassword = false;
   @override
   haveAccount() {
     Get.back();
@@ -22,7 +25,19 @@ class SignupControllerImpl extends SignupController {
 
   @override
   signup() {
-    Get.toNamed(AppRoutes.kVerfiyCodesignup);
+    if (formKey.currentState!.validate()) {
+      if (passwordConfirmController.text != passwordController.text) {
+        Get.snackbar(
+          'Error',
+          'There is no matching password.!!',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.red[300],
+        );
+      } else {
+        Get.toNamed(AppRoutes.kVerfiyCodesignup);
+      }
+    }
+    // There is no matching password.!!
   }
 
   @override
@@ -31,6 +46,7 @@ class SignupControllerImpl extends SignupController {
     phoneController = TextEditingController();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    passwordConfirmController = TextEditingController();
     super.onInit();
   }
 
@@ -40,6 +56,14 @@ class SignupControllerImpl extends SignupController {
     phoneController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    passwordConfirmController.dispose();
     super.dispose();
+  }
+
+  @override
+  showPassword() {
+    isShowPassword = !isShowPassword;
+
+    update();
   }
 }
