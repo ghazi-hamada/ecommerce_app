@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:ecommerce_app/core/functions/validinput.dart';
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:ecommerce_app/features/auth/forget_password/controller/forget_password_controller.dart';
 import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
@@ -52,9 +53,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     labeltext: StringsKeys.email.tr,
                     icon: const Icon(Icons.email_outlined),
                     hinttext: StringsKeys.enterEmail.tr,
-                    valid: (p0) {
-                      return null;
-                    },
+                    valid: (value) => validInput(value!, InputType.email),
                   ),
                 ),
                 const SizedBox(height: 20),

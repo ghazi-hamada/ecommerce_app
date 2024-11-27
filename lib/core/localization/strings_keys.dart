@@ -58,6 +58,16 @@ class StringsKeys {
   static const welcomeBack = "Welcome_Back";
    static const  signInWithEmail = "signInWithEmail";
    static const  send = "send";
+     static const String fieldEmpty = "fieldEmpty";
+  static const String inputTooShort = "inputTooShort";
+  static const String inputTooLong = "inputTooLong";
+  static const String invalidUsername = "invalidUsername";
+  static const String invalidEmail = "invalidEmail";
+  static const String invalidPhone = "invalidPhone";
+  static const String passwordTooShort = "passwordTooShort";
+  static const String passwordUppercase = "passwordUppercase";
+  static const String passwordLowercase = "passwordLowercase";
+  static const String passwordDigit = "passwordDigit";
 
   // Home Screen
   static const categories = "categories";

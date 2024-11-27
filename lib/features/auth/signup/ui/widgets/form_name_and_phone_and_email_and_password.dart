@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/functions/validinput.dart';
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:ecommerce_app/features/auth/signup/controller/signup_controller.dart';
 import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
@@ -22,12 +23,7 @@ class FormNameAndPhoneAndEmailAndPassword extends GetView<SignupControllerImpl> 
                 size: 30,
               ),
               hinttext: StringsKeys.enterFullName.tr,
-              valid: (value) {
-                if (value!.isEmpty) {
-                  return StringsKeys.enterEmail.tr;
-                }
-                return null;
-              }),
+              valid: (value) => validInput(value!, InputType.username),),
           //phone
           TextFormFieldWidget(
               controller: controller.phoneController,
@@ -37,12 +33,7 @@ class FormNameAndPhoneAndEmailAndPassword extends GetView<SignupControllerImpl> 
                 size: 30,
               ),
               hinttext: StringsKeys.enterPhone.tr,
-              valid: (value) {
-                if (value!.isEmpty) {
-                  return StringsKeys.enterEmail.tr;
-                }
-                return null;
-              }),
+             valid: (value) => validInput(value!, InputType.phone),),
           //email
           TextFormFieldWidget(
               controller: controller.emailController,
@@ -52,12 +43,7 @@ class FormNameAndPhoneAndEmailAndPassword extends GetView<SignupControllerImpl> 
                 size: 30,
               ),
               hinttext: StringsKeys.enterEmail.tr,
-              valid: (value) {
-                if (value!.isEmpty) {
-                  return StringsKeys.enterEmail.tr;
-                }
-                return null;
-              }),
+              valid: (value) => validInput(value!, InputType.email),),
           //password
           TextFormFieldWidget(
             controller: controller.passwordController,
@@ -67,13 +53,9 @@ class FormNameAndPhoneAndEmailAndPassword extends GetView<SignupControllerImpl> 
               size: 30,
             ),
             hinttext: StringsKeys.enterNewPassword.tr,
-            valid: (value) {
-              if (value!.isEmpty) {
-                return StringsKeys.enterEmail.tr;
-              }
-              return null;
-            },
+            valid: (value) => validInput(value!, InputType.password),
           ),
+          //confirm password
           TextFormFieldWidget(
             labeltext: StringsKeys.confirmPassword.tr,
             icon: const Icon(
@@ -81,12 +63,7 @@ class FormNameAndPhoneAndEmailAndPassword extends GetView<SignupControllerImpl> 
               size: 30,
             ),
             hinttext: StringsKeys.enterNewPassword.tr,
-            valid: (value) {
-              if (value!.isEmpty) {
-                return StringsKeys.enterEmail.tr;
-              }
-              return null;
-            },
+            valid: (value) => validInput(value!, InputType.password),
           ),
         ],
       ),

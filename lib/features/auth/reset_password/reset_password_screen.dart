@@ -53,7 +53,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     icon: const Icon(Icons.lock_outline),
                     hinttext: StringsKeys.newPassword.tr,
                     valid: (newPassword) =>
-                        validinput(newPassword!, 6, 30, "password"),
+                       validInput(newPassword!, InputType.password),
                   ),
                   //confirm password
                   TextFormFieldWidget(
@@ -63,7 +63,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     icon: const Icon(Icons.lock_outline),
                     hinttext: StringsKeys.confirmPassword.tr,
                     valid: (newPassword) =>
-                        validinput(newPassword!, 6, 30, "password"),
+                         validInput(newPassword!,  InputType.password),
                   ),
 
                   CustomButton(

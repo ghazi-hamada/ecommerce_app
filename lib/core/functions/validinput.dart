@@ -1,28 +1,56 @@
+import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:get/get.dart';
+import 'package:get/get_utils/src/get_utils/get_utils.dart';
 
-validinput(String val, int min, int max, String type) {
-  if (type == "username") {
-    if (!GetUtils.isUsername(val)) {
-      return "Not valid username";
-    }
-  }
-  if (type == "email") {
-    if (!GetUtils.isEmail(val)) {
-      return "Not valid Email";
-    }
-  }
-  if (type == "phone") {
-    if (!GetUtils.isPhoneNumber(val)) {
-      return "Not valid Phone Number";
-    }
-  }
-  if (val.length < min) {
-    return "can't be less than $min";
-  }
-  if (val.length > max) {
-    return "can't be larger than $max";
-  }
+enum InputType { username, email, phone, password }
+
+String? validInput(String val, InputType type) {
   if (val.isEmpty) {
-    return "can't be is Empty";
+    return StringsKeys.fieldEmpty.tr; // استخدام الترجمة هنا
   }
+
+  if (val.length < 8) {
+    return StringsKeys.inputTooShort.tr;
+  }
+
+  if (val.length > 100) {
+    return StringsKeys.inputTooLong.tr;
+  }
+
+  switch (type) {
+    case InputType.username:
+      if (!GetUtils.isUsername(val)) {
+        return StringsKeys.invalidUsername.tr;
+      }
+      break;
+
+    case InputType.email:
+      if (!GetUtils.isEmail(val)) {
+        return StringsKeys.invalidEmail.tr;
+      }
+      break;
+
+    case InputType.phone:
+      if (!GetUtils.isPhoneNumber(val)) {
+        return StringsKeys.invalidPhone.tr;
+      }
+      break;
+
+    case InputType.password:
+      if (val.length < 8) {
+        return StringsKeys.passwordTooShort.tr;
+      }
+      if (!RegExp(r'[A-Z]').hasMatch(val)) {
+        return StringsKeys.passwordUppercase.tr;
+      }
+      if (!RegExp(r'[a-z]').hasMatch(val)) {
+        return StringsKeys.passwordLowercase.tr;
+      }
+      if (!RegExp(r'[0-9]').hasMatch(val)) {
+        return StringsKeys.passwordDigit.tr;
+      }
+      break;
+  }
+
+  return null;
 }
