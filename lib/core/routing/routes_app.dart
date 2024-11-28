@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/middleware/my_middleware.dart';
 import 'package:ecommerce_app/features/auth/forget_password/forget_password_screen.dart';
 import 'package:ecommerce_app/features/auth/login/ui/login_screen.dart';
 import 'package:ecommerce_app/features/auth/reset_password/reset_password_screen.dart';
@@ -8,6 +9,7 @@ import 'package:ecommerce_app/features/auth/verify_code_signup/verify_code_signu
 import 'package:ecommerce_app/features/auth/verifycode/verifycode_screen.dart';
 import 'package:ecommerce_app/features/lang/language_screen.dart';
 import 'package:ecommerce_app/features/onboarding/ui/onboarding_screen.dart';
+import 'package:ecommerce_app/features/test/ui/test_screen.dart';
 import 'package:get/get.dart';
 
 abstract class AppRoutes {
@@ -29,9 +31,11 @@ abstract class AppRoutes {
 
   // this is the routes list
   static List<GetPage<dynamic>> getPages = [
-    GetPage(
-        name: kLanguage,
-        page: () => const LanguageScreen()), // const OnboardingScreen()),
+    GetPage(name: '/', page: () => const TestScreen()),
+    // GetPage(
+    //     name: kLanguage,
+    //     page: () => const LanguageScreen(),
+    //     middlewares: [MyMiddleware()]),
     GetPage(name: kOnboarding, page: () => const OnboardingScreen()),
     GetPage(name: kLogin, page: () => const LoginScreen()),
     GetPage(name: kSignup, page: () => const SignupScreen()),
@@ -40,6 +44,7 @@ abstract class AppRoutes {
     GetPage(name: kVerfiyCodesignup, page: () => VerifyCodeSignUpScreen()),
     GetPage(name: kResetpassword, page: () => const ResetPasswordScreen()),
     GetPage(name: kSuccessSignup, page: () => const SuccessSignUp()),
-    GetPage(name: kSuccessResetPassword, page: () => const SuccessResetPassword()),
+    GetPage(
+        name: kSuccessResetPassword, page: () => const SuccessResetPassword()),
   ];
 }
