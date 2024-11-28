@@ -1,49 +1,37 @@
-import 'dart:math';
-
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/features/auth/login/data/remote/login_data.dart';
+import 'package:ecommerce_app/features/forget_password/forget_password/data/remote/forget_password_data.dart';
 import 'package:ecommerce_app/routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class LoginController extends GetxController {
-  login();
-  dontHaveAccount();
-  forgotPassword();
-  showPassword();
+abstract class ForgetPasswordController extends GetxController {
+  proceedToVerifyCode();
+  checkEmail();
 }
 
-class LoginControllerImpl extends LoginController {
+class ForgetPasswordControllerImpl extends ForgetPasswordController {
   late TextEditingController emailController;
-  late TextEditingController passwordController;
   late GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool isShowPassword = false;
-  LoginData loginData = LoginData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
-  @override
-  dontHaveAccount() {
-    Get.toNamed(AppRoutes.kSignup);
-  }
+  ForgetPasswordData forgetPasswordData = ForgetPasswordData(Get.find());
 
   @override
-  login() async {
+  proceedToVerifyCode() async {
     if (formKey.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
-      var response = await loginData.postData(
-        emailController.text,
-        passwordController.text,
-      );
+      var response = await forgetPasswordData.postData(emailController.text);
       statusRequest = handlingData(response);
 
       print("hello" + response['status']);
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == "success") {
-          Get.offAllNamed(AppRoutes.khome);
+          Get.toNamed(AppRoutes.kVerfiyCode,
+              arguments: {"email": emailController.text});
         } else {
           Get.defaultDialog(
-              title: "ُWarning", middleText: "Email Or Password is wrong");
+              title: "ُWarning", middleText: "your email is not registered");
           statusRequest = StatusRequest.failure;
         }
       }
@@ -53,26 +41,19 @@ class LoginControllerImpl extends LoginController {
   @override
   void onInit() {
     emailController = TextEditingController();
-    passwordController = TextEditingController();
+    late GlobalKey<FormState> formKey = GlobalKey<FormState>();
     super.onInit();
   }
 
   @override
   void dispose() {
     emailController.dispose();
-    passwordController.dispose();
     super.dispose();
   }
 
   @override
-  forgotPassword() {
-    Get.toNamed(AppRoutes.kForgetPassword);
-  }
-
-  @override
-  showPassword() {
-    isShowPassword = !isShowPassword;
-
-    update();
+  checkEmail() {
+    // TODO: implement checkEmail
+    throw UnimplementedError();
   }
 }

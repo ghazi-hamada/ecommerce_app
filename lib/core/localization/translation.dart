@@ -6,7 +6,7 @@ class MyTranslations extends Translations {
   Map<String, Map<String, String>> get keys => {
         "ar": {
           "lang": "اختر اللغة",
-         "next": "التالي",
+          "next": "التالي",
           "lanA": "العربية",
           "lanE": "الانجليزية",
           "choose_product": "اختر المنتج",
@@ -95,7 +95,7 @@ class MyTranslations extends Translations {
           "emailRequired": "يرجى إدخال البريد الإلكتروني",
           "passwordRequired": "يرجى إدخال كلمة المرور",
           "confirmPasswordRequired": "يرجى إدخال تاكيد كلمة المرور",
-          "create_new_account" : "إنشاء حساب جديد",
+          "create_new_account": "إنشاء حساب جديد",
         },
         "en": {
           StringsKeys.lang: "Choose Language",
@@ -188,7 +188,7 @@ class MyTranslations extends Translations {
           "emailRequired": "Please enter your email",
           "passwordRequired": "Please enter your password",
           "confirmPasswordRequired": "Please enter confirm password",
-          "create_new_account" : "Create New Account",
+          "create_new_account": "Create New Account",
         },
       };
 }

@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
-
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({
     Key? key,

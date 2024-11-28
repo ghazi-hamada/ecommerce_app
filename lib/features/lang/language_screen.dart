@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/localization/change_local.dart';
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/core/routing/routes_app.dart';
+import 'package:ecommerce_app/routes_app.dart';
 import 'package:ecommerce_app/features/lang/ui/widgets/custum_button_lang.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

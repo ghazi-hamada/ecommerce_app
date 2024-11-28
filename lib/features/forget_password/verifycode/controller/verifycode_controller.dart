@@ -1,35 +1,39 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/features/auth/verify_code_signup/data/remote/verify_code_signup_data.dart';
+import 'package:ecommerce_app/features/forget_password/verifycode/data/remote/verify_code_data.dart';
 import 'package:ecommerce_app/routes_app.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 // ignore: camel_case_types
-abstract class verifyCodeSignUpController extends GetxController {
-  goTOsuccessSignup(String verifyCode);
+abstract class verifyCodeController extends GetxController {
+  checkCode();
+  goTOResetPassword(String verificationCode);
 }
 
 // ignore: camel_case_types
-class verifyCodeSignUpControllerImp extends verifyCodeSignUpController {
-  GlobalKey<FormState> formstate = GlobalKey();
-  VerifyCodeSignupData verifyCodeSignupData = VerifyCodeSignupData(Get.find());
+class verifyCodeControllerImp extends verifyCodeController {
   StatusRequest statusRequest = StatusRequest.none;
+  VerifyCodeData verifyCodeData = VerifyCodeData(Get.find());
+
   String? email;
+  @override
+  checkCode() {
+    // TODO: implement checkCode
+    throw UnimplementedError();
+  }
 
   @override
-  goTOsuccessSignup(String verifyCode) async {
+  goTOResetPassword(String verificationCode) async{
     statusRequest = StatusRequest.loading;
     update();
-    var response = await verifyCodeSignupData.postData(email!, verifyCode);
+    var response = await verifyCodeData.postData(email!, verificationCode);
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       print(
           "response['status']:================================== ${response['status']}");
       if (response['status'] == "success") {
-        Get.offAllNamed(
-          AppRoutes.kSuccessSignup,
-        );
+        Get.toNamed(AppRoutes.kResetpassword, arguments: {"email": email});
       } else {
         Get.defaultDialog(
             title: "ُWarning", middleText: "Verify code is wrong");
@@ -37,6 +41,7 @@ class verifyCodeSignUpControllerImp extends verifyCodeSignUpController {
       }
     }
     update();
+    
   }
 
   @override

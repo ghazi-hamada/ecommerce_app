@@ -10,17 +10,15 @@ String? validInput(String val, InputType type) {
   if (val.isEmpty) {
     if (type == InputType.username) {
       return StringsKeys.usernameRequired.tr; //يرجى إدخال اسمك الكامل
-      
-    }else if (type == InputType.phone) {
+    } else if (type == InputType.phone) {
       return StringsKeys.phoneRequired.tr; //يرجى إدخال رقم الجوال
-      
-  } else if (type == InputType.email) {
+    } else if (type == InputType.email) {
       return StringsKeys.emailRequired.tr; //يرجى إدخال البريد الألكتروني
-      
     } else if (type == InputType.password) {
       return StringsKeys.passwordRequired.tr; //يرجى إدخال كلمة المرور
-    }else if (type == InputType.confirmPassword) {
-      return StringsKeys.confirmPasswordRequired.tr; //يرجى إدخال تأكيد كلمة المرور
+    } else if (type == InputType.confirmPassword) {
+      return StringsKeys
+          .confirmPasswordRequired.tr; //يرجى إدخال تأكيد كلمة المرور
     }
   }
 

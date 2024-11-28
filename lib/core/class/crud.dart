@@ -12,7 +12,9 @@ class Crud {
       if (await checkInternet()) {
         var response = await http.post(Uri.parse(linkurl), body: data);
         if (response.statusCode == 200 || response.statusCode == 201) {
+          print('json response: \x1B[32m ${response.statusCode} \x1B[0m');
           print('json response: \x1B[32m ${response.body} \x1B[0m');
+          
           Map responsebody = jsonDecode(response.body);
           return Right(responsebody);
         } else {
@@ -26,4 +28,3 @@ class Crud {
     }
   }
 }
- 

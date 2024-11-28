@@ -5,30 +5,29 @@ ThemeData themeEnglish = ThemeData(
   fontFamily: "Poppins",
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: AppColor.primaryColor),
-  appBarTheme: AppBarTheme( 
+  appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,
     iconTheme: IconThemeData(color: AppColor.primaryColor),
-    titleTextStyle:const  TextStyle(
+    titleTextStyle: const TextStyle(
         color: AppColor.primaryColor,
         fontWeight: FontWeight.bold,
         fontFamily: "Poppins",
         fontSize: 25),
     backgroundColor: Colors.grey[50],
   ),
-  
   textTheme: const TextTheme(
-    titleMedium: TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 22,
-      color: AppColor.black,
-    ),
-       displaySmall: TextStyle(
-      height: 2,
-      color: AppColor.grey,
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    ),
+      titleMedium: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+        color: AppColor.black,
+      ),
+      displaySmall: TextStyle(
+        height: 2,
+        color: AppColor.grey,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
       headlineSmall: TextStyle(
           fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
       headlineMedium: TextStyle(
@@ -43,12 +42,11 @@ ThemeData themeEnglish = ThemeData(
 );
 
 ThemeData themeArabic = ThemeData(
-  appBarTheme: AppBarTheme( 
-    
+  appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,
     iconTheme: IconThemeData(color: AppColor.primaryColor),
-    titleTextStyle:const  TextStyle(
+    titleTextStyle: const TextStyle(
         color: AppColor.primaryColor,
         fontWeight: FontWeight.bold,
         fontFamily: "Poppins",
@@ -57,17 +55,17 @@ ThemeData themeArabic = ThemeData(
   ),
   fontFamily: "Cairo",
   textTheme: const TextTheme(
-     titleMedium: TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 22,
-      color: AppColor.black,
-    ),
-       displaySmall: TextStyle(
-      height: 2,
-      color: AppColor.grey,
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    ),
+      titleMedium: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+        color: AppColor.black,
+      ),
+      displaySmall: TextStyle(
+        height: 2,
+        color: AppColor.grey,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
       headlineSmall: TextStyle(
           fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
       headlineMedium: TextStyle(

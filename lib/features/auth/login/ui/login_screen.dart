@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/functions/aleretexitapp.dart';
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:ecommerce_app/features/auth/login/controller/login_controller.dart';
@@ -14,44 +15,48 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginControllerImpl());
+    Get.lazyPut(() => LoginControllerImpl());
     return Scaffold(
         appBar: AppBar(
           title: Text(StringsKeys.signIn.tr),
         ),
-        body: WillPopScope(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  //logo and text welcome back
-                  const LogoAndTextWelcome(),
-                  //text form field email and password
-                  const FormEmailAndPassword(),
-                  //remember me and forgot password
-                  const RememberMeAndForgetPassword(),
-                  CustomButton(
-                    text: StringsKeys.signIn.tr,
-                    onPress: () {
-                      controller.login();
-                    },
-                  ),
+        body: GetBuilder<LoginControllerImpl>(
+            builder: (controller) => HandlingDataView(
+                  statusRequest: controller.statusRequest,
+                  child: WillPopScope(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            //logo and text welcome back
+                            const LogoAndTextWelcome(),
+                            //text form field email and password
+                            const FormEmailAndPassword(),
+                            //remember me and forgot password
+                            const RememberMeAndForgetPassword(),
+                            CustomButton(
+                              text: StringsKeys.signIn.tr,
+                              onPress: () {
+                                controller.login();
+                              },
+                            ),
 
-                  // dont have an account ? sign up
-                  DontHaveAccount(
-                    body: StringsKeys.dontHaveAccount.tr,
-                    action: StringsKeys.signUp.tr,
-                    onPressAction: () {
-                      controller.dontHaveAccount();
-                    },
+                            // dont have an account ? sign up
+                            DontHaveAccount(
+                              body: StringsKeys.dontHaveAccount.tr,
+                              action: StringsKeys.signUp.tr,
+                              onPressAction: () {
+                                controller.dontHaveAccount();
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    onWillPop: () => aleretexitapp(),
                   ),
-                ],
-              ),
-            ),
-          ),
-          onWillPop: () => aleretexitapp(),
-        ));
+                )));
   }
 }

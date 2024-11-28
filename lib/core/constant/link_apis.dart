@@ -16,11 +16,11 @@ class LinkApis {
   static const String verfiycodeSignup = '$server/auth/verifycode.php';
 
   //======================forget password======================
-  static const String checkEmail = '$server/forgetpassword/checkemail.php';
+  static const String checkEmail = '$server/forget_password/check_email.php';
   static const String resetPassword =
-      '$server/forgetpassword/resetpassword.php';
+      '$server/forget_password/reset_password.php';
   static const String verfiyCodeForgetPassword =
-      '$server/forgetpassword/verifycode.php';
+      '$server/forget_password/verifycode.php';
 
   //======================Home=================================
   static const String homepage = '$server/home.php';
