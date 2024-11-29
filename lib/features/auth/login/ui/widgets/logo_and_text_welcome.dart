@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class LogoAndTextWelcome extends StatelessWidget {
@@ -14,7 +15,7 @@ class LogoAndTextWelcome extends StatelessWidget {
           StringsKeys.welcomeBack.tr,
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Center(
           child: Text(
             StringsKeys.signInWithEmail.tr,
@@ -22,7 +23,7 @@ class LogoAndTextWelcome extends StatelessWidget {
             style: Theme.of(context).textTheme.displaySmall,
           ),
         ),
-        const SizedBox(height: 40),
+        SizedBox(height: 40.h),
       ],
     );
   }

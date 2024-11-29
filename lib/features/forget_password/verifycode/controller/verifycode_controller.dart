@@ -24,7 +24,7 @@ class verifyCodeControllerImp extends verifyCodeController {
   }
 
   @override
-  goTOResetPassword(String verificationCode) async{
+  goTOResetPassword(String verificationCode) async {
     statusRequest = StatusRequest.loading;
     update();
     var response = await verifyCodeData.postData(email!, verificationCode);
@@ -41,7 +41,6 @@ class verifyCodeControllerImp extends verifyCodeController {
       }
     }
     update();
-    
   }
 
   @override

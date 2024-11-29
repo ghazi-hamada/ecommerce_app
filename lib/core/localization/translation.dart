@@ -96,6 +96,7 @@ class MyTranslations extends Translations {
           "passwordRequired": "يرجى إدخال كلمة المرور",
           "confirmPasswordRequired": "يرجى إدخال تاكيد كلمة المرور",
           "create_new_account": "إنشاء حساب جديد",
+          "seeAll": "اظهار الكل",
         },
         "en": {
           StringsKeys.lang: "Choose Language",
@@ -189,6 +190,7 @@ class MyTranslations extends Translations {
           "passwordRequired": "Please enter your password",
           "confirmPasswordRequired": "Please enter confirm password",
           "create_new_account": "Create New Account",
+          "seeAll": "See All",
         },
       };
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "914768591740",
+    "project_id": "e-commerce-a9af1",
+    "storage_bucket": "e-commerce-a9af1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914768591740:android:2a46460753fe297597c2f9",
+        "android_client_info": {
+          "package_name": "com.appghazi.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914768591740-ifdrujhbvp2062r9h5rafi4t97bq67vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9_BABY2O-ucsRjGPLfur2rjTmhXILcNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914768591740-ifdrujhbvp2062r9h5rafi4t97bq67vj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

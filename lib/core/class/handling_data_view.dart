@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
+import 'package:ecommerce_app/core/constant/app_theme.dart';
 import 'package:ecommerce_app/core/constant/image_asset.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 class HandlingDataView extends StatelessWidget {
@@ -12,20 +14,20 @@ class HandlingDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     if (statusRequest == StatusRequest.loading) {
       return Center(
-        child: Lottie.asset(AppImageAsset.loading, width: 255, height: 255),
+        child: Lottie.asset(AppImageAsset.loading, width: 255.w, height: 255.h),
       );
     } else if (statusRequest == StatusRequest.failure) {
       return Center(
         child: Lottie.asset(AppImageAsset.nodata,
-            width: 255, height: 255, repeat: true),
+            width: 255.w, height: 255.h, repeat: true),
       );
     } else if (statusRequest == StatusRequest.serverfailure) {
       return Center(
-        child: Lottie.asset(AppImageAsset.server, width: 255, height: 255),
+        child: Lottie.asset(AppImageAsset.server, width: 255.w, height: 255.h),
       );
     } else if (statusRequest == StatusRequest.offlinefailure) {
       return Center(
-        child: Lottie.asset(AppImageAsset.offline, width: 255, height: 255),
+        child: Lottie.asset(AppImageAsset.offline, width: 255.w, height: 255.h),
       );
     } else {
       return child;
@@ -42,15 +44,15 @@ class HandlingDataViewRequesst extends StatelessWidget {
   Widget build(BuildContext context) {
     if (statusRequest == StatusRequest.loading) {
       return Center(
-        child: Lottie.asset(AppImageAsset.loading, width: 255, height: 255),
+        child: Lottie.asset(AppImageAsset.loading, width: 255.w, height: 255.h),
       );
     } else if (statusRequest == StatusRequest.serverfailure) {
       return Center(
-        child: Lottie.asset(AppImageAsset.server, width: 255, height: 255),
+        child: Lottie.asset(AppImageAsset.server, width: 255.w, height: 255.h),
       );
     } else if (statusRequest == StatusRequest.offlinefailure) {
       return Center(
-        child: Lottie.asset(AppImageAsset.offline, width: 255, height: 255),
+        child: Lottie.asset(AppImageAsset.offline, width: 255.w, height: 255.h),
       );
     } else {
       return child;
@@ -66,9 +68,9 @@ class HandlingItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
-        ? const Column(
+        ? Column(
             children: [
-              SizedBox(height: 200),
+              SizedBox(height: 200.h),
               Center(
                 child: CircularProgressIndicator(),
               ),
@@ -76,13 +78,13 @@ class HandlingItems extends StatelessWidget {
           )
         : statusRequest == StatusRequest.serverfailure
             ? Center(
-                child:
-                    Lottie.asset(AppImageAsset.server, width: 255, height: 255),
+                child: Lottie.asset(AppImageAsset.server,
+                    width: 255.w, height: 255.h),
               )
             : statusRequest == StatusRequest.offlinefailure
                 ? Center(
                     child: Lottie.asset(AppImageAsset.offline,
-                        width: 255, height: 255),
+                        width: 255.w, height: 255.h),
                   )
                 : child;
   }

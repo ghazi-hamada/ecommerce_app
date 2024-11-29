@@ -76,6 +76,7 @@ class StringsKeys {
   static const String confirmPasswordRequired = "confirmPasswordRequired";
 
   // Home Screen
+  static const seeAll = "seeAll";
   static const categories = "categories";
   static const products = "products";
   static const offers = "offers";

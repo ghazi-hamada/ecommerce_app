@@ -1,14 +1,15 @@
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ThemeData themeEnglish = ThemeData(
   fontFamily: "Poppins",
-  floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: AppColor.primaryColor),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColor.primaryColor),
   appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,
-    iconTheme: IconThemeData(color: AppColor.primaryColor),
+    iconTheme: const IconThemeData(color: AppColor.primaryColor),
     titleTextStyle: const TextStyle(
         color: AppColor.primaryColor,
         fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ ThemeData themeArabic = ThemeData(
   appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,
-    iconTheme: IconThemeData(color: AppColor.primaryColor),
+    iconTheme: const IconThemeData(color: AppColor.primaryColor),
     titleTextStyle: const TextStyle(
         color: AppColor.primaryColor,
         fontWeight: FontWeight.bold,

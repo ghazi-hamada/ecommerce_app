@@ -23,7 +23,7 @@ class OnboardingControllerImpl extends OnboardingController {
           duration: const Duration(milliseconds: 900), curve: Curves.easeInOut);
     } else {
       Get.offAllNamed(AppRoutes.kLogin);
-      myServices.sharedPreferences.setBool('onBoarding_seen', true);
+      myServices.sharedPreferences.setString('step', 'login');
       print('page finished');
       update();
     }

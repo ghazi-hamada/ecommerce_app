@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/features/onboarding/controller/onboarding_controller.dart';
 import 'package:ecommerce_app/features/onboarding/data/datasource/static/stasic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TitleAndImageAndBodyOnboardingWidget
@@ -20,13 +21,15 @@ class TitleAndImageAndBodyOnboardingWidget
         itemCount: onBoardingData.length,
         itemBuilder: (context, index) => Column(
           children: [
-            const SizedBox(height: 50),
+            SizedBox(height: 50.h),
             Text(onBoardingData[index].title!,
                 style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 50),
-            Image.asset(onBoardingData[index].image!,
-                width: 270, height: 300, fit: BoxFit.fill),
-            const SizedBox(height: 10),
+            SizedBox(height: 50.h),
+            Expanded(
+              child: Image.asset(onBoardingData[index].image!,
+                  width: 270.w, height: 300.h, fit: BoxFit.fill),
+            ),
+            SizedBox(height: 10.h),
             SizedBox(
               width: double.infinity,
               child: Text(
@@ -35,6 +38,7 @@ class TitleAndImageAndBodyOnboardingWidget
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
+            SizedBox(height: 20.h),
           ],
         ),
       ),

@@ -12,7 +12,10 @@ class MyMiddleware extends GetMiddleware {
   MyServices myServices = Get.find<MyServices>();
   @override
   RouteSettings? redirect(String? route) {
-    if (myServices.sharedPreferences.getBool('onBoarding_seen') == true) {
+    if (myServices.sharedPreferences.getString('step') == "logined") {
+      return const RouteSettings(name: AppRoutes.khome);
+    }
+    if (myServices.sharedPreferences.getString('step') == "login") {
       return const RouteSettings(name: AppRoutes.kLogin);
     }
     return null;

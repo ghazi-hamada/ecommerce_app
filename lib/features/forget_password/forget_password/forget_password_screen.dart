@@ -6,6 +6,7 @@ import 'package:ecommerce_app/features/forget_password/forget_password/controlle
 import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
 import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -20,61 +21,59 @@ class ForgetPasswordScreen extends StatelessWidget {
             StringsKeys.passwordRecovery.tr,
           ),
         ),
-        body: GetBuilder<ForgetPasswordControllerImpl>(
-          builder: (controller) {
-            return HandlingDataView(
-              statusRequest: controller.statusRequest,
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      //title page as logo
-                      Text(
-                        StringsKeys.checkEmail.tr,
-                        style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.black,
-                        ),
+        body: GetBuilder<ForgetPasswordControllerImpl>(builder: (controller) {
+          return HandlingDataView(
+            statusRequest: controller.statusRequest,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    //title page as logo
+                    Text(
+                      StringsKeys.checkEmail.tr,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.black,
                       ),
-                      const SizedBox(height: 7),
-              
-                      //body page as logo
-                      Text(
-                        StringsKeys.emailVerificationDescription.tr,
-                        style: const TextStyle(
-                          fontSize: 15,
-                        ),
-                        textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 7.h),
+
+                    //body page as logo
+                    Text(
+                      StringsKeys.emailVerificationDescription.tr,
+                      style: const TextStyle(
+                        fontSize: 15,
                       ),
-                      const SizedBox(height: 30),
-                      //email
-                      Form(
-                        key: controller.formKey,
-                        child: TextFormFieldWidget(
-                          obsText: false,
-                          controller: controller.emailController,
-                          labeltext: StringsKeys.email.tr,
-                          icon: const Icon(Icons.email_outlined),
-                          hinttext: StringsKeys.enterEmail.tr,
-                          valid: (value) => validInput(value!, InputType.email),
-                        ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 30.h),
+                    //email
+                    Form(
+                      key: controller.formKey,
+                      child: TextFormFieldWidget(
+                        obsText: false,
+                        controller: controller.emailController,
+                        labeltext: StringsKeys.email.tr,
+                        icon: const Icon(Icons.email_outlined),
+                        hinttext: StringsKeys.enterEmail.tr,
+                        valid: (value) => validInput(value!, InputType.email),
                       ),
-                      const SizedBox(height: 20),
-                      //button
-                      CustomButton(
-                        text: StringsKeys.send.tr,
-                        onPress: () {
-                          controller.proceedToVerifyCode();
-                        },
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 20.h),
+                    //button
+                    CustomButton(
+                      text: StringsKeys.send.tr,
+                      onPress: () {
+                        controller.proceedToVerifyCode();
+                      },
+                    ),
+                  ],
                 ),
               ),
-            );
-          }
-        ));
+            ),
+          );
+        }));
   }
 }

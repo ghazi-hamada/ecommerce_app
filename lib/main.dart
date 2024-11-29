@@ -1,19 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
 import 'package:ecommerce_app/core/bindings/initial_Binding.dart';
-import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/localization/change_local.dart';
 import 'package:ecommerce_app/core/localization/translation.dart';
-import 'package:ecommerce_app/routes_app.dart';
 import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/onboarding/ui/onboarding_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:ecommerce_app/routes_app.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initialServices();
-  return runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized(); // التأكد من التهيئة الصحيحة
+  await initialServices(); // انتظار الخدمات الأولية
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,14 +20,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
-    return GetMaterialApp(
-      translations: MyTranslations(),
-      debugShowCheckedModeBanner: false,
-      locale: controller.language,
-      title: 'E-commerce App',
-      theme: controller.appTheme,
-      initialBinding: InitialBinding(),
-      getPages: AppRoutes.getPages,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => GetMaterialApp(
+              translations: MyTranslations(),
+              debugShowCheckedModeBanner: false,
+              locale: controller.language,
+              title: 'E-commerce App',
+              theme: controller
+                  .appTheme, // تأكد أن appTheme لا يستخدم ScreenUtil بشكل مباشر
+              initialBinding: InitialBinding(),
+              getPages: AppRoutes.getPages,
+              home: child, // يمكنك تحديد الصفحة الرئيسية هنا إذا كانت مطلوبة
+            ));
   }
 }

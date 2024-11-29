@@ -11,6 +11,7 @@ dependencies:
   auto_animated: ^3.2.0
   badges: ^3.1.2
   cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
   cloud_firestore: ^5.5.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -23,7 +24,8 @@ dependencies:
   flutter_local_notifications: ^18.0.1
   flutter_otp_text_field: ^1.2.0
   flutter_polyline_points: ^2.1.0
-  flutter_svg: ^2.0.15
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.16
   fluttericon: ^2.0.0
   font_awesome_flutter: ^10.8.0
   geocoding: ^3.0.0
@@ -43,6 +45,7 @@ dependencies:
   responsive_builder: ^0.7.1
   shared_preferences: ^2.3.3
   show_up_animation: ^2.0.0
+  smooth_page_indicator: ^1.2.0+3
   sqflite: ^2.4.1
   url_launcher: ^6.3.1
 

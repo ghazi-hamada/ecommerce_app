@@ -1,14 +1,17 @@
+import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/features/onboarding/controller/onboarding_controller.dart';
 import 'package:ecommerce_app/features/onboarding/data/datasource/static/stasic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class PointIndicator extends StatelessWidget {
-  const PointIndicator({Key? key}) : super(key: key);
+  const PointIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => OnboardingControllerImpl());
     return Expanded(
         flex: 1,
         child: Column(
@@ -22,7 +25,7 @@ class PointIndicator extends StatelessWidget {
                       (index) => AnimatedContainer(
                             margin: const EdgeInsets.only(right: 5),
                             duration: const Duration(milliseconds: 900),
-                            height: 6,
+                            height: 6.w,
                             width: controller.currentIndex == index ? 15 : 6,
                             decoration: BoxDecoration(
                               color: controller.currentIndex == index

@@ -5,6 +5,7 @@ import 'package:ecommerce_app/features/forget_password/reset_password/controller
 import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
 import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class ResetPasswordScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Center(
                         child: Text(
                           StringsKeys.enterNewPassword.tr,
@@ -46,8 +47,8 @@ class ResetPasswordScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(height: 50),
-            
+                      SizedBox(height: 50.h),
+
                       //password
                       TextFormFieldWidget(
                         obsText: controller.isShowPassword,
@@ -72,12 +73,12 @@ class ResetPasswordScreen extends StatelessWidget {
                         keyboardType: TextInputType.visiblePassword,
                         onTapIcon: () => controller.showPassword(),
                       ),
-            
+
                       CustomButton(
                         text: StringsKeys.save.tr,
                         onPress: () => controller.successResetPasssword(),
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: 30.h),
                     ],
                   ),
                 ),

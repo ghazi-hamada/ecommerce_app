@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -15,7 +16,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 30, top: 10),
       width: double.infinity,
-      height: 50,
+      height: 50.h,
       child: MaterialButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         padding: const EdgeInsets.symmetric(vertical: 12),
