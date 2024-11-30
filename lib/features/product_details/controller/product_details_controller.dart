@@ -1,12 +1,26 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:ecommerce_app/features/home/data/models/items_model.dart'; 
+import 'package:get/get.dart';
 
 abstract class ProductDetailsController extends GetxController {
-  getProductDetails();
+  intialData();
+
+  late ItemsModel itemsModel;
 }
 
-class ProductDetailsControllerImp extends ProductDetailsController {
+class ProductDetailsControllerImpl extends ProductDetailsController {
   @override
-  getProductDetails() {
-    
+  intialData() {
+    itemsModel = Get.arguments['itemsmodel'];
+  }
+
+  List subItems = [
+    {"name": "red", "id": 1, "active": '1'},
+    {"name": "white", "id": 2, "active": '0'},
+    {"name": "black", "id": 3, "active": '0'},
+  ];
+  @override
+  void onInit() {
+    intialData();
+    super.onInit();
   }
 }
