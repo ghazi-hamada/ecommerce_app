@@ -43,6 +43,8 @@ ThemeData themeEnglish = ThemeData(
 );
 
 ThemeData themeArabic = ThemeData(
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColor.primaryColor),
   appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,

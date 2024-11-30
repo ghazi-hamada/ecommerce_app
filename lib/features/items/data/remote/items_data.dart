@@ -1,12 +1,13 @@
 import 'package:ecommerce_app/core/class/crud.dart';
 import 'package:ecommerce_app/core/constant/app_apis.dart';
 
-class SginupData {
+class ItemsData {
   Crud crud;
-  SginupData(this.crud);
+  ItemsData(this.crud);
 
-  postData(Map data) async {
-    var response = await crud.postData(AppApis.signup, data);
+  getData( ) async {
+    var response = await crud.postData(AppApis.items, { 
+    });
     return response.fold((l) => l, (r) => r);
   }
 }

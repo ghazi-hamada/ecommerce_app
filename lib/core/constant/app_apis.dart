@@ -1,4 +1,4 @@
-class LinkApis {
+class AppApis {
   //======================server======================
   static const String server = 'https://ghaziapp.store/ecommerce_app_backend';
 

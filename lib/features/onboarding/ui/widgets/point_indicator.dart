@@ -41,3 +41,4 @@ class PointIndicator extends StatelessWidget {
         ));
   }
 }
+

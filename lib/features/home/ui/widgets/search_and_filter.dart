@@ -13,6 +13,9 @@ class SearchAndFilter extends StatelessWidget {
           child: SizedBox(
             height: 40.h,
             child: TextFormField(
+              onChanged: (value) {
+                print(value);
+              },
               cursorHeight: 20,
               decoration: InputDecoration(
                 filled: true,
