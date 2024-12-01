@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
+import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/features/home/data/models/categories_model.dart';
 import 'package:ecommerce_app/features/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/data/remote/items_data.dart';
@@ -10,31 +11,36 @@ abstract class ItemsController extends GetxController {
   changeItemCategories(int index);
   getItems();
   showProductDetails(ItemsModel itemsModel);
-}
-
-class ItemsControllerImpl extends ItemsController {
   late List categoriesModel;
   late int categoriesId;
   ItemsData itemsData = ItemsData(Get.find());
-  RxList items = [].obs;
-  RxList dataItems = [].obs;
-
+  List categories = [];
+  List items = [];
+  MyServices myServices = Get.find();
   late StatusRequest statusRequest;
+}
+
+class ItemsControllerImpl extends ItemsController {
   @override
   getItems() async {
+    items.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await itemsData.getData();
+    var response = await itemsData.getData(
+      id: categoriesId.toString(),
+      userId: myServices.sharedPreferences.getString('id')!,
+    );
+    print(
+        "categoriesId: $categoriesId ====================== id: ${myServices.sharedPreferences.getString('id')}");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
-      if (response['status'] == 'success') {
-        dataItems.addAll(response['data']);
-        statusRequest = StatusRequest.none;
-        update();
+      if (response['status'] == "success") {
+        items.addAll(response['data']);
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
+
     update();
   }
 
@@ -43,9 +49,6 @@ class ItemsControllerImpl extends ItemsController {
     //get data from arguments
     categoriesModel = Get.arguments['categories'];
     categoriesId = Get.arguments['categorySelected'];
-    items.addAll(dataItems
-        .where((element) => element['categories_id'] == categoriesId)
-        .toList());
 
     getItems();
     super.onInit();
@@ -54,15 +57,13 @@ class ItemsControllerImpl extends ItemsController {
   @override
   changeItemCategories(int index) {
     categoriesId = index;
-    items.value = dataItems
-        .where((element) => element['categories_id'] == categoriesId)
-        .toList();
+    getItems();
     update();
   }
-  
+
   @override
   showProductDetails(ItemsModel itemsModel) {
-     Get.toNamed(AppRoutes.kProductDetails,
+    Get.toNamed(AppRoutes.kProductDetails,
         arguments: {'itemsmodel': itemsModel});
   }
 }

@@ -11,7 +11,10 @@ Container TitleBodyDetailsProduct(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(controller.itemsModel.itemsName!,
-            style: Theme.of(context).textTheme.displayLarge),
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 24,
+                fontWeight: FontWeight.bold)),
         CaunterAndPrice(context, controller),
         const SizedBox(height: 10),
         Text(

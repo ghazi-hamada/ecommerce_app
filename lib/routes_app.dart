@@ -1,20 +1,19 @@
+import 'package:get/get.dart';
+
 import 'package:ecommerce_app/core/middleware/my_middleware.dart';
-import 'package:ecommerce_app/features/forget_password/forget_password/forget_password_screen.dart';
 import 'package:ecommerce_app/features/auth/login/ui/login_screen.dart';
-import 'package:ecommerce_app/features/forget_password/reset_password/reset_password_screen.dart';
 import 'package:ecommerce_app/features/auth/signup/ui/signup_screen.dart';
-import 'package:ecommerce_app/features/forget_password/success_reset_password/success_reset_password_screen.dart';
 import 'package:ecommerce_app/features/auth/sucsses_signup/sucsess_signup_screen.dart';
 import 'package:ecommerce_app/features/auth/verify_code_signup/verify_code_signup_Screen.dart';
+import 'package:ecommerce_app/features/forget_password/forget_password/forget_password_screen.dart';
+import 'package:ecommerce_app/features/forget_password/reset_password/reset_password_screen.dart';
+import 'package:ecommerce_app/features/forget_password/success_reset_password/success_reset_password_screen.dart';
 import 'package:ecommerce_app/features/forget_password/verifycode/verifycode_screen.dart';
-import 'package:ecommerce_app/features/home/ui/home_screen.dart';
 import 'package:ecommerce_app/features/items/ui/items_screen.dart';
 import 'package:ecommerce_app/features/lang/language_screen.dart';
 import 'package:ecommerce_app/features/nav_bar/ui/nav_bar.dart';
 import 'package:ecommerce_app/features/onboarding/ui/onboarding_screen.dart';
 import 'package:ecommerce_app/features/product_details/ui/product_details.dart';
-import 'package:ecommerce_app/features/test/ui/test_screen.dart';
-import 'package:get/get.dart';
 
 abstract class AppRoutes {
   // this is the routes name

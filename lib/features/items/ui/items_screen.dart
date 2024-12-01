@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/app_apis.dart';
 import 'package:ecommerce_app/features/home/data/models/items_model.dart';
+import 'package:ecommerce_app/features/items/controller/favorite_controller.dart';
 import 'package:ecommerce_app/features/items/controller/items_controller.dart';
 import 'package:ecommerce_app/features/items/ui/widgets/categories_name_widget.dart';
 import 'package:ecommerce_app/features/items/ui/widgets/custom_gridview_items.dart';
@@ -20,6 +21,7 @@ class ItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => ItemsControllerImpl());
+    final controllerFev = Get.put(FavoriteController());
     return Scaffold(
       body: ListView(
         children: [
@@ -30,7 +32,7 @@ class ItemsScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
             child: GetBuilder<ItemsControllerImpl>(builder: (controller) {
-              return HandlingDataView( 
+              return HandlingItems(
                 statusRequest: controller.statusRequest,
                 child: GridView.builder(
                     shrinkWrap: true,
@@ -39,10 +41,21 @@ class ItemsScreen extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, childAspectRatio: 0.7),
-                    itemBuilder: (context, index) => CustomGridViewItems(
-                          itemsModel:
-                              ItemsModel.fromJson(controller.items[index]),
-                        )),
+                    itemBuilder: (context, index) {
+                      // controllerFev.isFavorite.addIf(
+                      //   1 == 1,
+                      //   "${ItemsModel.fromJson(controller.items[index]).itemsId}",
+                      //   ItemsModel.fromJson(controller.items[index])
+                      //       .frvoriteItems as int,
+                      // );
+                      //  controllerFev.isFavorite[controller.items[index]['items_id']] =controller.items[index]['frvorite_items'] ;
+
+                      return CustomGridViewItems(
+                        active: true,
+                        itemsModel:
+                            ItemsModel.fromJson(controller.items[index]),
+                      );
+                    }),
               );
             }),
           ),

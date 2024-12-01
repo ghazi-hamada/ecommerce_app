@@ -26,7 +26,7 @@ class ItemsHome extends StatelessWidget {
                 imageUrl: "${AppApis.imageItems}/${itemsModel.itemsImage}",
                 height: 100,
                 width: 150,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               )),
           Container(
             decoration: BoxDecoration(

@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/features/onboarding/controller/onboarding_controller.dart';
 import 'package:ecommerce_app/features/onboarding/data/datasource/static/stasic.dart';

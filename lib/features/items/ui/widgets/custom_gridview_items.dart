@@ -1,18 +1,26 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/constant/app_apis.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/features/home/data/models/items_model.dart';
+import 'package:ecommerce_app/features/items/controller/favorite_controller.dart';
 import 'package:ecommerce_app/features/items/controller/items_controller.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 class CustomGridViewItems extends GetView<ItemsControllerImpl> {
   final ItemsModel itemsModel;
-  const CustomGridViewItems({super.key, required this.itemsModel});
+  final bool active;
+  const CustomGridViewItems(
+      {super.key, required this.itemsModel, required this.active});
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => FavoriteController());
     return InkWell(
         onTap: () => controller.showProductDetails(itemsModel),
         child: Card(
@@ -25,14 +33,16 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                   CachedNetworkImage(
                     imageUrl: "${AppApis.imageItems}/${itemsModel.itemsImage!}",
                     height: 100,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.contain,
                   ),
                   const SizedBox(height: 10),
                   Text(itemsModel.itemsName!,
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: AppColor.black,
                           fontSize: 16,
-                          fontWeight: FontWeight.bold)),
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                          height: 1.h)),
                   Expanded(
                     flex: 1,
                     child: Row(
@@ -63,16 +73,23 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                       children: [
                         Text("${itemsModel.itemsPrice} \$",
                             style: const TextStyle(
-                                color: AppColor.primaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "sans")),
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite,
                               color: AppColor.primaryColor,
-                            ))
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        GetBuilder<FavoriteController>(
+                            builder: (controllerfav) {
+                          return IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.favorite,
+                                color: controllerfav
+                                            .isFavorite[itemsModel.itemsId] !=
+                                        '1'
+                                    ? Colors.red
+                                    : null,
+                              ));
+                        })
                       ],
                     ),
                   )
