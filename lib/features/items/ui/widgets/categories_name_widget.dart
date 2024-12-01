@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/functions/translate_database.dart';
 import 'package:ecommerce_app/features/home/data/models/categories_model.dart';

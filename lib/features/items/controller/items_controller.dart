@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
 import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/home/data/models/categories_model.dart';
 import 'package:ecommerce_app/features/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/data/remote/items_data.dart';
 import 'package:ecommerce_app/routes_app.dart';
