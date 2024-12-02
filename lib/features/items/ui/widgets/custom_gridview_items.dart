@@ -1,7 +1,8 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/constant/app_apis.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:ecommerce_app/core/functions/discount_calculator.dart';
+import 'package:ecommerce_app/core/widgets/custom_price_widget.dart';
 import 'package:ecommerce_app/features/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/controller/favorite_controller.dart';
 import 'package:ecommerce_app/features/items/controller/items_controller.dart';
@@ -21,78 +22,104 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
     Get.lazyPut(() => FavoriteController());
     return InkWell(
         onTap: () => controller.showProductDetails(itemsModel),
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CachedNetworkImage(
-                    imageUrl: "${AppApis.imageItems}/${itemsModel.itemsImage!}",
-                    height: 100,
-                    fit: BoxFit.contain,
-                  ),
-                  const SizedBox(height: 10),
-                  Text(itemsModel.itemsName!,
-                      style: TextStyle(
-                          color: AppColor.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                          height: 1.h)),
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Rating 3.5 ", textAlign: TextAlign.center),
-                        Container(
-                          alignment: Alignment.bottomCenter,
-                          height: 22,
-                          child: Row(
-                            children: [
-                              ...List.generate(
-                                  5,
-                                  (index) => const Icon(
-                                        Icons.star,
-                                        size: 15,
-                                      ))
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("${itemsModel.itemsPrice} \$",
-                            style: const TextStyle(
-                              color: AppColor.primaryColor,
+        child: Stack(
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CachedNetworkImage(
+                        imageUrl:
+                            "${AppApis.imageItems}/${itemsModel.itemsImage!}",
+                        height: 100,
+                        fit: BoxFit.contain,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(itemsModel.itemsName!,
+                          style: TextStyle(
+                              color: AppColor.black,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                            )),
-                        GetBuilder<FavoriteController>(
-                            builder: (controllerfav) {
-                          return IconButton(
-                              onPressed: () {},
+                              overflow: TextOverflow.ellipsis,
+                              height: 1.h)),
+                      SizedBox(height: 10.h),
+                      //Description
+
+                      //info price and discount
+                      CustomPriceWidget(
+                        itemsDiscount: itemsModel.itemsDiscount!,
+                        itemsPrice: itemsModel.itemsPrice!,
+                      ),
+                      const SizedBox(height: 10),
+                      // add to Cart
+                      Container(
+                        // height: .h,
+                        alignment: Alignment.topCenter,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.h,
+                          vertical: 2.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColor.primaryColor,
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: const Text(
+                          "Add to Cart",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      )
+                    ]),
+              ),
+            ),
+            Positioned(
+                right: 10,
+                top: 10,
+                child: GetBuilder<FavoriteController>(builder: (controllerfav) {
+                  return 1 == 2
+                      ? Container(
+                          alignment: Alignment.center,
+                          height: 32.h,
+                          width: 35.w,
+                          decoration: BoxDecoration(
+                              color: AppColor.primaryColor,
+                              borderRadius: BorderRadius.circular(30)),
+                          child: IconButton(
+                              onPressed: () {
+                                controllerfav.setFavorite(
+                                    "${itemsModel.itemsId}", itemsModel);
+                              },
                               icon: Icon(
-                                Icons.favorite,
-                                color: controllerfav
-                                            .isFavorite[itemsModel.itemsId] !=
+                                controllerfav.isFavorite[
+                                            "${itemsModel.itemsId}"] ==
                                         '1'
-                                    ? Colors.red
-                                    : null,
-                              ));
-                        })
-                      ],
-                    ),
-                  )
-                ]),
-          ),
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.white,
+                                size: 24,
+                              )),
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            controllerfav.setFavorite(
+                                "${itemsModel.itemsId}", itemsModel);
+                          },
+                          icon: Icon(
+                            Icons.favorite,
+                            color: controllerfav
+                                        .isFavorite["${itemsModel.itemsId}"] ==
+                                    '1'
+                                ? AppColor.primaryColor
+                                : AppColor.grey,
+                            size: 30.sp,
+                          ));
+                }))
+          ],
         ));
   }
 }

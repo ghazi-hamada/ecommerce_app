@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/my_favorite/ui/my_favorite_screen.dart';
 import 'package:get/get.dart';
 
 import 'package:ecommerce_app/core/middleware/my_middleware.dart';
@@ -53,5 +54,6 @@ abstract class AppRoutes {
         name: kSuccessResetPassword, page: () => const SuccessResetPassword()),
     GetPage(name: khome, page: () => const NavBar()),
     GetPage(name: kProductDetails, page: () => const ProductDetailsScreen()),
+    GetPage(name: kMyFavorite, page: () => const MyFavoriteScreen()),
   ];
 }
