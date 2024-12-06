@@ -14,9 +14,9 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 30, top: 10),
+      margin: const EdgeInsets.only(bottom: 20, top: 10),
       width: double.infinity,
-      height: 50.h,
+      height: 40.h,
       child: MaterialButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         padding: const EdgeInsets.symmetric(vertical: 12),

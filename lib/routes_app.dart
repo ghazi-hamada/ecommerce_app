@@ -1,4 +1,6 @@
-import 'package:ecommerce_app/features/my_favorite/ui/my_favorite_screen.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/settings_screen.dart';
+import 'package:ecommerce_app/features/auth/activate_account/ui/activate_account_screen.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/ui/my_favorite_screen.dart';
 import 'package:get/get.dart';
 
 import 'package:ecommerce_app/core/middleware/my_middleware.dart';
@@ -12,9 +14,11 @@ import 'package:ecommerce_app/features/forget_password/success_reset_password/su
 import 'package:ecommerce_app/features/forget_password/verifycode/verifycode_screen.dart';
 import 'package:ecommerce_app/features/items/ui/items_screen.dart';
 import 'package:ecommerce_app/features/lang/language_screen.dart';
-import 'package:ecommerce_app/features/nav_bar/ui/nav_bar.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/nav_bar/ui/nav_bar.dart';
 import 'package:ecommerce_app/features/onboarding/ui/onboarding_screen.dart';
 import 'package:ecommerce_app/features/product_details/ui/product_details.dart';
+
+import 'features/NavigationBar_items/cart/ui/cart_screen.dart';
 
 abstract class AppRoutes {
   // this is the routes name
@@ -29,10 +33,13 @@ abstract class AppRoutes {
   static const String kSuccessResetPassword = '/successResetPassword';
   static const String kVerfiyCode = '/verfiyCode';
   static const String kVerfiyCodesignup = '/verfiyCodesignup';
+  static const String kActivateAccount = '/ActivateAccount';
   static const String khome = '/home';
   static const String kItems = '/items';
   static const String kProductDetails = '/productDetails';
   static const String kMyFavorite = '/MyFavorite';
+  static const String kSettings = '/Settings';
+  static const String kCart  = '/Cart';
 
   // this is the routes list
   static List<GetPage<dynamic>> getPages = [
@@ -47,7 +54,8 @@ abstract class AppRoutes {
     GetPage(name: kForgetPassword, page: () => const ForgetPasswordScreen()),
     GetPage(name: kVerfiyCode, page: () => const VerifyCodeScreen()),
     GetPage(name: kItems, page: () => const ItemsScreen()),
-    GetPage(name: kVerfiyCodesignup, page: () => VerifyCodeSignUpScreen()),
+    GetPage(
+        name: kVerfiyCodesignup, page: () => const VerifyCodeSignUpScreen()),
     GetPage(name: kResetpassword, page: () => const ResetPasswordScreen()),
     GetPage(name: kSuccessSignup, page: () => const SuccessSignUp()),
     GetPage(
@@ -55,5 +63,8 @@ abstract class AppRoutes {
     GetPage(name: khome, page: () => const NavBar()),
     GetPage(name: kProductDetails, page: () => const ProductDetailsScreen()),
     GetPage(name: kMyFavorite, page: () => const MyFavoriteScreen()),
+    GetPage(name: kActivateAccount, page: () => const ActivateAccountScreen()),
+    GetPage(name: kSettings, page: () => const SettingsScreen()),
+    GetPage(name: kCart, page: () => const CartScreen()),
   ];
 }

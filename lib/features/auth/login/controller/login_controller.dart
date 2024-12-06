@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:ecommerce_app/core/class/status_request.dart';
+import 'package:ecommerce_app/core/constant/app_apis.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/features/auth/login/data/remote/login_data.dart';
@@ -43,7 +44,10 @@ class LoginControllerImpl extends LoginController {
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == "success") {
           sharedData(response);
-          Get.offAllNamed(AppRoutes.khome);
+          response['data']['users_approve'] == 1
+              ? Get.offAllNamed(AppRoutes.khome)
+              : Get.toNamed(AppRoutes.kActivateAccount,
+                  arguments: {"email": emailController.text});
         } else {
           statusRequest = StatusRequest.none;
           update();
@@ -81,18 +85,25 @@ class LoginControllerImpl extends LoginController {
   }
 
   Future<void> sharedData(response) async {
-    await myServices.sharedPreferences
-        .setString("id", response['data']['users_id'].toString());
+    if (response['data']['users_approve'] == 1) {
+      await myServices.sharedPreferences
+          .setString("id", response['data']['users_id'].toString());
 
-    await myServices.sharedPreferences
-        .setString("username", response['data']['users_name']);
+      await myServices.sharedPreferences
+          .setString("username", response['data']['users_name']);
 
-    await myServices.sharedPreferences
-        .setString("email", response['data']['users_email']);
+      await myServices.sharedPreferences
+          .setString("email", response['data']['users_email']);
 
-    await myServices.sharedPreferences
-        .setString("phone", response['data']['users_phone']);
+      await myServices.sharedPreferences
+          .setString("phone", response['data']['users_phone']);
+      await myServices.sharedPreferences
+          .setInt("approve", response['data']['users_approve']);
 
-    await myServices.sharedPreferences.setString("step", "logined");
+      await myServices.sharedPreferences.setString("step", "logined");
+    } else {
+      Get.toNamed(AppRoutes.kVerfiyCodesignup,
+          arguments: {"email": emailController.text});
+    }
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/features/home/data/models/items_model.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/controller/favorite_controller.dart';
 import 'package:ecommerce_app/features/items/controller/items_controller.dart';
 import 'package:ecommerce_app/features/items/ui/widgets/categories_name_widget.dart';
@@ -40,7 +40,7 @@ class ItemsScreen extends StatelessWidget {
                             crossAxisCount: 2, childAspectRatio: 0.7),
                     itemBuilder: (context, index) {
                       log("${controller.items[index]['items_id']}");
-                    
+
                       controllerFev.isFavorite.addIf(
                           1 == 1,
                           "${controller.items[index]['items_id']}",

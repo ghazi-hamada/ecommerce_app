@@ -1,13 +1,27 @@
-import 'package:ecommerce_app/features/home/data/models/items_model.dart'; 
+import 'dart:developer';
+
+import 'package:ecommerce_app/core/class/status_request.dart';
+import 'package:ecommerce_app/core/functions/handling_data.dart';
+import 'package:ecommerce_app/core/services/services.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/cart/data/remote/cart_data.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
+import 'package:ecommerce_app/routes_app.dart';
 import 'package:get/get.dart';
 
 abstract class ProductDetailsController extends GetxController {
   intialData();
-
+  increment();
+  decrement();
+  addItemsCart(String itemsId, int count);
   late ItemsModel itemsModel;
+  StatusRequest statusRequest = StatusRequest.none;
+  MyServices myServices = Get.find();
+  CartData cartData = CartData(Get.find());
 }
 
 class ProductDetailsControllerImpl extends ProductDetailsController {
+  int count = 1;
   @override
   intialData() {
     itemsModel = Get.arguments['itemsmodel'];
@@ -22,5 +36,45 @@ class ProductDetailsControllerImpl extends ProductDetailsController {
   void onInit() {
     intialData();
     super.onInit();
+  }
+
+  @override
+  decrement() {
+    if (count > 1) {
+      count--;
+      update();
+    }
+  }
+
+  @override
+  increment() {
+    count++;
+    update();
+  }
+
+  @override
+  addItemsCart(String itemsId, int count) async {
+    statusRequest = StatusRequest.loading;
+    update();
+
+    var response = await cartData.addData(
+      myServices.sharedPreferences.getString("id")!.toString(),
+      itemsId.toString(),
+      count.toString(),
+    );
+
+    statusRequest = handlingData(response);
+    log('response: $response');
+
+    update();
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        Get.rawSnackbar(
+          message: "Add Cart Success",
+          duration: const Duration(seconds: 1),
+        );
+        Get.back();
+      }
+    }
   }
 }

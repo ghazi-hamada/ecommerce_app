@@ -9,18 +9,21 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class VerifyCodeSignUpScreen extends StatelessWidget {
-  VerifyCodeSignUpScreen({super.key});
+  const VerifyCodeSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => verifyCodeSignUpControllerImp());
     return Scaffold(
+        backgroundColor: AppColor.backgroundcolor,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
           centerTitle: true,
-          title: Text(StringsKeys.verificationCode.tr,
-              style: const TextStyle(color: AppColor.grey)),
+          title: Text(
+            StringsKeys.verificationCode.tr,
+            style: const TextStyle(color: AppColor.primaryColor),
+          ),
         ),
         body: GetBuilder<verifyCodeSignUpControllerImp>(builder: (controller) {
           return HandlingDataView(
@@ -36,18 +39,24 @@ class VerifyCodeSignUpScreen extends StatelessWidget {
                       Text(
                         StringsKeys.verifyCode.tr,
                         style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff6C757D)),
                       ),
                       SizedBox(height: 10.h),
                       Center(
                         child: Text(
                           StringsKeys.enterCode.tr,
                           style: TextStyle(
-                            fontSize: 18.sp,
-                          ),
+                              fontSize: 18.sp, color: const Color(0xff6C757D)),
                           textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Text(
+                        controller.hideEmail(controller.email!),
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          color: AppColor.black,
                         ),
                       ),
                       SizedBox(height: 15.h),
@@ -57,17 +66,27 @@ class VerifyCodeSignUpScreen extends StatelessWidget {
                             const BorderRadius.all(Radius.circular(18.0)),
                         numberOfFields: 5,
                         borderColor: AppColor.primaryColor,
-                        //set to true to show as box or false to show as dash
                         showFieldAsBox: true,
-                        //runs when a code is typed in
                         onCodeChanged: (String code) {
                           //handle validation or checks here
                         },
-                        //runs when every textfield is filled
                         onSubmit: (String verificationCode) {
                           controller.goTOsuccessSignup(verificationCode);
-                        }, // end onSubmit
+                        },
                       ),
+                      SizedBox(height: 20.h),
+                      TextButton(
+                          onPressed: () {
+                            controller.resendVerifyCode();
+                          },
+                          child: const Text(
+                            "resend code",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: AppColor.primaryColor,
+                            ),
+                          )),
+                      SizedBox(height: 30.h)
                     ],
                   ),
                 ),

@@ -1,7 +1,8 @@
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
 import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/home/data/models/items_model.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/data/remote/items_data.dart';
 import 'package:ecommerce_app/routes_app.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ abstract class ItemsController extends GetxController {
   changeItemCategories(int index);
   getItems();
   showProductDetails(ItemsModel itemsModel);
+  // Check if the product is in the cart
   late List categoriesModel;
   late int categoriesId;
   ItemsData itemsData = ItemsData(Get.find());
@@ -20,6 +22,7 @@ abstract class ItemsController extends GetxController {
 }
 
 class ItemsControllerImpl extends ItemsController {
+  final CartControllerImp cartControllerCart = Get.put(CartControllerImp());
   @override
   getItems() async {
     items.clear();
@@ -62,7 +65,8 @@ class ItemsControllerImpl extends ItemsController {
 
   @override
   showProductDetails(ItemsModel itemsModel) {
-    Get.toNamed(AppRoutes.kProductDetails,
-        arguments: {'itemsmodel': itemsModel});
+    Get.toNamed(AppRoutes.kProductDetails, arguments: {
+      'itemsmodel': itemsModel,
+    });
   }
 }

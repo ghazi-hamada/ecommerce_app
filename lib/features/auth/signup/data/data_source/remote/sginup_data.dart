@@ -6,7 +6,7 @@ class SginupData {
   SginupData(this.crud);
 
   postData(Map data) async {
-    var response = await crud.postData(AppApis.signup, data);
+    var response = await crud.postData(AppApis.signUp , data);
     return response.fold((l) => l, (r) => r);
   }
 }

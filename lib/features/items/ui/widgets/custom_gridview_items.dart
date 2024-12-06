@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/constant/app_apis.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/functions/discount_calculator.dart';
 import 'package:ecommerce_app/core/widgets/custom_price_widget.dart';
-import 'package:ecommerce_app/features/home/data/models/items_model.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/controller/favorite_controller.dart';
 import 'package:ecommerce_app/features/items/controller/items_controller.dart';
 
@@ -20,42 +20,49 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => FavoriteController());
-    return InkWell(
-        onTap: () => controller.showProductDetails(itemsModel),
-        child: Stack(
-          children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CachedNetworkImage(
-                        imageUrl:
-                            "${AppApis.imageItems}/${itemsModel.itemsImage!}",
-                        height: 100,
-                        fit: BoxFit.contain,
-                      ),
-                      const SizedBox(height: 10),
-                      Text(itemsModel.itemsName!,
-                          style: TextStyle(
-                              color: AppColor.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis,
-                              height: 1.h)),
-                      SizedBox(height: 10.h),
-                      //Description
+    return Stack(
+      children: [
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Hero(
+                    tag: "${itemsModel.itemsId}",
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          "${AppApis.imageItems}/${itemsModel.itemsImage!}",
+                      height: 100,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(itemsModel.itemsName!,
+                      style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                          height: 1.h)),
+                  SizedBox(height: 10.h),
+                  //Description
 
-                      //info price and discount
-                      CustomPriceWidget(
-                        itemsDiscount: itemsModel.itemsDiscount!,
-                        itemsPrice: itemsModel.itemsPrice!,
-                      ),
-                      const SizedBox(height: 10),
-                      // add to Cart
-                      Container(
+                  //info price and discount
+                  CustomPriceWidget(
+                    itemsDiscount: itemsModel.itemsDiscount!,
+                    itemsPrice: itemsModel.itemsPrice!,
+                  ),
+                  const SizedBox(height: 10),
+                  // add to Cart
+                  GetBuilder<ItemsControllerImpl>(builder: (controller) {
+                    return InkWell(
+                      onTap: () => itemsModel.itemInCart ==
+                              1 // controller.isProductInCart(itemsModel.itemsId!)
+                          ? null
+                          : controller.showProductDetails(itemsModel),
+                      child: Container(
                         // height: .h,
                         alignment: Alignment.topCenter,
                         padding: EdgeInsets.symmetric(
@@ -63,7 +70,10 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                           vertical: 2.h,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColor.primaryColor,
+                          color: itemsModel.itemInCart ==
+                                  1 // controller.isProductInCart(itemsModel.itemsId!)
+                              ? AppColor.grey
+                              : AppColor.primaryColor,
                           borderRadius: BorderRadius.circular(7),
                         ),
                         child: const Text(
@@ -73,53 +83,54 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                               fontSize: 14,
                               fontWeight: FontWeight.w500),
                         ),
-                      )
-                    ]),
-              ),
-            ),
-            Positioned(
-                right: 10,
-                top: 10,
-                child: GetBuilder<FavoriteController>(builder: (controllerfav) {
-                  return 1 == 2
-                      ? Container(
-                          alignment: Alignment.center,
-                          height: 32.h,
-                          width: 35.w,
-                          decoration: BoxDecoration(
-                              color: AppColor.primaryColor,
-                              borderRadius: BorderRadius.circular(30)),
-                          child: IconButton(
-                              onPressed: () {
-                                controllerfav.setFavorite(
-                                    "${itemsModel.itemsId}", itemsModel);
-                              },
-                              icon: Icon(
-                                controllerfav.isFavorite[
-                                            "${itemsModel.itemsId}"] ==
-                                        '1'
-                                    ? Icons.favorite
-                                    : Icons.favorite_border,
-                                color: Colors.white,
-                                size: 24,
-                              )),
-                        )
-                      : IconButton(
+                      ),
+                    );
+                  })
+                ]),
+          ),
+        ),
+        Positioned(
+            right: 10,
+            top: 10,
+            child: GetBuilder<FavoriteController>(builder: (controllerfav) {
+              return 1 == 2
+                  ? Container(
+                      alignment: Alignment.center,
+                      height: 32.h,
+                      width: 35.w,
+                      decoration: BoxDecoration(
+                          color: AppColor.primaryColor,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: IconButton(
                           onPressed: () {
                             controllerfav.setFavorite(
                                 "${itemsModel.itemsId}", itemsModel);
                           },
                           icon: Icon(
-                            Icons.favorite,
-                            color: controllerfav
-                                        .isFavorite["${itemsModel.itemsId}"] ==
+                            controllerfav.isFavorite["${itemsModel.itemsId}"] ==
+                                    '1'
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.white,
+                            size: 24,
+                          )),
+                    )
+                  : IconButton(
+                      onPressed: () {
+                        controllerfav.setFavorite(
+                            "${itemsModel.itemsId}", itemsModel);
+                      },
+                      icon: Icon(
+                        Icons.favorite,
+                        color:
+                            controllerfav.isFavorite["${itemsModel.itemsId}"] ==
                                     '1'
                                 ? AppColor.primaryColor
                                 : AppColor.grey,
-                            size: 30.sp,
-                          ));
-                }))
-          ],
-        ));
+                        size: 30.sp,
+                      ));
+            }))
+      ],
+    );
   }
 }

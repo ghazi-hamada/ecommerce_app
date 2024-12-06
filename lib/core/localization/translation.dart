@@ -34,7 +34,8 @@ class MyTranslations extends Translations {
           StringsKeys.emailVerificationDescription:
               "أدخل عنوان البريد الإلكتروني المرتبط بالحساب.",
           StringsKeys.verifyCode: "التحقق من الكود",
-          StringsKeys.enterCode: "الرجاء إدخال رمز الرقم المرسل إليك",
+          StringsKeys.enterCode:
+              "أدخل الرمز المكون من 6 أرقام الذي أرسلناه إلى عنوان بريدك الإلكتروني:",
           StringsKeys.verificationCode: "رمز التحقق",
           StringsKeys.createAccount: "تسجيل حساب جديد",
           StringsKeys.createAccountDescription:
@@ -128,7 +129,8 @@ class MyTranslations extends Translations {
           StringsKeys.emailVerificationDescription:
               "Enter the email address associated with account.",
           StringsKeys.verifyCode: "Check Code",
-          StringsKeys.enterCode: "Please Enter The Digit Code Sent To",
+          StringsKeys.enterCode:
+              "Enter the 6-digit code we sent to your email address:",
           StringsKeys.verificationCode: "Verification Code",
           StringsKeys.createAccount: "Create Your Account",
           StringsKeys.createAccountDescription:

@@ -23,9 +23,9 @@ class CustomPriceWidget extends StatelessWidget {
                   // price after discount
                   Text(
                     "\$${discountCalculator(itemsDiscount, itemsPrice)}",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppColor.primaryColor,
-                      fontSize: 15,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -33,9 +33,9 @@ class CustomPriceWidget extends StatelessWidget {
                   // price before discount
                   Text(
                     "\$$itemsPrice",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppColor.grey,
-                      fontSize: 12,
+                      fontSize: 10.sp,
                       decoration: TextDecoration.lineThrough,
                     ),
                   ),
@@ -43,9 +43,9 @@ class CustomPriceWidget extends StatelessWidget {
               )
             : Text(
                 "\$$itemsPrice",
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppColor.primaryColor,
-                  fontSize: 15,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -62,9 +62,9 @@ class CustomPriceWidget extends StatelessWidget {
             ),
             child: Text(
               "$itemsDiscount%",
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.white,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500),
             ),
           )

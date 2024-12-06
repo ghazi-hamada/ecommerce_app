@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
 import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/home/data/models/items_model.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/data/remote/favorite_dart.dart';
 import 'package:get/get.dart';
 
