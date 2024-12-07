@@ -1,5 +1,7 @@
+import 'package:ecommerce_app/routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class BodyWidget extends StatelessWidget {
 const BodyWidget({ Key? key }) : super(key: key);
@@ -18,14 +20,19 @@ const BodyWidget({ Key? key }) : super(key: key);
                     title: const Text(
                       "Disable Notification",
                     )),
-                ListTile(
-                    trailing: Icon(
-                      Icons.location_on_outlined,
-                      size: 26.sp,
-                    ),
-                    title: const Text(
-                      "Address",
-                    )),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.kAddressView);
+                  },
+                  child: ListTile(
+                      trailing: Icon(
+                        Icons.location_on_outlined,
+                        size: 26.sp,
+                      ),
+                      title: const Text(
+                        "Address",
+                      )),
+                ),
                 ListTile(
                     trailing: Icon(
                       Icons.help_outline_rounded,

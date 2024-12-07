@@ -65,73 +65,75 @@ class HomeScreen extends GetView<HomeControllerImpl> {
                         ),
                       ),
                     ),
-                    ////////////////// /////
                     SizedBox(height: 15.h),
                     // special_for_you_widget
                     controller.isSearching
                         ? ListItemsSearch(listData: controller.itemsSearch)
-                        : Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 20.w),
-                                child: Column(
-                                  children: [
-                                    TextAndSeeAll(
-                                        text: "#SpecialForYou",
-                                        onPressed: () {}),
-                                    SizedBox(height: 15.h),
-                                    // slider_and_smooth_page_indicator_widget
-                                    const SliderAndSmoothPageIndicatorWidget(),
-                                    SizedBox(height: 15.h),
-          
-                                    // categoryAndSeeAll
-                                    TextAndSeeAll(
-                                        text: StringsKeys.categories.tr,
-                                        onPressed: () {}),
-                                  ],
+                        : HandlingDataView(
+                            statusRequest: controller.statusRequest,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.w),
+                                  child: Column(
+                                    children: [
+                                      TextAndSeeAll(
+                                          text: "#SpecialForYou",
+                                          onPressed: () {}),
+                                      SizedBox(height: 15.h),
+                                      // slider_and_smooth_page_indicator_widget
+                                      const SliderAndSmoothPageIndicatorWidget(),
+                                      SizedBox(height: 15.h),
+
+                                      // categoryAndSeeAll
+                                      TextAndSeeAll(
+                                          text: StringsKeys.categories.tr,
+                                          onPressed: () {}),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 5.h),
-                              // categories_images_and_name
-                              const CategoriesImagesAndName(),
-                              // items for you
-                              Container(
-                                  margin:
-                                      EdgeInsets.symmetric(horizontal: 20.w),
-                                  child: TextAndSeeAll(
-                                      text: "#ItemsForYou",
-                                      onPressed: () {})),
-                              SizedBox(
-                                height: 140,
-                                child: ListView.builder(
-                                    itemCount: controller.items.length,
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
-                                      return ItemsHome(
-                                          index: index,
-                                          itemsModel: ItemsModel.fromJson(
-                                              controller.items[index]));
-                                    }),
-                              ),
-                              Container(
-                                  margin:
-                                      EdgeInsets.symmetric(horizontal: 20.w),
-                                  child: TextAndSeeAll(
-                                      text: "#popular", onPressed: () {})),
-                              SizedBox(
-                                height: 140,
-                                child: ListView.builder(
-                                    itemCount: controller.items.length,
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
-                                      return ItemsHome(
-                                          index: index,
-                                          itemsModel: ItemsModel.fromJson(
-                                              controller.items[index]));
-                                    }),
-                              ),
-                            ],
+                                SizedBox(height: 5.h),
+                                // categories_images_and_name
+                                const CategoriesImagesAndName(),
+                                // items for you
+                                Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 20.w),
+                                    child: TextAndSeeAll(
+                                        text: "#ItemsForYou",
+                                        onPressed: () {})),
+                                SizedBox(
+                                  height: 140,
+                                  child: ListView.builder(
+                                      itemCount: controller.items.length,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return ItemsHome(
+                                            index: index,
+                                            itemsModel: ItemsModel.fromJson(
+                                                controller.items[index]));
+                                      }),
+                                ),
+                                Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 20.w),
+                                    child: TextAndSeeAll(
+                                        text: "#popular", onPressed: () {})),
+                                SizedBox(
+                                  height: 140,
+                                  child: ListView.builder(
+                                      itemCount: controller.items.length,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return ItemsHome(
+                                            index: index,
+                                            itemsModel: ItemsModel.fromJson(
+                                                controller.items[index]));
+                                      }),
+                                ),
+                              ],
+                            ),
                           ),
                   ],
                 ),

@@ -1,4 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:ecommerce_app/core/class/status_request.dart';
 import 'package:ecommerce_app/core/functions/handling_data.dart';
 import 'package:ecommerce_app/core/services/services.dart';
@@ -6,55 +9,87 @@ import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/cate
 import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/home/data/remote/home_data.dart';
 import 'package:ecommerce_app/routes_app.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-// Abstract Controller
 abstract class HomeController extends GetxController {
-  void initialData();
-  Future<void> getData();
-  void logout();
-  void changeIndex(int index);
-  void goToItems(CategoriesModel categoriesModel);
-  void inti();
-  search();
+  getData();
+  logout();
+  changeIndex(int index);
+  goToItems(CategoriesModel categoriesModel);
+  goToProductDetails(ItemsModel itemsModel);
   isSearchingItems(String value);
   clearSearch();
-  goToProductDetails(ItemsModel itemsModel);
+  search();
 }
 
-// Implementation
 class HomeControllerImpl extends HomeController {
-  // Controllers
   late TextEditingController searchController;
-  late CarouselSliderController carouselController;
-  late PageController pageController;
-
-  // Services and Models
-  final MyServices myServices = Get.find();
-  final HomeData homeData = HomeData(Get.find());
-
-  // User Information
+  MyServices myServices = Get.find();
   String username = '';
   String email = '';
   String phone = '';
   String id = '';
-
-  // Application Data
   List categories = [];
-  List items = [];
   List<ItemsModel> itemsSearch = [];
-  StatusRequest statusRequest = StatusRequest.none;
-
-  // State Variables
-  int curntIndex = 0;
   bool isSearching = false;
+  List items = [];
+  StatusRequest statusRequest = StatusRequest.none;
+  late CarouselSliderController carouselController;
+  HomeData homeData = HomeData(Get.find());
+  int curntIndex = 0;
+  late PageController pageController;
 
-  // Carousel Items
+  @override
+  void onInit() async {
+    searchController = TextEditingController();
+    carouselController = CarouselSliderController();
+    await getData();
+    super.onInit();
+    username = myServices.sharedPreferences.getString('username') ?? '';
+    email = myServices.sharedPreferences.getString('email') ?? '';
+    phone = myServices.sharedPreferences.getString('phone') ?? '';
+    id = myServices.sharedPreferences.getString('id') ?? '';
+  }
+
+  @override
+  logout() {
+    statusRequest = StatusRequest.loading;
+    update();
+    myServices.sharedPreferences.setString('step', 'login');
+    // clear all data
+    myServices.sharedPreferences.clear();
+    Get.offNamed('/');
+    statusRequest = StatusRequest.none;
+    update();
+  }
+
+  @override
+  changeIndex(int index) {
+    curntIndex = index;
+
+    update();
+  }
+
+  @override
+  getData() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await homeData.getData();
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == 'success') {
+        categories.addAll(response['categories'] ?? []);
+        items.addAll(response['items'] ?? []);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
   final List<Map<String, String>> carouselItems = [
     {
       "image":
-          "https://img.freepik.com/free-photo/fast-fashion-concept-with-woman-shopping_23-2150871364.jpg",
+          "https://img.freepik.com/free-photo/fast-fashion-concept-with-woman-shopping_23-2150871364.jpg", // استبدل بالصور الخاصة بك
       "title": "Get Special Offer",
       "subtitle": "Up to 40%",
       "details": "All Services Available | T&C Applied",
@@ -68,7 +103,7 @@ class HomeControllerImpl extends HomeController {
     },
     {
       "image":
-          "https://img.freepik.com/free-photo/fast-fashion-concept-with-woman-shopping_23-2150871364.jpg",
+          "https://img.freepik.com/free-photo/fast-fashion-concept-with-woman-shopping_23-2150871364.jpg", // استبدل بالصور الخاصة بك
       "title": "Get Special Offer",
       "subtitle": "Up to 40%",
       "details": "All Services Available | T&C Applied",
@@ -82,28 +117,12 @@ class HomeControllerImpl extends HomeController {
     },
   ];
 
-  // Lifecycle Methods
   @override
-  void onInit() async {
-    searchController = TextEditingController();
-    carouselController = CarouselSliderController();
-
-    // Load initial data
-    await getData();
-
-    // Retrieve user information from shared preferences
-    inti();
-
-    super.onInit();
-  }
-
-  // Initialize user information
-  @override
-  void inti() {
-    username = myServices.sharedPreferences.getString('username') ?? '';
-    email = myServices.sharedPreferences.getString('email') ?? '';
-    phone = myServices.sharedPreferences.getString('phone') ?? '';
-    id = myServices.sharedPreferences.getString('id') ?? '';
+  goToItems(CategoriesModel categoriesModel) {
+    Get.toNamed(AppRoutes.kItems, arguments: {
+      'categories': categories,
+      'categorySelected': categoriesModel.categoriesId,
+    });
   }
 
   @override
@@ -112,61 +131,26 @@ class HomeControllerImpl extends HomeController {
     super.dispose();
   }
 
-  // Methods
   @override
-  void initialData() {
-    // TODO: Implement initialData
-    throw UnimplementedError();
+  goToProductDetails(ItemsModel itemsModel) {
+    Get.toNamed(AppRoutes.kProductDetails,
+        arguments: {'itemsmodel': itemsModel});
   }
 
   @override
-  Future<void> getData() async {
-    statusRequest = StatusRequest.loading;
-    update();
-
-    var response = await homeData.getData();
-    print("Response: $response");
-
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        categories.addAll(response['categories'] ?? []);
-        items.addAll(response['items'] ?? []);
-        print("Categories: $categories");
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    }
-
+  isSearchingItems(String value) {
+    searchController.clear();
+    itemsSearch.clear();
+    isSearching = false;
     update();
   }
 
   @override
-  void logout() {
-    statusRequest = StatusRequest.loading;
+  clearSearch() {
+    searchController.clear();
+    itemsSearch.clear();
+    isSearching = false;
     update();
-
-    // Clear user data and navigate to login
-    myServices.sharedPreferences.setString('step', 'login');
-    myServices.sharedPreferences.clear();
-    Get.offNamed('/');
-
-    statusRequest = StatusRequest.none;
-    update();
-  }
-
-  @override
-  void changeIndex(int index) {
-    curntIndex = index;
-    update();
-  }
-
-  @override
-  void goToItems(CategoriesModel categoriesModel) {
-    Get.toNamed(AppRoutes.kItems, arguments: {
-      'categories': categories,
-      'categorySelected': categoriesModel.categoriesId,
-    });
   }
 
   @override
@@ -191,25 +175,5 @@ class HomeControllerImpl extends HomeController {
       }
     }
     update();
-  }
-
-  @override
-  isSearchingItems(String value) {
-    // isSearching = value.isNotEmpty;
-    // update();
-  }
-
-  @override
-  clearSearch() {
-    searchController.clear();
-    itemsSearch.clear();
-    isSearching = false;
-    update();
-  }
-
-  @override
-  goToProductDetails(ItemsModel itemsModel) {
-    Get.toNamed(AppRoutes.kProductDetails,
-        arguments: {'itemsmodel': itemsModel});
   }
 }

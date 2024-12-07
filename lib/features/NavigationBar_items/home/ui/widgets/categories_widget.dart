@@ -20,44 +20,39 @@ class CategoriesWidget extends GetView<HomeControllerImpl> {
       onTap: () {
         controller.goToItems(categoriesModel);
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(left: index == 0 ? 20.w : 0, right: 20.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: const Color(0xffF6F6F6),
+      child: Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(left: index == 0 ? 20.w : 0, right: 20.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: const Color(0xffF6F6F6),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.network(
+                "${AppApis.imageCategories}/${categoriesModel.categoriesImage}",
+                color: const Color(0xffFF4747),
+                width: 30.w,
+                height: 30.h,
+              ),
             ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.network(
-                    "${AppApis.imageCategories}/${categoriesModel.categoriesImage}",
-                    color: const Color(0xffFF4747),
-                    width: 30.w,
-                    height: 30.h,
-                  ),
-                ),
-                SizedBox(height: 3.h),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                      translateDatabase(
-                          arabic: categoriesModel.categoriesNameAr!,
-                          english: categoriesModel.categoriesName!),
-                      textAlign: TextAlign.start,
-                      style: const TextStyle(
-                          fontSize: 14,
-                          color: AppColor.black,
-                          fontWeight: FontWeight.w600)),
-                ),
-              ],
+            SizedBox(height: 3.h),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                  translateDatabase(
+                      arabic: categoriesModel.categoriesNameAr!,
+                      english: categoriesModel.categoriesName!),
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                      fontSize: 14,
+                      color: AppColor.black,
+                      fontWeight: FontWeight.w600)),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

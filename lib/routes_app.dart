@@ -1,4 +1,7 @@
 import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/settings_screen.dart';
+import 'package:ecommerce_app/features/address/ui/address_add.dart';
+import 'package:ecommerce_app/features/address/ui/address_edit.dart';
+import 'package:ecommerce_app/features/address/ui/address_view.dart';
 import 'package:ecommerce_app/features/auth/activate_account/ui/activate_account_screen.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/ui/my_favorite_screen.dart';
 import 'package:get/get.dart';
@@ -39,7 +42,11 @@ abstract class AppRoutes {
   static const String kProductDetails = '/productDetails';
   static const String kMyFavorite = '/MyFavorite';
   static const String kSettings = '/Settings';
-  static const String kCart  = '/Cart';
+  static const String kCart = '/Cart';
+  //Address
+  static const String kAddressAdd = '/addressAdd';
+  static const String kAddressEdit = '/addressEdit';
+  static const String kAddressView = '/addressView';
 
   // this is the routes list
   static List<GetPage<dynamic>> getPages = [
@@ -66,5 +73,9 @@ abstract class AppRoutes {
     GetPage(name: kActivateAccount, page: () => const ActivateAccountScreen()),
     GetPage(name: kSettings, page: () => const SettingsScreen()),
     GetPage(name: kCart, page: () => const CartScreen()),
+    //Address
+    GetPage(name: kAddressAdd, page: () => const AddressAdd()),
+    GetPage(name: kAddressEdit, page: () => const AddressEdit()),
+    GetPage(name: kAddressView, page: () => const AddressView()),
   ];
 }
