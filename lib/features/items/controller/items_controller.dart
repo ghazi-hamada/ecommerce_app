@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
 import 'package:ecommerce_app/features/items/data/remote/items_data.dart';
+import 'package:ecommerce_app/features/product_details/ui/product_details.dart';
 import 'package:ecommerce_app/routes_app.dart';
 import 'package:get/get.dart';
 
@@ -47,12 +48,14 @@ class ItemsControllerImpl extends ItemsController {
   }
 
   @override
-  void onInit() {
+  void onInit() async {
     //get data from arguments
     categoriesModel = Get.arguments['categories'];
     categoriesId = Get.arguments['categorySelected'];
 
     getItems();
+ 
+
     super.onInit();
   }
 

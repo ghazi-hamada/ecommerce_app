@@ -5,11 +5,9 @@ import 'package:ecommerce_app/core/functions/handling_data.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/features/address/data/model/address_model.dart';
 import 'package:ecommerce_app/features/address/data/remote/addres_data.dart';
-import 'package:ecommerce_app/features/address/data/remote/address_edit_data.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-
+ 
 abstract class AddressEditController extends GetxController {
   String addressid = "";
   String name = "";

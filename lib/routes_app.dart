@@ -5,6 +5,7 @@ import 'package:ecommerce_app/features/address/ui/address_edit.dart';
 import 'package:ecommerce_app/features/address/ui/address_view.dart';
 import 'package:ecommerce_app/features/auth/activate_account/ui/activate_account_screen.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/ui/my_favorite_screen.dart';
+import 'package:ecommerce_app/features/checkout/ui/checkout_screen.dart';
 import 'package:get/get.dart';
 
 import 'package:ecommerce_app/core/middleware/my_middleware.dart';
@@ -49,6 +50,8 @@ abstract class AppRoutes {
   static const String kAddressAddDetails = '/addressAddDetails';
   static const String kAddressEdit = '/addressEdit';
   static const String kAddressView = '/addressView';
+  // checkout
+  static const String kCheckout = '/checkout';
 
   // this is the routes list
   static List<GetPage<dynamic>> getPages = [
@@ -80,5 +83,6 @@ abstract class AppRoutes {
     GetPage(name: kAddressAddDetails, page: () => const AddressAddDetails()),
     GetPage(name: kAddressEdit, page: () => const AddressEdit()),
     GetPage(name: kAddressView, page: () => const AddressView()),
+    GetPage(name: kCheckout, page: () => CheckoutScreen()),
   ];
 }

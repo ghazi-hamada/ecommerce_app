@@ -58,10 +58,13 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                   // add to Cart
                   GetBuilder<ItemsControllerImpl>(builder: (controller) {
                     return InkWell(
-                      onTap: () => itemsModel.itemInCart ==
-                              1 // controller.isProductInCart(itemsModel.itemsId!)
-                          ? null
-                          : controller.showProductDetails(itemsModel),
+                      onTap: () {
+                        if (itemsModel.itemInCart == 1) {
+                        } else {
+                          controller.showProductDetails(itemsModel);
+                          controller.getItems();
+                        }
+                      },
                       child: Container(
                         // height: .h,
                         alignment: Alignment.topCenter,

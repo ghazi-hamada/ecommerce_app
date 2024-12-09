@@ -62,6 +62,7 @@ class ProductDetailsControllerImpl extends ProductDetailsController {
       itemsId.toString(),
       count.toString(),
     );
+    Get.back();
 
     statusRequest = handlingData(response);
     log('response: $response');
