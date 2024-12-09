@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/constant/app_apis.dart';
 import 'package:ecommerce_app/core/functions/discount_calculator.dart';
+import 'package:ecommerce_app/core/widgets/custom_price_widget.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/cart/data/model/mycart_model.dart';
 import 'package:flutter/material.dart';
@@ -77,15 +78,19 @@ class ShoppingCartItem extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Text(
-                    "\$${discountCalculator(myCartModel.itemsDiscount, myCartModel.itemsPrice)!}",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                    child: CustomPriceWidget(
+                        itemsDiscount: myCartModel.itemsDiscount!,
+                        itemsPrice: myCartModel.itemsPrice!.toDouble())
+
+                    //  Text(
+                    //   "\$${discountCalculator(myCartModel.itemsDiscount, myCartModel.itemsPrice)!}",
+                    //   style: const TextStyle(
+                    //     fontSize: 16,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.green,
+                    //   ),
+                    // ),
                     ),
-                  ),
-                ),
               ],
             ),
           ),

@@ -1,5 +1,7 @@
+import 'package:ecommerce_app/core/class/handling_data_view.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/localization/strings_keys.dart';
+import 'package:ecommerce_app/features/NavigationBar_items/settings/controller/settings_controller.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/widgets/appBar_widget.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/widgets/body_widget.dart';
 import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/widgets/custom_design.dart';
@@ -14,16 +16,20 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-        child: CustomDesign(
-          // appBar_widget
-          childAppbar: AppBarWidget(),
-          // body_widget
-          child: BodyWidget(),
+    Get.put(SettingsController());
+    return GetBuilder<SettingsController>(builder: (controller) {
+      return HandlingDataView(
+        statusRequest: controller.statusRequest,
+        child: const SizedBox(
+          width: double.infinity,
+          child: CustomDesign(
+            // appBar_widget
+            childAppbar: AppBarWidget(),
+            // body_widget
+            child: BodyWidget(),
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

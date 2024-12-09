@@ -35,4 +35,11 @@ class CartData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  applyCoupon(String coupon) async {
+    var response = await crud.postData(AppApis.checkCoupon, {
+      "coupon": coupon,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

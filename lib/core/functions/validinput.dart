@@ -4,7 +4,7 @@ import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/get_utils/get_utils.dart';
 
-enum InputType { username, email, phone, password, confirmPassword }
+enum InputType { username, email, phone, password, confirmPassword, normal }
 
 String? validInput(String val, InputType type) {
   if (val.isEmpty) {
@@ -22,7 +22,7 @@ String? validInput(String val, InputType type) {
     }
   }
 
-  if (val.length < 8) {
+  if (val.length < 3) {
     return StringsKeys.inputTooShort.tr;
   }
 
@@ -76,6 +76,8 @@ String? validInput(String val, InputType type) {
       if (!RegExp(r'[0-9]').hasMatch(val)) {
         return StringsKeys.passwordDigit.tr;
       }
+    case InputType.normal:
+      break;
   }
 
   return null;

@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/settings_screen.dart';
 import 'package:ecommerce_app/features/address/ui/address_add.dart';
+import 'package:ecommerce_app/features/address/ui/address_add_details.dart';
 import 'package:ecommerce_app/features/address/ui/address_edit.dart';
 import 'package:ecommerce_app/features/address/ui/address_view.dart';
 import 'package:ecommerce_app/features/auth/activate_account/ui/activate_account_screen.dart';
@@ -45,6 +46,7 @@ abstract class AppRoutes {
   static const String kCart = '/Cart';
   //Address
   static const String kAddressAdd = '/addressAdd';
+  static const String kAddressAddDetails = '/addressAddDetails';
   static const String kAddressEdit = '/addressEdit';
   static const String kAddressView = '/addressView';
 
@@ -75,6 +77,7 @@ abstract class AppRoutes {
     GetPage(name: kCart, page: () => const CartScreen()),
     //Address
     GetPage(name: kAddressAdd, page: () => const AddressAdd()),
+    GetPage(name: kAddressAddDetails, page: () => const AddressAddDetails()),
     GetPage(name: kAddressEdit, page: () => const AddressEdit()),
     GetPage(name: kAddressView, page: () => const AddressView()),
   ];

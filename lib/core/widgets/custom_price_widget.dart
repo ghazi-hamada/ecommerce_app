@@ -64,7 +64,7 @@ class CustomPriceWidget extends StatelessWidget {
               "$itemsDiscount%",
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 14.sp,
+                  fontSize: 10.sp,
                   fontWeight: FontWeight.w500),
             ),
           )

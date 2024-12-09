@@ -17,9 +17,10 @@ class HandlingDataView extends StatelessWidget {
         child: Lottie.asset(AppImageAsset.loading, width: 255.w, height: 255.h),
       );
     } else if (statusRequest == StatusRequest.failure) {
-      return Center(
-        child: Lottie.asset(AppImageAsset.nodata,
-            width: 255.w, height: 255.h, repeat: true),
+      return const Center(
+        child: Center(
+          child: Text('No Data'),
+        ),
       );
     } else if (statusRequest == StatusRequest.serverfailure) {
       return Center(
@@ -71,7 +72,7 @@ class HandlingItems extends StatelessWidget {
         ? Column(
             children: [
               SizedBox(height: 200.h),
-              Center(
+              const Center(
                 child: CircularProgressIndicator(),
               ),
             ],

@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:ecommerce_app/features/NavigationBar_items/cart/data/model/coupon_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import 'package:ecommerce_app/core/class/status_request.dart';
@@ -20,10 +22,14 @@ abstract class CartController extends GetxController {
   List myCart = [];
   Map<String, int> quantity = {};
   double total = 0.0;
+  double discount = 0.0;
+  late TextEditingController controllerCoupon;
+  late CouponModel couponModel;
+  applyCoupon();
+  bool couponIsApplied = false;
 }
 
 class CartControllerImp extends CartController {
- 
   @override
   addItemsCart(String itemsId, int count) async {
     Get.back();
@@ -63,15 +69,20 @@ class CartControllerImp extends CartController {
     log('response: $response');
     if (statusRequest == StatusRequest.success) {
       myCart.addAll(response['data']);
-      // code for calculate total
+      total = 0.0; // إعادة تعيين الإجمالي
+      discount = 0; // إعادة تعيين إجمالي الخصم
+
       for (int i = 0; i < myCart.length; i++) {
-        //map for quantity
+        // Calculate total
         quantity[myCart[i]['cart_itemsid'].toString()] =
             myCart[i]['cart_quantity'];
-        //calculate total
         total += myCart[i]['cart_quantity'] *
             (myCart[i]['items_price'] *
                 (1 - (myCart[i]['items_discount'] / 100)));
+
+        // Calculate total discount
+        // discount += myCart[i]['cart_quantity'] *
+        //     (myCart[i]['items_price'] * (myCart[i]['items_discount'] / 100));
       }
     }
 
@@ -81,7 +92,15 @@ class CartControllerImp extends CartController {
   @override
   void onInit() {
     view();
+    controllerCoupon = TextEditingController();
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controllerCoupon.dispose();
   }
 
   @override
@@ -130,5 +149,38 @@ class CartControllerImp extends CartController {
       }
     }
     update();
+  }
+
+  @override
+  applyCoupon() async {
+    statusRequest = StatusRequest.loading;
+    var response = await cartData.applyCoupon(controllerCoupon.text);
+    statusRequest = handlingData(response);
+    log('response: $response');
+
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        couponIsApplied = true;
+        couponModel = CouponModel.fromJson(response['data']);
+        double couponDiscount = total * (couponModel.couponDiscount! / 100);
+
+        // تحديث إجمالي الخصم
+        discount = couponModel.couponDiscount!.toDouble();
+
+        // تحديث الإجمالي بعد تطبيق الكوبون
+        total -= couponDiscount;
+
+        update();
+        Get.rawSnackbar(
+          message: "Coupon Applied",
+          duration: const Duration(seconds: 1),
+        );
+      } else {
+        Get.rawSnackbar(
+          message: "Coupon Not Applied",
+          duration: const Duration(seconds: 1),
+        );
+      }
+    }
   }
 }
