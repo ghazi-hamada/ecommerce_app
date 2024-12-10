@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/core/functions/json_to_double.dart';
+import '../../../../../core/functions/json_to_double.dart';
 
 class MycartModel {
   int? cartId;

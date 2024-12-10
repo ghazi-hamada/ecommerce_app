@@ -1,13 +1,14 @@
 import 'dart:developer';
 
-import 'package:ecommerce_app/features/NavigationBar_items/cart/data/model/coupon_model.dart';
+import '../data/model/coupon_model.dart';
+import '../../../../routes_app.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/cart/data/remote/cart_data.dart';
+import '../../../../core/class/status_request.dart';
+import '../../../../core/functions/handling_data.dart';
+import '../../../../core/services/services.dart';
+import '../data/remote/cart_data.dart';
 
 abstract class CartController extends GetxController {
   addItemsCart(String itemsId, int count);
@@ -15,6 +16,7 @@ abstract class CartController extends GetxController {
   view();
   decrement(String itemsId);
   increment(String itemsId);
+  editCart(String itemsId, int count);
   StatusRequest statusRequest = StatusRequest.none;
   MyServices myServices = Get.find();
   CartData cartData = CartData(Get.find());
@@ -23,9 +25,11 @@ abstract class CartController extends GetxController {
   Map<String, int> quantity = {};
   double total = 0.0;
   double discount = 0.0;
+  String? couponId;
   late TextEditingController controllerCoupon;
   late CouponModel couponModel;
   applyCoupon();
+  openCheckoutScreen();
   bool couponIsApplied = false;
 }
 
@@ -79,10 +83,6 @@ class CartControllerImp extends CartController {
         total += myCart[i]['cart_quantity'] *
             (myCart[i]['items_price'] *
                 (1 - (myCart[i]['items_discount'] / 100)));
-
-        // Calculate total discount
-        // discount += myCart[i]['cart_quantity'] *
-        //     (myCart[i]['items_price'] * (myCart[i]['items_discount'] / 100));
       }
     }
 
@@ -105,6 +105,7 @@ class CartControllerImp extends CartController {
 
   @override
   decrement(String itemsId) {
+    print("decrement itemsId: $itemsId quantity: ${quantity[itemsId]}");
     if (quantity[itemsId] != null && quantity[itemsId]! > 1) {
       quantity[itemsId] = (quantity[itemsId]! - 1);
       for (var element in myCart) {
@@ -113,6 +114,7 @@ class CartControllerImp extends CartController {
               element['items_price'] * (1 - (element['items_discount'] / 100));
         }
       }
+      editCart(itemsId, quantity[itemsId]!);
     }
     update();
   }
@@ -120,6 +122,8 @@ class CartControllerImp extends CartController {
   @override
   increment(String itemsId) {
     if (quantity[itemsId] != null) {
+      print("increment itemsId: $itemsId quantity: ${quantity[itemsId]}");
+
       quantity[itemsId] = (quantity[itemsId]! + 1);
       for (var element in myCart) {
         if (element['cart_itemsid'].toString() == itemsId) {
@@ -127,6 +131,7 @@ class CartControllerImp extends CartController {
               element['items_price'] * (1 - (element['items_discount'] / 100));
         }
       }
+      editCart(itemsId, quantity[itemsId]!);
     }
     update();
   }
@@ -163,7 +168,7 @@ class CartControllerImp extends CartController {
         couponIsApplied = true;
         couponModel = CouponModel.fromJson(response['data']);
         double couponDiscount = total * (couponModel.couponDiscount! / 100);
-
+        couponId = couponModel.couponId.toString();
         // تحديث إجمالي الخصم
         discount = couponModel.couponDiscount!.toDouble();
 
@@ -182,5 +187,41 @@ class CartControllerImp extends CartController {
         );
       }
     }
+  }
+
+  @override
+  openCheckoutScreen() {
+    if (myCart.isNotEmpty) {
+      Get.toNamed(AppRoutes.kCheckout, arguments: {
+        "couponId": couponId.toString() ?? "0",
+        "total": total.toString(),
+      });
+    } else {
+      Get.rawSnackbar(
+        message: "Cart is Empty",
+        duration: const Duration(seconds: 1),
+      );
+    }
+  }
+
+  @override
+  editCart(String itemsId, int count) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await cartData.editCart(
+        myServices.sharedPreferences.getString("id")!.toString(),
+        itemsId.toString(),
+        count.toString());
+    statusRequest = handlingData(response);
+    log('response: $response');
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        Get.rawSnackbar(
+          message: "Edit Cart Success",
+          duration: const Duration(seconds: 1),
+        );
+      }
+    }
+    update();
   }
 }

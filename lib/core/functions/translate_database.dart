@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/core/services/services.dart';
+import '../services/services.dart';
  
 import 'package:get/get.dart';
 

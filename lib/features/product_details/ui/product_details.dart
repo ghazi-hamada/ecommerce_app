@@ -1,9 +1,9 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/features/product_details/controller/product_details_controller.dart';
-import 'package:ecommerce_app/features/product_details/ui/widgets/button_NavigationBar_widget.dart';
-import 'package:ecommerce_app/features/product_details/ui/widgets/color_widget.dart';
-import 'package:ecommerce_app/features/product_details/ui/widgets/details_image.dart';
-import 'package:ecommerce_app/features/product_details/ui/widgets/title_body_details_product.dart';
+import '../../../core/constant/color.dart';
+import '../controller/product_details_controller.dart';
+import 'widgets/button_NavigationBar_widget.dart';
+import 'widgets/color_widget.dart';
+import 'widgets/details_image.dart';
+import 'widgets/title_body_details_product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

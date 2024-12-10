@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/functions/discount_calculator.dart';
+import '../constant/color.dart';
+import '../functions/discount_calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

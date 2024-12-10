@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
-import 'package:ecommerce_app/features/items/controller/favorite_controller.dart';
-import 'package:ecommerce_app/features/items/controller/items_controller.dart';
-import 'package:ecommerce_app/features/items/ui/widgets/categories_name_widget.dart';
-import 'package:ecommerce_app/features/items/ui/widgets/custom_gridview_items.dart';
-import 'package:ecommerce_app/features/items/ui/widgets/search_and_notification.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../../NavigationBar_items/home/data/models/items_model.dart';
+import '../controller/favorite_controller.dart';
+import '../controller/items_controller.dart';
+import 'widgets/categories_name_widget.dart';
+import 'widgets/custom_gridview_items.dart';
+import 'widgets/search_and_notification.dart';
 
 class ItemsScreen extends StatelessWidget {
   const ItemsScreen({super.key});

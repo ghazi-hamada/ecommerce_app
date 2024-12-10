@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/constant/app_apis.dart';
-import 'package:ecommerce_app/core/functions/discount_calculator.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/controller/home_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
+import '../../../../../core/constant/app_apis.dart';
+import '../../../../../core/functions/discount_calculator.dart';
+import '../../../cart/controller/cart_controller.dart';
+import '../../controller/home_controller.dart';
+import '../../data/models/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

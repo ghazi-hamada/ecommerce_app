@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/features/onboarding/controller/onboarding_controller.dart';
-import 'package:ecommerce_app/features/onboarding/data/datasource/static/stasic.dart';
+import '../../controller/onboarding_controller.dart';
+import '../../data/datasource/static/stasic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

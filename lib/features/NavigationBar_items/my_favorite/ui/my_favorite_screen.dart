@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/controller/my_favorite_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/ui/widgets/custom_appbar_widget.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/ui/widgets/custom_list_favorite_items.dart';
+import '../../../../core/class/handling_data_view.dart';
+import '../controller/my_favorite_controller.dart';
+import 'widgets/custom_appbar_widget.dart';
+import 'widgets/custom_list_favorite_items.dart';
 
 class MyFavoriteScreen extends StatelessWidget {
   const MyFavoriteScreen({super.key});

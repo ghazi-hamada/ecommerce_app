@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/class/crud.dart';
+import '../class/crud.dart';
 
 class InitialBinding extends Bindings {
   @override

@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../../../core/constant/color.dart';
+import '../../controller/cart_controller.dart';
+import '../../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -167,7 +167,7 @@ class OrderBottomSheetWidget extends StatelessWidget {
                       backgroundColor: Colors.red, // لون الزر
                     ),
                     onPressed: () {
-                      Get.toNamed(AppRoutes.kCheckout);
+                      controller.openCheckoutScreen();
                     },
                     child: const Text(
                       "Order Now",

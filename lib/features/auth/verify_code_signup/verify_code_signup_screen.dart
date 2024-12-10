@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/auth/verify_code_signup/controller/verify_code_signup_Controller.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../../../core/constant/color.dart';
+import '../../../core/localization/strings_keys.dart';
+import 'controller/verify_code_signup_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

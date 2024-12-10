@@ -1,12 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_app/core/constant/color.dart';
+import '../../../../../core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'package:ecommerce_app/features/NavigationBar_items/home/controller/home_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/custom_slider_item.dart';
+import '../../controller/home_controller.dart';
+import 'custom_slider_item.dart';
 
 // slider_and_smooth_page_indicator_widget
 class SliderAndSmoothPageIndicatorWidget extends StatelessWidget {

@@ -18,8 +18,10 @@ class AppApis {
 
   //====================== Forget Password ======================
   static const String checkEmail = '$server/forget_password/check_email.php';
-  static const String resetPassword = '$server/forget_password/reset_password.php';
-  static const String verifyCodeForgetPassword = '$server/forget_password/verifycode.php';
+  static const String resetPassword =
+      '$server/forget_password/reset_password.php';
+  static const String verifyCodeForgetPassword =
+      '$server/forget_password/verifycode.php';
 
   //====================== Home ======================
   static const String homepage = '$server/home.php';
@@ -30,19 +32,23 @@ class AppApis {
   static const String favoriteAdd = '$server/favorite/add.php';
   static const String favoriteRemove = '$server/favorite/remove.php';
   static const String favoriteView = '$server/favorite/view.php';
-  static const String deleteFromFavorite = '$server/favorite/deletefromfavorite.php';
+  static const String deleteFromFavorite =
+      '$server/favorite/deletefromfavorite.php';
   //====================== Cart ======================
   static const String cartAdd = '$server/cart/add.php';
   static const String cartRemove = '$server/cart/remove.php';
   static const String cartView = '$server/cart/view.php';
+  static const String cartEdit = '$server/cart/edit.php';
 
   //====================== Address ======================
-  static const String addressAdd = '$server/address/add.php'; 
+  static const String addressAdd = '$server/address/add.php';
   static const String addressView = '$server/address/view.php';
   static const String addressEdit = '$server/address/edit.php';
   static const String addressDelete = '$server/address/delete.php';
 
   //====================== Coupon ======================
   static const String checkCoupon = '$server/coupon/checkCoupon.php';
-  
+
+  //====================== Order ======================
+  static const String orderCheckout = '$server/orders/checkout.php';
 }

@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/address/data/model/address_model.dart';
-import 'package:ecommerce_app/features/address/data/remote/addres_data.dart';
+import '../../../core/class/status_request.dart';
+import '../../../core/functions/handling_data.dart';
+import '../../../core/services/services.dart';
+import '../data/model/address_model.dart';
+import '../data/remote/addres_data.dart';
  import 'package:flutter/material.dart';
 import 'package:get/get.dart';
  

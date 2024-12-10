@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
-import 'package:ecommerce_app/features/items/data/remote/items_data.dart';
-import 'package:ecommerce_app/features/product_details/ui/product_details.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../core/class/status_request.dart';
+import '../../../core/functions/handling_data.dart';
+import '../../../core/services/services.dart';
+import '../../NavigationBar_items/cart/controller/cart_controller.dart';
+import '../../NavigationBar_items/home/data/models/items_model.dart';
+import '../data/remote/items_data.dart';
+import '../../product_details/ui/product_details.dart';
+import '../../../routes_app.dart';
 import 'package:get/get.dart';
 
 abstract class ItemsController extends GetxController {

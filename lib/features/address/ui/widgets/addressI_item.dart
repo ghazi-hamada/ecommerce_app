@@ -1,6 +1,6 @@
 
-import 'package:ecommerce_app/features/address/data/model/address_model.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../data/model/address_model.dart';
+import '../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 
 class AddressItem extends StatelessWidget {

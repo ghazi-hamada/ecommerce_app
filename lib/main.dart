@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/bindings/initial_Binding.dart';
-import 'package:ecommerce_app/core/localization/change_local.dart';
-import 'package:ecommerce_app/core/localization/translation.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import 'core/bindings/initial_Binding.dart';
+import 'core/localization/change_local.dart';
+import 'core/localization/translation.dart';
+import 'core/services/services.dart';
+import 'routes_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // التأكد من التهيئة الصحيحة

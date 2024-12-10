@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/auth/sucsses_signup/controller/sucsess_signup_controller.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
+import '../../../core/localization/strings_keys.dart';
+import 'controller/sucsess_signup_controller.dart';
+import '../../onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/routes_app.dart';
-import 'package:ecommerce_app/core/services/services.dart';
+import '../../routes_app.dart';
+import '../services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

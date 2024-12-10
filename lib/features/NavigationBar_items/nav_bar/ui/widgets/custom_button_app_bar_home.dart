@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/nav_bar/controller/nav_bar_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/nav_bar/ui/widgets/custom_button_app_bar.dart';
+import '../../../../../core/constant/color.dart';
+import '../../controller/nav_bar_controller.dart';
+import 'custom_button_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 

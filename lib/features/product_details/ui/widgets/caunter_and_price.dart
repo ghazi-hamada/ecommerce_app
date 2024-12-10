@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/features/product_details/controller/product_details_controller.dart';
+import '../../../../core/constant/color.dart';
+import '../../controller/product_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

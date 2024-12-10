@@ -1,13 +1,13 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
+import '../../../../core/class/handling_data_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/auth/login/ui/widgets/dont_have_account.dart';
-import 'package:ecommerce_app/features/auth/signup/controller/signup_controller.dart';
-import 'package:ecommerce_app/features/auth/signup/ui/widgets/form_name_and_phone_and_email_and_password.dart';
-import 'package:ecommerce_app/features/auth/signup/ui/widgets/text_welcome.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
+import '../../../../core/localization/strings_keys.dart';
+import '../../login/ui/widgets/dont_have_account.dart';
+import '../controller/signup_controller.dart';
+import 'widgets/form_name_and_phone_and_email_and_password.dart';
+import 'widgets/text_welcome.dart';
+import '../../../onboarding/ui/widgets/custom_button.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});

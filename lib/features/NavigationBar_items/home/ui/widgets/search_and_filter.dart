@@ -1,16 +1,16 @@
+import '../../controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-class SearchAndFilter extends StatelessWidget {
-  final TextEditingController controller;
-  final Function(String) onChanged;
+class SearchAndFilter extends GetView<HomeControllerImpl> {
+   final Function(String) onChanged;
   final void Function() onPressedSearch;
   final void Function() onPressedClear;
 
   const SearchAndFilter(
       {super.key,
-      required this.controller,
-      required this.onChanged,
+       required this.onChanged,
       required this.onPressedSearch,
       required this.onPressedClear});
 
@@ -23,7 +23,7 @@ class SearchAndFilter extends StatelessWidget {
           child: SizedBox(
             height: 40.h,
             child: TextFormField(
-              controller: controller,
+              controller: controller.searchController,
               onChanged: onChanged,
               cursorHeight: 20,
               decoration: InputDecoration(
@@ -44,7 +44,7 @@ class SearchAndFilter extends StatelessWidget {
                   icon: const Icon(Icons.search,
                       color: Color(0xffD5696E), size: 30),
                 ),
-                suffixIcon: controller.text.isNotEmpty
+                suffixIcon: controller.searchController .text.isNotEmpty
                     ? IconButton(
                         onPressed: onPressedClear,
                         icon: const Icon(Icons.clear,

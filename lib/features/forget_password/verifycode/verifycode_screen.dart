@@ -1,10 +1,10 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/forget_password/verifycode/controller/verifycode_controller.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../../../core/class/status_request.dart';
+import '../../../core/localization/strings_keys.dart';
+import 'controller/verifycode_controller.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-import 'package:ecommerce_app/core/constant/color.dart';
+import '../../../core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

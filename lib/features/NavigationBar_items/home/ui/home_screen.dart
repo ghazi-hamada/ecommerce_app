@@ -1,19 +1,19 @@
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/list_items_search.dart';
+import 'widgets/list_items_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/controller/home_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/categories_images_and_name.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/hello_and_notification.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/items_home.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/search_and_filter.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/slider_and_smooth_page_indicator_widget.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/widgets/text_and_seeAll.dart';
+import '../../../../core/class/handling_data_view.dart';
+import '../../../../core/constant/color.dart';
+import '../../../../core/localization/strings_keys.dart';
+import '../controller/home_controller.dart';
+import '../data/models/items_model.dart';
+import 'widgets/categories_images_and_name.dart';
+import 'widgets/hello_and_notification.dart';
+import 'widgets/items_home.dart';
+import 'widgets/search_and_filter.dart';
+import 'widgets/slider_and_smooth_page_indicator_widget.dart';
+import 'widgets/text_and_seeAll.dart';
 
 class HomeScreen extends GetView<HomeControllerImpl> {
   const HomeScreen({super.key});
@@ -52,8 +52,7 @@ class HomeScreen extends GetView<HomeControllerImpl> {
                             SizedBox(height: 25.h),
                             // search_and_filter
                             SearchAndFilter(
-                              controller: controller.searchController,
-                              onChanged: (value) {
+                               onChanged: (value) {
                                 controller.isSearchingItems(value);
                               },
                               onPressedSearch: () {

@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/onboarding/controller/onboarding_controller.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/point_indicator.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/title_and_image_and_body_onboarding_widget.dart';
+import '../../../core/localization/strings_keys.dart';
+import '../controller/onboarding_controller.dart';
+import 'widgets/custom_button.dart';
+import 'widgets/point_indicator.dart';
+import 'widgets/title_and_image_and_body_onboarding_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/auth/login/controller/login_controller.dart';
+import '../../../../../core/constant/color.dart';
+import '../../../../../core/localization/strings_keys.dart';
+import '../../controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

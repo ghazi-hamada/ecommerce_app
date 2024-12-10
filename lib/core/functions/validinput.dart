@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
+import '../localization/strings_keys.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/get_utils/get_utils.dart';
 

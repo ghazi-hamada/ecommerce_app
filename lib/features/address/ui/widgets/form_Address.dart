@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/functions/validinput.dart';
-import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
+import '../../../../core/functions/validinput.dart';
+import '../../../auth/widgets/text_form_field_widget.dart';
+import '../../../onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

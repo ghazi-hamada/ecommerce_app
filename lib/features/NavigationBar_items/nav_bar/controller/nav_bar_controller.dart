@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/features/NavigationBar_items/home/ui/home_screen.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/ui/my_favorite_screen.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/settings/ui/settings_screen.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../home/ui/home_screen.dart';
+import '../../my_favorite/ui/my_favorite_screen.dart';
+import '../../settings/ui/settings_screen.dart';
+import '../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/core/constant/app_apis.dart';
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/functions/translate_database.dart';
-import 'package:ecommerce_app/core/widgets/custom_price_widget.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/controller/my_favorite_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/data/model/my_fevorite_model.dart';
+import '../../../../../core/constant/app_apis.dart';
+import '../../../../../core/constant/color.dart';
+import '../../../../../core/functions/translate_database.dart';
+import '../../../../../core/widgets/custom_price_widget.dart';
+import '../../controller/my_favorite_controller.dart';
+import '../../data/model/my_fevorite_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

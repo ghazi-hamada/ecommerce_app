@@ -1,9 +1,9 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/features/address/controller/address_view_controller.dart';
-import 'package:ecommerce_app/features/address/data/model/address_model.dart';
-import 'package:ecommerce_app/features/address/ui/widgets/addressI_item.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../../../core/constant/color.dart';
+import '../controller/address_view_controller.dart';
+import '../data/model/address_model.dart';
+import 'widgets/addressI_item.dart';
+import '../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

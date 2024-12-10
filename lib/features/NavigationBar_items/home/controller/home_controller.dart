@@ -2,13 +2,13 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/categories_model.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/remote/home_data.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../../core/class/status_request.dart';
+import '../../../../core/functions/handling_data.dart';
+import '../../../../core/services/services.dart';
+import '../data/models/categories_model.dart';
+import '../data/models/items_model.dart';
+import '../data/remote/home_data.dart';
+import '../../../../routes_app.dart';
 
 abstract class HomeController extends GetxController {
   getData();
@@ -139,7 +139,6 @@ class HomeControllerImpl extends HomeController {
 
   @override
   isSearchingItems(String value) {
-    searchController.clear();
     itemsSearch.clear();
     isSearching = false;
     update();

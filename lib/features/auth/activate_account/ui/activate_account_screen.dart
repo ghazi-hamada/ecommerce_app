@@ -1,12 +1,12 @@
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/constant/image_asset.dart';
-import 'package:ecommerce_app/features/auth/activate_account/controller/activate_account_controller.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
+import '../../../../core/constant/color.dart';
+import '../../../../core/constant/image_asset.dart';
+import '../controller/activate_account_controller.dart';
+import '../../../onboarding/ui/widgets/custom_button.dart';
 
 class ActivateAccountScreen extends StatelessWidget {
   const ActivateAccountScreen({super.key});

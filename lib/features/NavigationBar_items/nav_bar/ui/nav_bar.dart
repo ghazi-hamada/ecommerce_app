@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/core/constant/color.dart';
+import '../../../../core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import 'package:ecommerce_app/features/NavigationBar_items/nav_bar/controller/nav_bar_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/nav_bar/ui/widgets/custom_button_app_bar_home.dart';
+import '../controller/nav_bar_controller.dart';
+import 'widgets/custom_button_app_bar_home.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_app/features/product_details/controller/product_details_controller.dart';
-import 'package:ecommerce_app/features/product_details/ui/widgets/caunter_and_price.dart';
+import '../../controller/product_details_controller.dart';
+import 'caunter_and_price.dart';
 
 Container TitleBodyDetailsProduct(
     ProductDetailsControllerImpl controller, BuildContext context) {

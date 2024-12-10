@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/features/checkout/controller/checkout_controller.dart';
-import 'package:ecommerce_app/features/checkout/ui/widgets/build_card.dart';
-import 'package:ecommerce_app/features/checkout/ui/widgets/build_radio_tile.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
+import '../../../core/constant/color.dart';
+import '../controller/checkout_controller.dart';
+import 'widgets/build_card.dart';
+import 'widgets/build_radio_tile.dart';
+import '../../onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -79,8 +79,7 @@ class CheckoutScreen extends StatelessWidget {
                 const SizedBox(height: 16),
 
                 // Card 3: Shipping Address
-                controller.deliveryType == "Delivery" &&
-                        controller.deliveryType != null
+                controller.deliveryType == "Delivery"
                     ? buildCard(
                         title: "Choose Shipping Address",
                         child: DropdownButtonFormField<String>(
@@ -96,7 +95,7 @@ class CheckoutScreen extends StatelessWidget {
                           value: controller.selectedAddress,
                           items: controller.addresses.map((address) {
                             return DropdownMenuItem<String>(
-                              value: address.addressName,
+                              value: address.id.toString(),
                               child: Text(
                                   "${address.addressCity} - ${address.addressStreet} - ${address.addressName}"
                                       .toString(),

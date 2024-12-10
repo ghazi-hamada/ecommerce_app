@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/features/address/controller/address_edit_controller.dart';
-import 'package:ecommerce_app/features/address/ui/widgets/form_Address.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../controller/address_edit_controller.dart';
+import 'widgets/form_Address.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

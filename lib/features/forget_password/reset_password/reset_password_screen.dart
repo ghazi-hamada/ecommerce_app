@@ -1,9 +1,9 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/core/functions/validinput.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/forget_password/reset_password/controller/reset_password_controller.dart';
-import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
-import 'package:ecommerce_app/features/onboarding/ui/widgets/custom_button.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../../../core/functions/validinput.dart';
+import '../../../core/localization/strings_keys.dart';
+import 'controller/reset_password_controller.dart';
+import '../../auth/widgets/text_form_field_widget.dart';
+import '../../onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

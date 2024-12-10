@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/features/test/data/data_source/remote/test_data.dart';
+import '../../../core/class/status_request.dart';
+import '../../../core/functions/handling_data.dart';
+import '../data/data_source/remote/test_data.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 

@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/core/functions/validinput.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/auth/signup/controller/signup_controller.dart';
-import 'package:ecommerce_app/features/auth/widgets/text_form_field_widget.dart';
+import '../../../../../core/functions/validinput.dart';
+import '../../../../../core/localization/strings_keys.dart';
+import '../../controller/signup_controller.dart';
+import '../../../widgets/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

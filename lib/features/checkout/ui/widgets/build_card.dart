@@ -1,4 +1,4 @@
-  import 'package:ecommerce_app/core/constant/color.dart';
+import '../../../../core/constant/color.dart';
 import 'package:flutter/material.dart';
 
 Widget buildCard({required String title, required Widget child}) {

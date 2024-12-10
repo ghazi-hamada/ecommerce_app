@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../core/class/status_request.dart';
+import '../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/features/auth/verify_code_signup/data/remote/verify_code_signup_data.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../../core/class/status_request.dart';
+import '../../../../core/functions/handling_data.dart';
+import '../data/remote/verify_code_signup_data.dart';
+import '../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/core/constant/image_asset.dart';
-import 'package:ecommerce_app/core/localization/strings_keys.dart';
-import 'package:ecommerce_app/features/onboarding/data/models/onboarding_model.dart';
+import '../../../../../core/constant/image_asset.dart';
+import '../../../../../core/localization/strings_keys.dart';
+import '../../models/onboarding_model.dart';
 import 'package:get/get.dart';
 
 List<OnBoardingModel> onBoardingData = [

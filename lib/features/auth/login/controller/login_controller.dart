@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/constant/app_apis.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/auth/login/data/remote/login_data.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../../core/class/status_request.dart';
+import '../../../../core/constant/app_apis.dart';
+import '../../../../core/functions/handling_data.dart';
+import '../../../../core/services/services.dart';
+import '../data/remote/login_data.dart';
+import '../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

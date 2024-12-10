@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/services/services.dart';
+import '../../../../core/class/status_request.dart';
+import '../../../../core/services/services.dart';
 import 'package:get/get.dart';
 
 class SettingsController extends GetxController {

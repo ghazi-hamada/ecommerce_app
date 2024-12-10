@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:ecommerce_app/core/class/crud.dart';
-import 'package:ecommerce_app/core/constant/app_apis.dart';
-import 'package:ecommerce_app/core/services/services.dart';
+import '../../../../../core/class/crud.dart';
+import '../../../../../core/constant/app_apis.dart';
+import '../../../../../core/services/services.dart';
 import 'package:get/get.dart';
 
 class CartData {
@@ -39,6 +39,15 @@ class CartData {
   applyCoupon(String coupon) async {
     var response = await crud.postData(AppApis.checkCoupon, {
       "coupon": coupon,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  editCart(String userId, String itemsId, String cartQuantity) async {
+    var response = await crud.postData(AppApis.cartEdit, {
+      "usersid": userId.toString(),
+      "itemsid": itemsId.toString(),
+      "cartQuantity": cartQuantity.toString(),
     });
     return response.fold((l) => l, (r) => r);
   }

@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/class/handling_data_view.dart';
-import 'package:ecommerce_app/features/test/controller/test_controller.dart';
+import '../../../core/class/handling_data_view.dart';
+import '../controller/test_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,13 +1,13 @@
 import 'dart:developer';
 
-import 'package:ecommerce_app/core/class/status_request.dart';
-import 'package:ecommerce_app/core/functions/handling_data.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/home/data/models/items_model.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/data/model/my_fevorite_model.dart';
-import 'package:ecommerce_app/features/NavigationBar_items/my_favorite/data/remote/favorite_data.dart';
-import 'package:ecommerce_app/routes_app.dart';
+import '../../../../core/class/status_request.dart';
+import '../../../../core/functions/handling_data.dart';
+import '../../../../core/services/services.dart';
+import '../../cart/controller/cart_controller.dart';
+import '../../home/data/models/items_model.dart';
+import '../data/model/my_fevorite_model.dart';
+import '../data/remote/favorite_data.dart';
+import '../../../../routes_app.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 

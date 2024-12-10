@@ -1,7 +1,7 @@
 
-import 'package:ecommerce_app/routes_app.dart';
-import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/features/onboarding/data/datasource/static/stasic.dart';
+import '../../../routes_app.dart';
+import '../../../core/services/services.dart';
+import '../data/datasource/static/stasic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
