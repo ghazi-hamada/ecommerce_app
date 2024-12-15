@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import '../helpers/fcmconfig.dart';
-import '../helpers/notifications_helper.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../constant/app_theme.dart';
