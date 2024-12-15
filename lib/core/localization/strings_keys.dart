@@ -84,4 +84,7 @@ class StringsKeys {
   static const favorite = "favorite";
   static const person = "person";
   static const settings = "settings";
+
+
+  static const orderNow = "orderNow";
 }

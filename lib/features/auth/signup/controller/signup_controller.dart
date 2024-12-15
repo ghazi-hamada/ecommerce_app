@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import '../../../../core/class/post_data.dart';
+import '../../../../core/constant/app_apis.dart';
+
 import '../../../../core/class/status_request.dart';
 import '../../../../core/functions/handling_data.dart';
 import '../data/data_source/remote/sginup_data.dart';
@@ -22,7 +25,7 @@ class SignupControllerImpl extends SignupController {
   late TextEditingController passwordController;
   late TextEditingController passwordConfirmController;
   StatusRequest statusRequest = StatusRequest.none;
-  SginupData sginupData = SginupData(Get.find());
+  PostData postDatas = PostData(Get.find());
   bool isShowPassword = false;
   List data = [];
   @override
@@ -66,8 +69,9 @@ class SignupControllerImpl extends SignupController {
   }
 
   postData() {
-    return sginupData.postData(
-      {
+    return postDatas.postData(
+      linkurl: AppApis.signUp,
+      data: {
         'username': nameController.text,
         'phone': phoneController.text,
         'email': emailController.text,

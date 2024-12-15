@@ -1,3 +1,9 @@
+import 'dart:developer';
+
+import '../helpers/fcmconfig.dart';
+import '../helpers/notifications_helper.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import '../constant/app_theme.dart';
 import '../services/services.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +45,10 @@ class LocaleController extends GetxController {
     }
   }
 
+  String? token;
+
+   
+
   @override
   void onInit() {
     String? langCode = myServices.sharedPreferences.getString("lang");
@@ -53,6 +63,8 @@ class LocaleController extends GetxController {
       appTheme = language!.languageCode == "ar" ? themeArabic : themeEnglish;
     }
     requestPerLocation();
+     requestPermissionNotification();
+    fcmconfig();
     super.onInit();
   }
 }

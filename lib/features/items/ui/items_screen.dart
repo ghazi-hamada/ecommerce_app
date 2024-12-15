@@ -17,7 +17,7 @@ class ItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => ItemsControllerImpl());
+    ItemsControllerImpl controller = Get.put(ItemsControllerImpl());
     final controllerFev = Get.put(FavoriteController());
     return Scaffold(
       body: ListView(

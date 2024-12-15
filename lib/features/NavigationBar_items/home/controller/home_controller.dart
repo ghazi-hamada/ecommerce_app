@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,19 +40,12 @@ class HomeControllerImpl extends HomeController {
   late PageController pageController;
 
   @override
-  void onInit() async {
-    searchController = TextEditingController();
-    carouselController = CarouselSliderController();
-    await getData();
-    super.onInit();
-    username = myServices.sharedPreferences.getString('username') ?? '';
-    email = myServices.sharedPreferences.getString('email') ?? '';
-    phone = myServices.sharedPreferences.getString('phone') ?? '';
-    id = myServices.sharedPreferences.getString('id') ?? '';
-  }
-
-  @override
   logout() {
+    // unsubscribe from topics
+    String userId = myServices.sharedPreferences.getString('id')!;
+    FirebaseMessaging.instance.unsubscribeFromTopic('users');
+    FirebaseMessaging.instance.unsubscribeFromTopic('users$userId');
+
     statusRequest = StatusRequest.loading;
     update();
     myServices.sharedPreferences.setString('step', 'login');
@@ -174,5 +168,17 @@ class HomeControllerImpl extends HomeController {
       }
     }
     update();
+  }
+
+  @override
+  void onInit() async {
+    searchController = TextEditingController();
+    carouselController = CarouselSliderController();
+    await getData();
+    super.onInit();
+    username = myServices.sharedPreferences.getString('username') ?? '';
+    email = myServices.sharedPreferences.getString('email') ?? '';
+    phone = myServices.sharedPreferences.getString('phone') ?? '';
+    id = myServices.sharedPreferences.getString('id') ?? '';
   }
 }

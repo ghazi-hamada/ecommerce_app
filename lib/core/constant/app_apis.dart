@@ -2,6 +2,9 @@ class AppApis {
   //====================== Server ======================
   static const String server = 'https://ghaziapp.store/ecommerce_app_backend';
 
+  //====================== Notification ======================
+  static const String notification = '$server/notifications.php';
+
   //====================== Images ======================
   static const String imageStatic = '$server/upload';
   static const String imageCategories = '$imageStatic/categories';
@@ -51,4 +54,8 @@ class AppApis {
 
   //====================== Order ======================
   static const String orderCheckout = '$server/orders/checkout.php';
+  static const String orderPending = '$server/orders/pending.php';
+  static const String orderArchived = '$server/orders/archive.php';
+  static const String orderDetails = '$server/orders/details.php';
+  static const String orderDelete = '$server/orders/delete.php';
 }

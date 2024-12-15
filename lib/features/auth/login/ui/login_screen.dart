@@ -1,14 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import '../../../../core/class/handling_data_view.dart';
 import '../../../../core/functions/aleretexitapp.dart';
 import '../../../../core/localization/strings_keys.dart';
+import '../../../onboarding/ui/widgets/custom_button.dart';
 import '../controller/login_controller.dart';
 import 'widgets/dont_have_account.dart';
 import 'widgets/form_email_and_password.dart';
 import 'widgets/logo_and_text_welcome.dart';
 import 'widgets/remember_me_and_forget_password.dart';
-import '../../../onboarding/ui/widgets/custom_button.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

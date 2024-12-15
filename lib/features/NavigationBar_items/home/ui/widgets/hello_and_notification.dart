@@ -1,3 +1,6 @@
+import '../../../../../core/helpers/notifications_helper.dart';
+import '../../../../../routes_app.dart';
+
 import '../../../../../core/class/handling_data_view.dart';
 import '../../../../../core/class/status_request.dart';
 import '../../controller/home_controller.dart';
@@ -22,17 +25,22 @@ class HelloAndNotification extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Container(
-          width: 40.w,
-          height: 40.h,
-          decoration: const BoxDecoration(
-            color: Color(0xffFF6866),
-            borderRadius: BorderRadius.all(
-              Radius.circular(15),
+        InkWell(
+          onTap: () {
+            Get.toNamed(AppRoutes.kNotification);
+          },
+          child: Container(
+            width: 40.w,
+            height: 40.h,
+            decoration: const BoxDecoration(
+              color: Color(0xffFF6866),
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
             ),
+            child: const Icon(Icons.notifications_sharp,
+                color: Colors.white, size: 30),
           ),
-          child: const Icon(Icons.notifications_sharp,
-              color: Colors.white, size: 30),
         ),
       ]);
     });

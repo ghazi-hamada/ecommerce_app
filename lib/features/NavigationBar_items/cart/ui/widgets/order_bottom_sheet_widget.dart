@@ -1,3 +1,7 @@
+import 'custom_cutom_cart_widget.dart';
+import 'form_input_coupon_and_apply.dart';
+import 'text_and_val_widget.dart';
+
 import '../../../../../core/constant/color.dart';
 import '../../controller/cart_controller.dart';
 import '../../../../../routes_app.dart';
@@ -40,145 +44,34 @@ class OrderBottomSheetWidget extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
                 // cuopon
-                Container(
-                  margin: EdgeInsets.only(bottom: 10.h, top: 5.h),
-                  child: Row(
-                    children: [
-                      // حقل إدخال القسيمة
-                      Expanded(
-                        flex: 3,
-                        child: TextFormField(
-                          controller: controller.controllerCoupon,
-                          cursorHeight: 20.h,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10.h, horizontal: 12.w),
-                            hintText: 'Enter Coupon',
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 12.sp),
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(8), // حواف دائرية
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: const BorderSide(
-                                  color: AppColor.primaryColor,
-                                  width: 1.5), // لون عند التركيز
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10.w), // مسافة صغيرة بين الحقل والزر
-                      // زر تطبيق القسيمة
-                      Expanded(
-                        flex: 1,
-                        child: InkWell(
-                          onTap: () {
-                            controller.couponIsApplied
-                                ? null
-                                : controller.applyCoupon();
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 40.h, // ارتفاع أقل
-                            decoration: controller.couponIsApplied
-                                ? BoxDecoration(
-                                    color: AppColor.grey, // لون مناسب للشاشة
-                                    borderRadius:
-                                        BorderRadius.circular(8), // حواف دائرية
-                                  )
-                                : BoxDecoration(
-                                    color: AppColor
-                                        .primaryColor, // لون مناسب للشاشة
-                                    borderRadius:
-                                        BorderRadius.circular(8), // حواف دائرية
-                                  ),
-                            child: Text(
-                              'Apply',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12.sp, // حجم أصغر للنص
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                buildFormInputCouponAndApply(controller: controller),
 
                 // السعر الإجمالي
                 Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Discount",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "%${controller.discount.toInt()}", // يمكنك تحديث هذا المبلغ بناءً على مجموع المنتجات
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green,
-                          ),
-                        ),
-                      ],
+                    textAndValWidget(
+                        text: "Price",
+                        val: "\$${controller.subTotal.toStringAsFixed(2)}"),
+                    textAndValWidget(
+                        text: "Discount", val: "\$${controller.discount}"),
+                    textAndValWidget(text: "Shipping", val: "\$10"),
+                    const Divider(
+                      color: Colors.grey,
+                      thickness: 1,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Total",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "\$${controller.total.toStringAsFixed(2)}", // يمكنك تحديث هذا المبلغ بناءً على مجموع المنتجات
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green,
-                          ),
-                        ),
-                      ],
-                    ),
+                    textAndValWidget(
+                        isTotal: true,
+                        text: "Total",
+                        val: "\$${controller.total.toStringAsFixed(2)}"),
                   ],
                 ),
                 const SizedBox(height: 16),
                 // زر الطلب
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      backgroundColor: Colors.red, // لون الزر
-                    ),
-                    onPressed: () {
+                customButomCartWidget(
+                    text: "Order Now",
+                    onTap: () {
                       controller.openCheckoutScreen();
-                    },
-                    child: const Text(
-                      "Order Now",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                    }),
               ],
             );
           }),

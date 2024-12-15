@@ -13,6 +13,7 @@ abstract class CheckoutController extends GetxController {
   String? selectedAddress;
   String? couponId;
   String? totalPrice;
+  String? discountCoupon;
   AddressData addressData = AddressData(Get.find());
   OrdersData ordersData = OrdersData(Get.find());
   MyServices myServices = Get.find();
@@ -39,15 +40,15 @@ class CheckoutControllerImp extends CheckoutController {
       if (deliveryType == "Delivery" && selectedAddress == null) {
         Get.snackbar("خطأ", "يجب اختيار عنوان التوصيل");
       } else {
-        selectedAddress = "0";
         var response = await ordersData.checkout(
-          addressid: selectedAddress!,
+          usersid: myServices.sharedPreferences.getString("id")!,
+          addressid: deliveryType == "Delivery" ? selectedAddress! : "0",
           orderstype: deliveryType == "Delivery" ? "0" : "1",
           pricedelivery: "10",
           ordersprice: totalPrice!,
           couponid: couponId!,
           orderPaymentMethod: paymentMethod == "Cash" ? "0" : "1",
-          usersid: myServices.sharedPreferences.getString("id")!,
+          couponDiscount: discountCoupon!,
         );
         statusRequest = handlingData(response);
         if (StatusRequest.success == statusRequest) {
@@ -102,5 +103,6 @@ class CheckoutControllerImp extends CheckoutController {
     getAddresses();
     couponId = Get.arguments["couponId"].toString();
     totalPrice = Get.arguments["total"].toString();
+    discountCoupon = Get.arguments["discountCoupon"].toString();
   }
 }

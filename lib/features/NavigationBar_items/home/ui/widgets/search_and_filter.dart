@@ -16,6 +16,7 @@ class SearchAndFilter extends GetView<HomeControllerImpl> {
 
   @override
   Widget build(BuildContext context) {
+ Get.lazyPut(() => HomeControllerImpl());
     return Row(
       children: [
         Expanded(

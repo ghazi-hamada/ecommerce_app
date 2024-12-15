@@ -11,6 +11,7 @@ class OrdersData {
     required String pricedelivery,
     required String ordersprice,
     required String couponid,
+    required String couponDiscount,
     required String orderPaymentMethod,
   }) async {
     var response = await crud.postData(AppApis.orderCheckout, {
@@ -20,6 +21,7 @@ class OrdersData {
       'pricedelivery': pricedelivery,
       'ordersprice': ordersprice,
       'couponid': couponid,
+      'couponDiscount': couponDiscount,
       'orderPaymentMethod': orderPaymentMethod,
     });
     return response.fold((l) => l, (r) => r);

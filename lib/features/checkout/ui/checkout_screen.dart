@@ -1,11 +1,11 @@
-import '../../../core/constant/color.dart';
-import '../controller/checkout_controller.dart';
-import 'widgets/build_card.dart';
-import 'widgets/build_radio_tile.dart';
-import '../../onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import '../../onboarding/ui/widgets/custom_button.dart';
+import '../controller/checkout_controller.dart';
+import 'widgets/build_card.dart';
+import 'widgets/build_radio_tile.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});

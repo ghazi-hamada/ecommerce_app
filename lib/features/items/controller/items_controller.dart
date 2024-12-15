@@ -39,6 +39,7 @@ class ItemsControllerImpl extends ItemsController {
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         items.addAll(response['data']);
+        statusRequest = StatusRequest.none;
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -54,7 +55,6 @@ class ItemsControllerImpl extends ItemsController {
     categoriesId = Get.arguments['categorySelected'];
 
     getItems();
- 
 
     super.onInit();
   }

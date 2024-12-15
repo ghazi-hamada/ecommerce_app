@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import '../../../../core/class/post_data.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import '../../../../core/class/status_request.dart';
 import '../../../../core/constant/app_apis.dart';
 import '../../../../core/functions/handling_data.dart';
@@ -14,6 +17,7 @@ abstract class LoginController extends GetxController {
   dontHaveAccount();
   forgotPassword();
   showPassword();
+  PostData postData = PostData(Get.find());
 }
 
 class LoginControllerImpl extends LoginController {
@@ -22,7 +26,6 @@ class LoginControllerImpl extends LoginController {
   late TextEditingController passwordController;
   late GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isShowPassword = false;
-  LoginData loginData = LoginData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
   @override
   dontHaveAccount() {
@@ -34,10 +37,14 @@ class LoginControllerImpl extends LoginController {
     if (formKey.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
-      var response = await loginData.postData(
-        emailController.text,
-        passwordController.text,
+      var response = await postData.postData(
+        linkurl: AppApis.login,
+        data: {
+          "email": emailController.text,
+          "password": passwordController.text,
+        },
       );
+
       statusRequest = handlingData(response);
 
       print("hello" + response['status']);
@@ -99,8 +106,10 @@ class LoginControllerImpl extends LoginController {
           .setString("phone", response['data']['users_phone']);
       await myServices.sharedPreferences
           .setInt("approve", response['data']['users_approve']);
-
       await myServices.sharedPreferences.setString("step", "logined");
+      String userId = myServices.sharedPreferences.getString('id')!;
+      FirebaseMessaging.instance.subscribeToTopic('users');
+      FirebaseMessaging.instance.subscribeToTopic('users$userId');
     } else {
       Get.toNamed(AppRoutes.kVerfiyCodesignup,
           arguments: {"email": emailController.text});

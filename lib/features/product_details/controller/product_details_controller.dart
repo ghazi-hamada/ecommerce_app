@@ -62,7 +62,6 @@ class ProductDetailsControllerImpl extends ProductDetailsController {
       itemsId.toString(),
       count.toString(),
     );
-    Get.back();
 
     statusRequest = handlingData(response);
     log('response: $response');
@@ -70,11 +69,11 @@ class ProductDetailsControllerImpl extends ProductDetailsController {
     update();
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
+        Get.back();
         Get.rawSnackbar(
           message: "Add Cart Success",
           duration: const Duration(seconds: 1),
         );
-        Get.back();
       }
     }
   }

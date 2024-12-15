@@ -14,10 +14,10 @@ abstract class AddAddressController extends GetxController {
   StatusRequest statusRequest = StatusRequest.loading;
   CameraPosition? kGooglePlex;
   List<Marker> markers = <Marker>[];
-  addMarker(LatLng latLng);
-  continueAddDetails();
   double? lat;
   double? long;
+  addMarker(LatLng latLng);
+  continueAddDetails();
 }
 
 class AddAddressControllerImpl extends AddAddressController {

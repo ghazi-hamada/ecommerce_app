@@ -29,7 +29,7 @@ class CartData {
     return response.fold((l) => l, (r) => r);
   }
 
-  viewFavorite(String userId) async {
+  viewCart(String userId) async {
     var response = await crud.postData(AppApis.cartView, {
       "id": userId,
     });

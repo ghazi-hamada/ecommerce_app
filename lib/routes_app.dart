@@ -1,3 +1,8 @@
+import 'features/notifications/ui/notification_screen.dart';
+import 'features/orders/ui/archive_screen.dart';
+import 'features/orders/ui/pending_screen.dart';
+import 'features/orders_details/ui/orders_details_screen.dart';
+
 import 'features/NavigationBar_items/settings/ui/settings_screen.dart';
 import 'features/address/ui/address_add.dart';
 import 'features/address/ui/address_add_details.dart';
@@ -7,7 +12,6 @@ import 'features/auth/activate_account/ui/activate_account_screen.dart';
 import 'features/NavigationBar_items/my_favorite/ui/my_favorite_screen.dart';
 import 'features/checkout/ui/checkout_screen.dart';
 import 'package:get/get.dart';
-
 import 'core/middleware/my_middleware.dart';
 import 'features/auth/login/ui/login_screen.dart';
 import 'features/auth/signup/ui/signup_screen.dart';
@@ -22,7 +26,6 @@ import 'features/lang/language_screen.dart';
 import 'features/NavigationBar_items/nav_bar/ui/nav_bar.dart';
 import 'features/onboarding/ui/onboarding_screen.dart';
 import 'features/product_details/ui/product_details.dart';
-
 import 'features/NavigationBar_items/cart/ui/cart_screen.dart';
 
 abstract class AppRoutes {
@@ -52,6 +55,13 @@ abstract class AppRoutes {
   static const String kAddressView = '/addressView';
   // checkout
   static const String kCheckout = '/checkout';
+
+  // orders
+  static const String kpending = '/pending';
+  static const String karchived = '/archived';
+  static const String korderDetails = '/orderDetails';
+  // notification
+  static const String kNotification = '/notification';
 
   // this is the routes list
   static List<GetPage<dynamic>> getPages = [
@@ -83,6 +93,10 @@ abstract class AppRoutes {
     GetPage(name: kAddressAddDetails, page: () => const AddressAddDetails()),
     GetPage(name: kAddressEdit, page: () => const AddressEdit()),
     GetPage(name: kAddressView, page: () => const AddressView()),
-    GetPage(name: kCheckout, page: () => CheckoutScreen()),
+    GetPage(name: kCheckout, page: () => const CheckoutScreen()),
+    GetPage(name: kpending, page: () => const PendingScreen()),
+    GetPage(name: karchived, page: () => const ArchiveScreen()),
+    GetPage(name: kNotification, page: () => const NotificationScreen()),
+    GetPage(name: korderDetails, page: () => const OrdersDetailsScreen()),
   ];
 }

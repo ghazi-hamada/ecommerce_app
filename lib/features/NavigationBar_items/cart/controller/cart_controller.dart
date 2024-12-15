@@ -12,7 +12,7 @@ import '../data/remote/cart_data.dart';
 
 abstract class CartController extends GetxController {
   addItemsCart(String itemsId, int count);
-  remove(int itemsId);
+  remove(int itemsId, double price);
   view();
   decrement(String itemsId);
   increment(String itemsId);
@@ -24,8 +24,9 @@ abstract class CartController extends GetxController {
   List myCart = [];
   Map<String, int> quantity = {};
   double total = 0.0;
+  double subTotal = 0.0;
   double discount = 0.0;
-  String? couponId;
+  String couponId = '';
   late TextEditingController controllerCoupon;
   late CouponModel couponModel;
   applyCoupon();
@@ -65,7 +66,7 @@ class CartControllerImp extends CartController {
     statusRequest = StatusRequest.loading;
     update();
 
-    var response = await cartData.viewFavorite(
+    var response = await cartData.viewCart(
       myServices.sharedPreferences.getString("id")!.toString(),
     );
 
@@ -84,6 +85,7 @@ class CartControllerImp extends CartController {
             (myCart[i]['items_price'] *
                 (1 - (myCart[i]['items_discount'] / 100)));
       }
+      subTotal = total; // تحديث الإجمالي الفرعي
     }
 
     update();
@@ -112,6 +114,8 @@ class CartControllerImp extends CartController {
         if (element['cart_itemsid'].toString() == itemsId) {
           total -=
               element['items_price'] * (1 - (element['items_discount'] / 100));
+          subTotal -=
+              element['items_price'] * (1 - (element['items_discount'] / 100));
         }
       }
       editCart(itemsId, quantity[itemsId]!);
@@ -129,6 +133,8 @@ class CartControllerImp extends CartController {
         if (element['cart_itemsid'].toString() == itemsId) {
           total +=
               element['items_price'] * (1 - (element['items_discount'] / 100));
+          subTotal +=
+              element['items_price'] * (1 - (element['items_discount'] / 100));
         }
       }
       editCart(itemsId, quantity[itemsId]!);
@@ -137,9 +143,10 @@ class CartControllerImp extends CartController {
   }
 
   @override
-  remove(int itemsId) async {
+  remove(int itemsId, double price) async {
     statusRequest = StatusRequest.loading;
     update();
+
     var response = await cartData.removeAtCart(
         myServices.sharedPreferences.getString("id")!.toString(),
         itemsId.toString());
@@ -147,6 +154,10 @@ class CartControllerImp extends CartController {
     log('response: $response');
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
+        print("price: $price");
+        total -= price;
+        subTotal -= price;
+
         Get.rawSnackbar(
           message: "Remove Cart Success",
           duration: const Duration(seconds: 1),
@@ -193,8 +204,9 @@ class CartControllerImp extends CartController {
   openCheckoutScreen() {
     if (myCart.isNotEmpty) {
       Get.toNamed(AppRoutes.kCheckout, arguments: {
-        "couponId": couponId.toString() ?? "0",
-        "total": total.toString(),
+        "couponId": couponId.toString() == '' ? '0' : couponId.toString(),
+        "total": subTotal.toString(),
+        "discountCoupon": discount.toString(),
       });
     } else {
       Get.rawSnackbar(

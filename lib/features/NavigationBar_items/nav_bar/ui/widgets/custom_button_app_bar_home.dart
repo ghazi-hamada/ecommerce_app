@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+
 import '../../../../../core/constant/color.dart';
 import '../../controller/nav_bar_controller.dart';
 import 'custom_button_app_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class CustomBottomAppBarHome extends StatelessWidget {
   const CustomBottomAppBarHome({super.key});
