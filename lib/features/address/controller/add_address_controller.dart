@@ -2,10 +2,8 @@ import 'dart:async';
 
 import '../../../core/class/status_request.dart';
 import '../../../routes_app.dart';
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 abstract class AddAddressController extends GetxController {

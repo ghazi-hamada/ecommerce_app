@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../core/constant/app_apis.dart';
 import '../../../../core/constant/color.dart';
-import '../../../../core/functions/discount_calculator.dart';
 import '../../../../core/widgets/custom_price_widget.dart';
 import '../../../NavigationBar_items/home/data/models/items_model.dart';
 import '../../controller/favorite_controller.dart';

@@ -29,10 +29,12 @@ import 'features/product_details/ui/product_details.dart';
 import 'features/NavigationBar_items/cart/ui/cart_screen.dart';
 
 abstract class AppRoutes {
-  // this is the routes name
+  //================= General Routes =================
   static const String kLanguage = '/';
   static const String kOnboarding = '/onboarding';
   static const String kNavBar = '/NavBar';
+
+  //================= Authentication =================
   static const String kLogin = '/login';
   static const String kSignup = '/signup';
   static const String kForgetPassword = '/forgetpassword';
@@ -42,61 +44,77 @@ abstract class AppRoutes {
   static const String kVerfiyCode = '/verfiyCode';
   static const String kVerfiyCodesignup = '/verfiyCodesignup';
   static const String kActivateAccount = '/ActivateAccount';
+
+  //================= Home and Main Features =================
   static const String khome = '/home';
   static const String kItems = '/items';
   static const String kProductDetails = '/productDetails';
   static const String kMyFavorite = '/MyFavorite';
   static const String kSettings = '/Settings';
   static const String kCart = '/Cart';
-  //Address
+
+  //================= Address Management =================
   static const String kAddressAdd = '/addressAdd';
   static const String kAddressAddDetails = '/addressAddDetails';
   static const String kAddressEdit = '/addressEdit';
   static const String kAddressView = '/addressView';
-  // checkout
+
+  //================= Checkout =================
   static const String kCheckout = '/checkout';
 
-  // orders
+  //================= Orders =================
   static const String kpending = '/pending';
-  static const String karchived = '/archived';
+  static const String kArchivedOrders = '/archived';
   static const String korderDetails = '/orderDetails';
-  // notification
+
+  //================= Notifications =================
   static const String kNotification = '/notification';
 
-  // this is the routes list
+  //================= Routes List =================
   static List<GetPage<dynamic>> getPages = [
-    // GetPage(name: '/', page: () => const TestScreen()),
+    // General Routes
     GetPage(
         name: kLanguage,
         page: () => const LanguageScreen(),
         middlewares: [MyMiddleware()]),
     GetPage(name: kOnboarding, page: () => const OnboardingScreen()),
+
+    // Authentication
     GetPage(name: kLogin, page: () => const LoginScreen()),
     GetPage(name: kSignup, page: () => const SignupScreen()),
     GetPage(name: kForgetPassword, page: () => const ForgetPasswordScreen()),
     GetPage(name: kVerfiyCode, page: () => const VerifyCodeScreen()),
-    GetPage(name: kItems, page: () => const ItemsScreen()),
     GetPage(
         name: kVerfiyCodesignup, page: () => const VerifyCodeSignUpScreen()),
     GetPage(name: kResetpassword, page: () => const ResetPasswordScreen()),
     GetPage(name: kSuccessSignup, page: () => const SuccessSignUp()),
     GetPage(
         name: kSuccessResetPassword, page: () => const SuccessResetPassword()),
+    GetPage(name: kActivateAccount, page: () => const ActivateAccountScreen()),
+
+    // Home and Main Features
     GetPage(name: khome, page: () => const NavBar()),
+    GetPage(name: kItems, page: () => const ItemsScreen()),
     GetPage(name: kProductDetails, page: () => const ProductDetailsScreen()),
     GetPage(name: kMyFavorite, page: () => const MyFavoriteScreen()),
-    GetPage(name: kActivateAccount, page: () => const ActivateAccountScreen()),
     GetPage(name: kSettings, page: () => const SettingsScreen()),
     GetPage(name: kCart, page: () => const CartScreen()),
-    //Address
+
+    // Address Management
     GetPage(name: kAddressAdd, page: () => const AddressAdd()),
     GetPage(name: kAddressAddDetails, page: () => const AddressAddDetails()),
     GetPage(name: kAddressEdit, page: () => const AddressEdit()),
     GetPage(name: kAddressView, page: () => const AddressView()),
+
+    // Checkout
     GetPage(name: kCheckout, page: () => const CheckoutScreen()),
+
+    // Orders
     GetPage(name: kpending, page: () => const PendingScreen()),
-    GetPage(name: karchived, page: () => const ArchiveScreen()),
-    GetPage(name: kNotification, page: () => const NotificationScreen()),
+    GetPage(name: kArchivedOrders, page: () => const ArchiveScreen()),
     GetPage(name: korderDetails, page: () => const OrdersDetailsScreen()),
+
+    // Notifications
+    GetPage(name: kNotification, page: () => const NotificationScreen()),
   ];
 }

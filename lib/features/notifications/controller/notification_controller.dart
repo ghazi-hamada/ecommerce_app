@@ -7,8 +7,6 @@ import '../../../core/functions/handling_data.dart';
 import '../../../core/services/services.dart';
 import '../data/model/notification_model.dart';
 import 'package:get/get.dart';
-import 'package:googleapis/blogger/v3.dart';
-import 'package:googleapis/gkehub/v1.dart';
 
 abstract class NotificationController extends GetxController {
   MyServices myServices = Get.find();

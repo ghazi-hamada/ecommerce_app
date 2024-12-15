@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TextAndSeeAll extends StatelessWidget {
-  const TextAndSeeAll({Key? key, required this.text, this.onPressed})
-      : super(key: key);
+  const TextAndSeeAll({super.key, required this.text, this.onPressed});
   final String text;
   final void Function()? onPressed;
   @override

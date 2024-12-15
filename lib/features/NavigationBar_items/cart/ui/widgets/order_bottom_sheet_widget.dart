@@ -4,7 +4,6 @@ import 'text_and_val_widget.dart';
 
 import '../../../../../core/constant/color.dart';
 import '../../controller/cart_controller.dart';
-import '../../../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

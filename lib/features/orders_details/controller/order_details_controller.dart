@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:dartz/dartz.dart';
 import '../../../core/class/post_data.dart';
 import '../../../core/class/status_request.dart';
 import '../../../core/constant/app_apis.dart';
@@ -11,7 +10,6 @@ import '../../orders/data/model/pending_orders_model.dart';
 import '../data/model/order_details_model.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 abstract class OrderDetailsController extends GetxController {

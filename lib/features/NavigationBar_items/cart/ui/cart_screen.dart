@@ -1,11 +1,9 @@
-import 'package:dartz/dartz.dart';
 import '../../../../core/class/handling_data_view.dart';
 import '../controller/cart_controller.dart';
 import '../data/model/mycart_model.dart';
 import 'widgets/order_bottom_sheet_widget.dart';
 import 'widgets/shopping_cart_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {

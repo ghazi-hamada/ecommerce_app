@@ -1,10 +1,8 @@
 import '../../../core/class/handling_data_view.dart';
-import '../../../core/constant/color.dart';
 import 'widgets/custom_card_order.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/orders_controller.dart';
-import 'package:jiffy/jiffy.dart';
 
 class PendingScreen extends StatelessWidget {
   const PendingScreen({super.key});

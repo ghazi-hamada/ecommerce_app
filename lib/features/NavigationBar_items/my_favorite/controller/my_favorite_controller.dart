@@ -9,7 +9,6 @@ import '../data/model/my_fevorite_model.dart';
 import '../data/remote/favorite_data.dart';
 import '../../../../routes_app.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 abstract class MyFavoriteController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;

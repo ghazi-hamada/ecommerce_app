@@ -1,6 +1,5 @@
 import '../../../core/class/handling_data_view.dart';
 
-import '../../../core/constant/color.dart';
 import '../controller/product_details_controller.dart';
 import 'widgets/button_NavigationBar_widget.dart';
 import 'widgets/color_widget.dart';

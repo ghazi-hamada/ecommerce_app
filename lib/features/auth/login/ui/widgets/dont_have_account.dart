@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({
-    Key? key,
+    super.key,
     required this.body,
     required this.action,
     required this.onPressAction,
-  }) : super(key: key);
+  });
   final String body;
   final String action;
   final void Function() onPressAction;

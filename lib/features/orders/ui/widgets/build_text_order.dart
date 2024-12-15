@@ -1,5 +1,4 @@
 import '../../../../core/constant/color.dart';
-import '../../controller/orders_controller.dart';
 import 'package:flutter/material.dart';
 
 Widget buildTextOrder({required String text, bool onUp = false}) {

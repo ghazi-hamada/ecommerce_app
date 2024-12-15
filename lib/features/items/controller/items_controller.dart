@@ -4,7 +4,6 @@ import '../../../core/services/services.dart';
 import '../../NavigationBar_items/cart/controller/cart_controller.dart';
 import '../../NavigationBar_items/home/data/models/items_model.dart';
 import '../data/remote/items_data.dart';
-import '../../product_details/ui/product_details.dart';
 import '../../../routes_app.dart';
 import 'package:get/get.dart';
 

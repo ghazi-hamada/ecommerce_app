@@ -1,8 +1,6 @@
 import '../../../core/class/handling_data_view.dart';
 import '../../../core/constant/color.dart';
 import '../controller/address_view_controller.dart';
-import '../data/model/address_model.dart';
-import 'widgets/addressI_item.dart';
 import '../../../routes_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

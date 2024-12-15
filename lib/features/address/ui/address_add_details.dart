@@ -1,10 +1,6 @@
 import '../../../core/class/handling_data_view.dart';
-import '../../../core/functions/validinput.dart';
-import '../controller/add_address_controller.dart';
 import '../controller/address_add_details_controller.dart';
 import 'widgets/form_Address.dart';
-import '../../auth/widgets/text_form_field_widget.dart';
-import '../../onboarding/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

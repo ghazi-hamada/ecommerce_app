@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class CustumButtonLang extends StatelessWidget {
   const CustumButtonLang({
-    Key? key,
+    super.key,
     required this.text,
     required this.function,
-  }) : super(key: key);
+  });
   final void Function()? function;
   final String text;
   @override

@@ -1,5 +1,4 @@
 import '../../../core/class/handling_data_view.dart';
-import '../../../core/class/status_request.dart';
 import '../../../core/localization/strings_keys.dart';
 import 'controller/verifycode_controller.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';

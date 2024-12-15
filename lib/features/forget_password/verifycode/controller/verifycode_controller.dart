@@ -2,7 +2,6 @@ import '../../../../core/class/status_request.dart';
 import '../../../../core/functions/handling_data.dart';
 import '../data/remote/verify_code_data.dart';
 import '../../../../routes_app.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 // ignore: camel_case_types

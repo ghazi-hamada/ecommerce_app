@@ -1,8 +1,6 @@
-import 'dart:math';
 
 import '../localization/strings_keys.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/get_utils/get_utils.dart';
 
 enum InputType { username, email, phone, password, confirmPassword, normal }
 

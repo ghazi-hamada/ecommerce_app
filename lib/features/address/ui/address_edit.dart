@@ -4,7 +4,6 @@ import 'widgets/form_Address.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class AddressEdit extends StatelessWidget {
   const AddressEdit({super.key});

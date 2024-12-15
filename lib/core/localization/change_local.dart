@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import '../helpers/fcmconfig.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../constant/app_theme.dart';
 import '../services/services.dart';

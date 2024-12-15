@@ -2,8 +2,6 @@ import '../../routes_app.dart';
 import '../services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/routes/route_middleware.dart';
 
 class MyMiddleware extends GetMiddleware {
   @override

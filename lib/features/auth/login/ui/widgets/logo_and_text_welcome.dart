@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class LogoAndTextWelcome extends StatelessWidget {
-  const LogoAndTextWelcome({Key? key}) : super(key: key);
+  const LogoAndTextWelcome({super.key});
 
   @override
   Widget build(BuildContext context) {

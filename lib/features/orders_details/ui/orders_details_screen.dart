@@ -2,12 +2,9 @@ import '../../../core/class/handling_data_view.dart';
 import '../controller/order_details_controller.dart';
 import 'widgets/build_address_card.dart';
 import 'widgets/build_map_view.dart';
-import 'widgets/build_table_cell.dart';
-import 'widgets/build_table_headers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../core/constant/color.dart';
 import 'widgets/build_order_table.dart';
 

@@ -4,7 +4,6 @@ import '../../data/model/pending_orders_model.dart';
 import 'build_elevated_button.dart';
 import 'build_text_order.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
 Widget buildCardOrder(

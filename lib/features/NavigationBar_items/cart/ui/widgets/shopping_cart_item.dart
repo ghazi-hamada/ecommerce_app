@@ -1,5 +1,4 @@
 import '../../../../../core/constant/app_apis.dart';
-import '../../../../../core/functions/discount_calculator.dart';
 import '../../../../../core/widgets/custom_price_widget.dart';
 import '../../controller/cart_controller.dart';
 import '../../data/model/mycart_model.dart';

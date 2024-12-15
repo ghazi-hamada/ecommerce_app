@@ -1,12 +1,10 @@
 import '../../../../../core/constant/app_apis.dart';
 import '../../../../../core/functions/discount_calculator.dart';
-import '../../../cart/controller/cart_controller.dart';
 import '../../controller/home_controller.dart';
 import '../../data/models/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class ListItemsSearch extends GetView<HomeControllerImpl> {
   final List<ItemsModel> listData;
