@@ -26,7 +26,7 @@ abstract class OrderDetailsController extends GetxController {
   double? long;
   intialData();
   getDetailsData();
- }
+}
 
 class OrderDetailsControllerImpl extends OrderDetailsController {
   @override
@@ -72,15 +72,18 @@ class OrderDetailsControllerImpl extends OrderDetailsController {
     log("================================response: $statusRequest");
     update();
     if (StatusRequest.success == statusRequest) {
-      if (response['status'] == 'success') {
-        orderDetailsModel = List<OrderDetailsModel>.from(
-            response['data'].map((x) => OrderDetailsModel.fromJson(x)));
-        log("orderDetailsModel: $orderDetailsModel");
-        log("orderDetailsModel: ${orderDetailsModel.length}");
-      } else {}
+      response.fold(
+        (l) {},
+        (r) {
+          if (r['status'] == 'success') {
+            orderDetailsModel = List<OrderDetailsModel>.from(
+                r['data'].map((x) => OrderDetailsModel.fromJson(x)));
+            log("orderDetailsModel: $orderDetailsModel");
+            log("orderDetailsModel: ${orderDetailsModel.length}");
+          }
+        },
+      );
     }
     update();
   }
-
-
 }

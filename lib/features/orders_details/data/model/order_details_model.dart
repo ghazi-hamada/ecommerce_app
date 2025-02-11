@@ -12,11 +12,12 @@ class OrderDetailsModel {
   String? itemsDescAr;
   String? itemsImage;
   int? itemsCount;
-  int? itemsActive;
+  String? itemsActive;
   int? itemsPrice;
   int? itemsDiscount;
   String? itemsDate;
   int? itemsCat;
+  int? hasRating;
 
   OrderDetailsModel(
       {this.cartId,
@@ -36,7 +37,8 @@ class OrderDetailsModel {
       this.itemsPrice,
       this.itemsDiscount,
       this.itemsDate,
-      this.itemsCat});
+      this.itemsCat,
+      this.hasRating});
 
   OrderDetailsModel.fromJson(Map<String, dynamic> json) {
     cartId = json['cart_id'];
@@ -57,6 +59,7 @@ class OrderDetailsModel {
     itemsDiscount = json['items_discount'];
     itemsDate = json['items_date'];
     itemsCat = json['items_cat'];
+    hasRating = json['hasRating'];
   }
 
   Map<String, dynamic> toJson() {
@@ -79,6 +82,7 @@ class OrderDetailsModel {
     data['items_discount'] = itemsDiscount;
     data['items_date'] = itemsDate;
     data['items_cat'] = itemsCat;
+    data['hasRating'] = hasRating;
     return data;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -77,40 +78,74 @@ class CheckoutScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // Card 3: Shipping Address
-                controller.deliveryType == "Delivery"
-                    ? buildCard(
-                        title: "Choose Shipping Address",
-                        child: DropdownButtonFormField<String>(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            filled: true,
-                            fillColor: Colors.grey[200],
-                          ),
-                          hint: Text("Select Address",
-                              style: TextStyle(fontSize: 16.sp)),
-                          value: controller.selectedAddress,
-                          items: controller.addresses.map((address) {
-                            return DropdownMenuItem<String>(
-                              value: address.id.toString(),
-                              child: Text(
-                                  "${address.addressCity} - ${address.addressStreet} - ${address.addressName}"
-                                      .toString(),
+                controller.addresses.isEmpty &&
+                        controller.deliveryType == "Delivery"
+                    ? Container(
+                        alignment: Alignment.center,
+                        child: Column(
+                          spacing: 5.h,
+                          children: [
+                            const Text("No Addresses Found"),
+                            const Text("Please Add Addresses"),
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColor.secondaryColor,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20.w, vertical: 5.h),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(12))),
+                                onPressed: () {
+                                  controller.gotoaddAddress();
+                                },
+                                child: Text(
+                                  "Add Address",
                                   style: TextStyle(
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.normal)),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            controller.changeSelectedAddress(value.toString());
-                          },
+                                      fontSize: 16.sp, color: Colors.white),
+                                )),
+                          ],
                         ),
                       )
-                    : const SizedBox.shrink(),
-                const SizedBox(height: 24),
+                    :
+                    // Card 3: Shipping Address
+                    Column(
+                        children: [
+                          controller.deliveryType == "Delivery"
+                              ? buildCard(
+                                  title: "Choose Shipping Address",
+                                  child: DropdownButtonFormField<String>(
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.grey[200],
+                                    ),
+                                    hint: Text("Select Address",
+                                        style: TextStyle(fontSize: 16.sp)),
+                                    value: controller.selectedAddress,
+                                    items: controller.addresses.map((address) {
+                                      return DropdownMenuItem<String>(
+                                        value: address.id.toString(),
+                                        child: Text(
+                                            "${address.addressStreet} - ${address.addressName}"
+                                                .toString(),
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.normal)),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      controller.changeSelectedAddress(
+                                          value.toString());
+                                    },
+                                  ),
+                                )
+                              : const SizedBox.shrink(),
+                          const SizedBox(height: 24),
+                        ],
+                      ),
 
                 // Checkout Button
                 Container(

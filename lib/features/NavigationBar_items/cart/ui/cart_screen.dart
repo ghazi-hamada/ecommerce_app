@@ -11,7 +11,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => CartControllerImp());
+    Get.put(CartControllerImp());
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Cart'),
@@ -30,14 +30,14 @@ class CartScreen extends StatelessWidget {
                         key: UniqueKey(),
                         onDismissed: (direction) {
                           controller.remove(
-                              controller.myCart[index]['items_id'],
-                              controller.myCart[index]['items_price']
+                              controller.myCart[index].itemsId!,
+                              controller.myCart[index].itemsPrice!
                                   .toDouble());
                           controller.myCart.removeAt(index);
                         },
                         child: ShoppingCartItem(
                           myCartModel:
-                              MycartModel.fromJson(controller.myCart[index]),
+                              controller.myCart[index],
                         ),
                       );
                     }),

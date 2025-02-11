@@ -1,12 +1,15 @@
+import 'package:ecommerce_app/core/class/handling_data_view.dart';
+
 import '../../../../../core/constant/app_apis.dart';
 import '../../../../../core/functions/discount_calculator.dart';
+import '../../../../search/controller/search_controller.dart';
 import '../../controller/home_controller.dart';
 import '../../data/models/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class ListItemsSearch extends GetView<HomeControllerImpl> {
+class ListItemsSearch extends GetView<SearchControllerImpl> {
   final List<ItemsModel> listData;
   const ListItemsSearch({super.key, required this.listData});
 

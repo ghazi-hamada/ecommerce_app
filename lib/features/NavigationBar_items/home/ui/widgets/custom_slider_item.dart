@@ -1,10 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class CustomSliderItem extends StatelessWidget {
-  const CustomSliderItem({super.key, required this.item});
-  final Map<String, String> item;
+import '../../../../../core/constant/app_apis.dart';
+import '../../data/models/banners_model.dart';
 
+class CustomSliderItem extends StatelessWidget {
+  const CustomSliderItem({
+    super.key,
+    required this.bannersModel,
+  });
+  final BannersModel bannersModel;
   @override
   Widget build(BuildContext context) {
     return Builder(
@@ -28,7 +33,8 @@ class CustomSliderItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: CachedNetworkImage(
-                  imageUrl: item["image"]!,
+                  imageUrl:
+                      "https://ghaziapp.store/ecommerce_app_backend/upload/banners/${bannersModel.bannersImageUrl}",
                   placeholder: (context, url) =>
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -36,27 +42,7 @@ class CustomSliderItem extends StatelessWidget {
                   width: double.infinity,
                 ),
               ),
-              // المحتوى فوق الصورة
-              // Positioned(
-              //   top: 16,
-              //   left: 16,
-              //   child: Container(
-              //     padding:
-              //         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              //     decoration: BoxDecoration(
-              //       color: Colors.white,
-              //       borderRadius: BorderRadius.circular(8),
-              //     ),
-              //     child: const Text(
-              //       "Limited time!",
-              //       style: TextStyle(
-              //         fontSize: 14,
-              //         fontWeight: FontWeight.bold,
-              //         color: Colors.redAccent,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+
               Positioned(
                 top: 16,
                 left: 16,
@@ -64,23 +50,16 @@ class CustomSliderItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      item["title"]!,
+                      bannersModel.bannersTitle!,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
+                    const SizedBox(height: 8),
                     Text(
-                      item["subtitle"]!,
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.redAccent,
-                      ),
-                    ),
-                    Text(
-                      item["details"]!,
+                      bannersModel.bannersDescription!,
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white70,
@@ -89,29 +68,6 @@ class CustomSliderItem extends StatelessWidget {
                   ],
                 ),
               ),
-              // Positioned(
-              //   bottom: 16,
-              //   right: 16,
-              //   child: ElevatedButton(
-              //     style: ElevatedButton.styleFrom(
-              //       iconColor: Colors.redAccent, // لون الزر
-              //       shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(12),
-              //       ),
-              //     ),
-              //     onPressed: () {
-              //       // أكشن عند الضغط
-              //       print("Claim clicked!");
-              //     },
-              //     child: const Text(
-              //       "Claim",
-              //       style: TextStyle(
-              //         fontWeight: FontWeight.bold,
-              //         color: Color(0xffFF4747),
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         );

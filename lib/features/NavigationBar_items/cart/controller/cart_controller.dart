@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:ecommerce_app/features/NavigationBar_items/cart/data/model/mycart_model.dart';
+
 import '../data/model/coupon_model.dart';
 import '../../../../routes_app.dart';
 import 'package:flutter/widgets.dart';
@@ -11,7 +13,6 @@ import '../../../../core/services/services.dart';
 import '../data/remote/cart_data.dart';
 
 abstract class CartController extends GetxController {
-  addItemsCart(String itemsId, int count);
   remove(int itemsId, double price);
   view();
   decrement(String itemsId);
@@ -21,7 +22,7 @@ abstract class CartController extends GetxController {
   MyServices myServices = Get.find();
   CartData cartData = CartData(Get.find());
   int count = 1;
-  List myCart = [];
+    List<MycartModel> myCart =[];
   Map<String, int> quantity = {};
   double total = 0.0;
   double subTotal = 0.0;
@@ -35,35 +36,11 @@ abstract class CartController extends GetxController {
 }
 
 class CartControllerImp extends CartController {
-  @override
-  addItemsCart(String itemsId, int count) async {
-    Get.back();
-    statusRequest = StatusRequest.loading;
-    update();
-
-    var response = await cartData.addData(
-      myServices.sharedPreferences.getString("id")!.toString(),
-      itemsId.toString(),
-      count.toString(),
-    );
-
-    statusRequest = handlingData(response);
-    log('response: $response');
-
-    update();
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        Get.rawSnackbar(
-          message: "Add Cart Success",
-          duration: const Duration(seconds: 1),
-        );
-      }
-    }
-  }
 
   @override
   view() async {
-    statusRequest = StatusRequest.loading;
+    myCart.clear();
+     statusRequest = StatusRequest.loading;
     update();
 
     var response = await cartData.viewCart(
@@ -73,19 +50,25 @@ class CartControllerImp extends CartController {
     statusRequest = handlingData(response);
     log('response: $response');
     if (statusRequest == StatusRequest.success) {
-      myCart.addAll(response['data']);
-      total = 0.0; // إعادة تعيين الإجمالي
-      discount = 0; // إعادة تعيين إجمالي الخصم
+      if (response['status'] == 'success') {
+        List data = response['data'];
+        myCart.addAll(data.map((e) => MycartModel.fromJson(e)).toList());
+        total = 0.0; // إعادة تعيين الإجمالي
+        discount = 0; // إعادة تعيين إجمالي الخصم
 
-      for (int i = 0; i < myCart.length; i++) {
-        // Calculate total
-        quantity[myCart[i]['cart_itemsid'].toString()] =
-            myCart[i]['cart_quantity'];
-        total += myCart[i]['cart_quantity'] *
-            (myCart[i]['items_price'] *
-                (1 - (myCart[i]['items_discount'] / 100)));
+        for (int i = 0; i < myCart.length; i++) {
+          // Calculate total
+          quantity[myCart[i].itemsId.toString()] =
+              myCart[i].cartQuantity!;
+          total += (myCart[i].cartQuantity! *
+              (myCart[i].itemsPrice! *
+                  (1 - (myCart[i].itemsDiscount! / 100))))!;
+        }
+        subTotal = total; // تحديث الإجمالي الفرعي
+      } else {
+        statusRequest = StatusRequest.none;
+        update();
       }
-      subTotal = total; // تحديث الإجمالي الفرعي
     }
 
     update();
@@ -95,13 +78,28 @@ class CartControllerImp extends CartController {
   void onInit() {
     view();
     controllerCoupon = TextEditingController();
+    print("CartControllerImp onInit called");
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    print("CartControllerImp onReady called");
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    print("CartControllerImp onClose called");
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+    Get.delete<CartControllerImp>(); // التخلص من الـ Controller عند الخروج
+
     controllerCoupon.dispose();
   }
 
@@ -111,11 +109,11 @@ class CartControllerImp extends CartController {
     if (quantity[itemsId] != null && quantity[itemsId]! > 1) {
       quantity[itemsId] = (quantity[itemsId]! - 1);
       for (var element in myCart) {
-        if (element['cart_itemsid'].toString() == itemsId) {
+        if (element.itemsId.toString() == itemsId) {
           total -=
-              element['items_price'] * (1 - (element['items_discount'] / 100));
+              element.itemsPrice! * (1 - (element.itemsDiscount! / 100));
           subTotal -=
-              element['items_price'] * (1 - (element['items_discount'] / 100));
+              element.itemsPrice! * (1 - (element.itemsDiscount! / 100));
         }
       }
       editCart(itemsId, quantity[itemsId]!);
@@ -130,11 +128,11 @@ class CartControllerImp extends CartController {
 
       quantity[itemsId] = (quantity[itemsId]! + 1);
       for (var element in myCart) {
-        if (element['cart_itemsid'].toString() == itemsId) {
+        if (element.itemsId.toString() == itemsId) {
           total +=
-              element['items_price'] * (1 - (element['items_discount'] / 100));
+              element.itemsPrice! * (1 - (element.itemsDiscount! / 100));
           subTotal +=
-              element['items_price'] * (1 - (element['items_discount'] / 100));
+              element.itemsPrice! * (1 - (element.itemsDiscount! / 100));
         }
       }
       editCart(itemsId, quantity[itemsId]!);

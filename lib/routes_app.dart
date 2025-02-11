@@ -1,3 +1,8 @@
+import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
+import 'package:ecommerce_app/features/rating/ui/ratings_secreen.dart';
+
+import 'core/bindings/initial_Binding.dart';
+import 'features/NavigationBar_items/offers/ui/offers_screen.dart';
 import 'features/notifications/ui/notification_screen.dart';
 import 'features/orders/ui/archive_screen.dart';
 import 'features/orders/ui/pending_screen.dart';
@@ -70,6 +75,12 @@ abstract class AppRoutes {
   //================= Notifications =================
   static const String kNotification = '/notification';
 
+  //================= Offers =================
+  static const String kOffers = '/offers';
+
+  //================= Rating =================
+  static const String kRating = '/rating';
+
   //================= Routes List =================
   static List<GetPage<dynamic>> getPages = [
     // General Routes
@@ -98,7 +109,8 @@ abstract class AppRoutes {
     GetPage(name: kProductDetails, page: () => const ProductDetailsScreen()),
     GetPage(name: kMyFavorite, page: () => const MyFavoriteScreen()),
     GetPage(name: kSettings, page: () => const SettingsScreen()),
-    GetPage(name: kCart, page: () => const CartScreen()),
+    GetPage(
+        name: kCart, page: () => const CartScreen(), binding: InitialBinding()),
 
     // Address Management
     GetPage(name: kAddressAdd, page: () => const AddressAdd()),
@@ -116,5 +128,11 @@ abstract class AppRoutes {
 
     // Notifications
     GetPage(name: kNotification, page: () => const NotificationScreen()),
+
+    // Offers
+    GetPage(name: kOffers, page: () => const OffersScreen()),
+
+    //rating
+    GetPage(name: kRating, page: () => const RatingScreen()),
   ];
 }

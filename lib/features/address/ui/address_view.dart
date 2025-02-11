@@ -41,81 +41,91 @@ class AddressView extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: GetBuilder<AddressViewControllerImpl>(builder: (controller) {
-        return HandlingDataView(
-          statusRequest: controller.statusRequest,
-          child: controller.address.isEmpty
-              ? const Center(
-                  child: Text(
-                    'No Address',
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                )
-              : ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: controller.address.length,
-                  itemBuilder: (context, index) {
-                    final address = controller.address[index];
-                    return Card(
-                      shadowColor: Colors.white,
-                      color: Colors.white,
-                      margin: const EdgeInsets.only(bottom: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      elevation: 3,
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.location_on,
-                          color: AppColor.primaryColor,
-                          size: 26,
+      body: WillPopScope(
+        onWillPop: () async {
+          // تمرير نتيجة عند الرجوع
+          Get.back(result: true);
+          return false; // لمنع السلوك الافتراضي
+        },
+        child: GetBuilder<AddressViewControllerImpl>(builder: (controller) {
+          return HandlingDataView(
+            statusRequest: controller.statusRequest,
+            child: controller.address.isEmpty
+                ? const Center(
+                    child: Text(
+                      'No Address',
+                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                    ),
+                  )
+                : ListView.builder(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: controller.address.length,
+                    itemBuilder: (context, index) {
+                      final address = controller.address[index];
+                      return Card(
+                        shadowColor: Colors.white,
+                        color: Colors.white,
+                        margin: const EdgeInsets.only(bottom: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        title: Text(
-                          address.addressName ?? '',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        elevation: 3,
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.location_on,
+                            color: AppColor.primaryColor,
+                            size: 26,
                           ),
-                        ),
-                        subtitle: Text(
-                          '${address.addressStreet}, ${address.addressCity}',
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.blue),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.kAddressEdit,
-                                    arguments: {
-                                      'addressModel': controller.address[index],
-                                    });
-                              },
+                          title: Text(
+                            address.addressName ?? '',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
-                            IconButton(
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                              onPressed: () async {
-                                bool? confirm =
-                                    await controller.confirmDismissalOutcome(
-                                        DismissDirection.endToStart);
-                                if (confirm ?? false) {
-                                  controller.deleteAddress(address.id!);
-                                }
-                              },
-                            ),
-                          ],
+                          ),
+                          subtitle: Text(
+                            '${address.addressStreet}, ${address.addressCity}',
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon:
+                                    const Icon(Icons.edit, color: Colors.blue),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.kAddressEdit,
+                                      arguments: {
+                                        'addressModel':
+                                            controller.address[index],
+                                      });
+                                },
+                              ),
+                              IconButton(
+                                icon:
+                                    const Icon(Icons.delete, color: Colors.red),
+                                onPressed: () async {
+                                  bool? confirm =
+                                      await controller.confirmDismissalOutcome(
+                                          DismissDirection.endToStart);
+                                  if (confirm ?? false) {
+                                    controller.deleteAddress(address.id!);
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.kAddressAdd);
+                          },
                         ),
-                        onTap: () {
-                          Navigator.pushNamed(context, AppRoutes.kAddressAdd);
-                        },
-                      ),
-                    );
-                  },
-                ),
-        );
-      }),
+                      );
+                    },
+                  ),
+          );
+        }),
+      ),
     );
   }
 }

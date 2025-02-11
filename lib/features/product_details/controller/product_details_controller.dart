@@ -67,7 +67,9 @@ class ProductDetailsControllerImpl extends ProductDetailsController {
     update();
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        Get.back();
+        Get.back(
+          result: true,
+        );
         Get.rawSnackbar(
           message: "Add Cart Success",
           duration: const Duration(seconds: 1),

@@ -34,9 +34,15 @@ class NotificationControllerImpl extends NotificationController {
     log("response: $response");
     update();
     if (statusRequest == StatusRequest.success) {
-      List listdata = response['data'];
+      response.fold(
+        (l) {},
+        (r) {
+
+      List listdata = r['data'];
       notifications =
           listdata.map((item) => NotificationModel.fromJson(item)).toList();
+        },
+      );
     } else {}
   }
 

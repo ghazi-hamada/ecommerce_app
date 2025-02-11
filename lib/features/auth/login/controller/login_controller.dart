@@ -1,4 +1,3 @@
-
 import '../../../../core/class/post_data.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -45,20 +44,25 @@ class LoginControllerImpl extends LoginController {
 
       statusRequest = handlingData(response);
 
-      print("hello" + response['status']);
       if (statusRequest == StatusRequest.success) {
-        if (response['status'] == "success") {
-          sharedData(response);
-          response['data']['users_approve'] == 1
-              ? Get.offAllNamed(AppRoutes.khome)
-              : Get.toNamed(AppRoutes.kActivateAccount,
-                  arguments: {"email": emailController.text});
-        } else {
-          statusRequest = StatusRequest.none;
-          update();
-          Get.defaultDialog(
-              title: "ُWarning", middleText: "Email Or Password is wrong");
-        }
+        response.fold(
+          (l) {
+            statusRequest = StatusRequest.none;
+            update();
+            Get.defaultDialog(
+                title: "ُWarning", middleText: "Email Or Password is wrong");
+          },
+          (r) {
+            if (r['status'] == "success") {
+              sharedData(r);
+              r['data']['users_approve'] == 1
+                  ? Get.offAllNamed(AppRoutes.khome)
+                  : Get.toNamed(AppRoutes.kActivateAccount,
+                      arguments: {"email": emailController.text});
+            }
+          },
+        );
+     
       }
     }
   }

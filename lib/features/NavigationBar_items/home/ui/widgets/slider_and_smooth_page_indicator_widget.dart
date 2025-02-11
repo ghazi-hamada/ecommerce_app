@@ -8,7 +8,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../controller/home_controller.dart';
 import 'custom_slider_item.dart';
 
-// slider_and_smooth_page_indicator_widget
 class SliderAndSmoothPageIndicatorWidget extends StatelessWidget {
   const SliderAndSmoothPageIndicatorWidget({super.key});
 
@@ -18,7 +17,7 @@ class SliderAndSmoothPageIndicatorWidget extends StatelessWidget {
     return GetBuilder<HomeControllerImpl>(builder: (controller) {
       return Column(
         children: [
-          // slider
+          // Slider
           CarouselSlider(
             carouselController: controller.carouselController,
             options: CarouselOptions(
@@ -32,15 +31,18 @@ class SliderAndSmoothPageIndicatorWidget extends StatelessWidget {
                 controller.changeIndex(index);
               },
             ),
-            items: controller.carouselItems.map((item) {
-              // custom_slider_item
-              return CustomSliderItem(item: item);
+            items: controller.banners.map((banner) {
+              return CustomSliderItem(bannersModel: banner);
             }).toList(),
           ),
           SizedBox(height: 10.h),
           AnimatedSmoothIndicator(
-            activeIndex: controller.curntIndex,
-            count: controller.carouselItems.length,
+            activeIndex:
+                controller.curntIndex.isNaN || controller.curntIndex < 0
+                    ? 0
+                    : controller.curntIndex,
+            count:
+                controller.banners.isNotEmpty ? controller.banners.length : 1,
             effect: const ExpandingDotsEffect(
               activeDotColor: AppColor.primaryColor,
               dotColor: Colors.grey,

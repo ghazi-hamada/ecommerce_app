@@ -1,5 +1,7 @@
+import '../../../../core/localization/strings_keys.dart';
 import '../../home/ui/home_screen.dart';
 import '../../my_favorite/ui/my_favorite_screen.dart';
+import '../../offers/ui/offers_screen.dart';
 import '../../settings/ui/settings_screen.dart';
 import '../../../../routes_app.dart';
 import 'package:flutter/material.dart';
@@ -13,30 +15,20 @@ abstract class NavBarController extends GetxController {
 class NavBarControllerImpl extends NavBarController {
   int currentIndex = 0;
   List titlebottomappbar = [
-    "home",
-    "profile",
-    "settings",
-    "favorite",
+    StringsKeys.home.tr,
+    StringsKeys.offers.tr,
+    StringsKeys.settings.tr,
+    StringsKeys.favorite.tr,
   ];
   List iconbottomappbar = [
     Icons.home,
-    Icons.person,
+    Icons.local_offer,
     Icons.settings,
     Icons.favorite
   ];
   List<Widget> listpages = [
     const HomeScreen(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('Page 2'),
-        ElevatedButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: const Text('Back')),
-      ],
-    ),
+    const OffersScreen(),
     const SettingsScreen(),
     const MyFavoriteScreen(),
   ];
@@ -48,6 +40,9 @@ class NavBarControllerImpl extends NavBarController {
 
   @override
   pressCart() {
-    Get.toNamed(AppRoutes.kCart, arguments: {'source': 'homepage'});
+    Get.toNamed(
+      AppRoutes.kCart,
+      arguments: {'source': 'homepage'},
+    );
   }
 }

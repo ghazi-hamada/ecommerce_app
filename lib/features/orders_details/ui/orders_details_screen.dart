@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/core/localization/strings_keys.dart';
+
 import '../../../core/class/handling_data_view.dart';
 import '../controller/order_details_controller.dart';
 import 'widgets/build_address_card.dart';
@@ -17,9 +19,9 @@ class OrdersDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
-        title: const Text(
-          'Orders Details',
-          style: TextStyle(
+        title: Text(
+          StringsKeys.details.tr,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -43,7 +45,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                 SizedBox(height: 20.h),
                 Center(
                   child: Text(
-                    "Total Price: \$${controller.pendingOrders.ordersTotalPrice}",
+                    "${StringsKeys.totalPrice.tr}: \$${controller.pendingOrders.ordersTotalPrice}",
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
@@ -53,7 +55,10 @@ class OrdersDetailsScreen extends StatelessWidget {
                 ),
                 const Divider(height: 40, thickness: 1.5),
                 if (controller.pendingOrders.ordersType == 0)
-                  buildAddressCard(),
+                  buildAddressCard(
+                    
+                    address: controller.pendingOrders
+                  ),
                 if (controller.pendingOrders.ordersType == 0)
                   buildMapView(controller),
               ],
@@ -63,6 +68,4 @@ class OrdersDetailsScreen extends StatelessWidget {
       }),
     );
   }
-
-
 }

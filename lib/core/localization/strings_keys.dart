@@ -4,6 +4,34 @@ class StringsKeys {
   static const next = "next";
   static const langArabic = "lanA";
   static const langEnglish = "lanE";
+  static const chooseLang = "chooseLang";
+  static const chooseLangbady = "choose_lang_bady";
+  static const addToCart = "add_to_cart";
+  static const myFavorite = "my_favorite";
+  // Onboarding
+ static const pendingOrders = "pendingOrders";
+  static const orderNumber = "orderNumber";
+  static const orderType = "orderType";
+  static const orderMethod = "orderMethod";
+  static const orderPrice = "orderPrice";
+  static const deliveryPrice = "deliveryPrice";
+  static const totalPrice = "totalPrice";
+  static const rating = "rating";
+  static const details = "details";
+  static const delivery = "Delivery";
+  static const driveThru = "Drive Thru";
+  static const newOrder = "New Order";
+  static const processing = "Processing";
+  static const awaitingDelivery = "Awaiting Delivery";
+  static const outForDelivery = "Out for Delivery";
+  static const completedArchived = "Completed - Archived";
+  static const unknownStatus = "Unknown Status";
+  static const cash = "Cash";
+  static const card = "Card";
+
+  static const items = "items";
+  static const quantity = "quantity";
+  static const price = "price";
 
   // Onboarding
   static const chooseProduct = "choose_product";
@@ -87,4 +115,17 @@ class StringsKeys {
 
 
   static const orderNow = "orderNow";
+
+    // Settings
+  static const disableNotification = "disable_notification";
+  static const orders = "orders";
+  static const archive = "archive";
+  static const address = "address";
+  static const aboutUs = "about_us";
+  static const contactUs = "contact_us";
+  static const language = "language";
+  static const logout = "logout";
+  static const logoutConfirmation = "logout_confirmation";
+  static const cancel = "cancel";
+
 }

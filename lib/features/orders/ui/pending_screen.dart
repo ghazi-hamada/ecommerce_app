@@ -1,8 +1,12 @@
-import '../../../core/class/handling_data_view.dart';
-import 'widgets/custom_card_order.dart';
+import 'package:ecommerce_app/core/class/handling_data_view.dart';
+import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:ecommerce_app/features/orders/ui/widgets/custom_card_order.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/orders_controller.dart';
+import 'package:ecommerce_app/features/orders/controller/orders_controller.dart';
+import 'package:jiffy/jiffy.dart';
+
+import '../../../core/localization/strings_keys.dart';
 
 class PendingScreen extends StatelessWidget {
   const PendingScreen({super.key});
@@ -13,8 +17,8 @@ class PendingScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Pending Orders',
+        title:   Text(
+          StringsKeys.pendingOrders.tr,
         ),
         backgroundColor: Colors.white,
       ),

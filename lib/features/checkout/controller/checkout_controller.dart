@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/features/NavigationBar_items/cart/controller/cart_controller.dart';
+import 'package:ecommerce_app/routes_app.dart';
+
 import '../../../core/class/status_request.dart';
 import '../../../core/functions/handling_data.dart';
 import '../../../core/services/services.dart';
@@ -25,6 +28,7 @@ abstract class CheckoutController extends GetxController {
   changePaymentMethod(String value);
   changeDeliveryType(String value);
   changeSelectedAddress(String value);
+  gotoaddAddress();
 }
 
 class CheckoutControllerImp extends CheckoutController {
@@ -52,7 +56,8 @@ class CheckoutControllerImp extends CheckoutController {
         statusRequest = handlingData(response);
         if (StatusRequest.success == statusRequest) {
           if (response['status'] == 'success') {
-            Get.offNamed("/");
+            Get.offNamed(AppRoutes.kNavBar);
+            Get.delete<CartControllerImp>();
           } else {
             Get.snackbar("خطأ", "حدث خطأ أثناء عملية الدفع");
           }
@@ -90,7 +95,8 @@ class CheckoutControllerImp extends CheckoutController {
       List listdata = response['data'];
       addresses.addAll(listdata.map((e) => AddressModel.fromJson(e)).toList());
     } else {
-      Get.snackbar("خطأ", "حدث خطأ أثناء جلب العناوين");
+      addresses = [];
+      Get.snackbar("خطأ", "لا يوجد عناوين مضافة");
     }
     update();
   }
@@ -103,5 +109,16 @@ class CheckoutControllerImp extends CheckoutController {
     couponId = Get.arguments["couponId"].toString();
     totalPrice = Get.arguments["total"].toString();
     discountCoupon = Get.arguments["discountCoupon"].toString();
+  }
+
+  @override
+  gotoaddAddress() async {
+    var result = await Get.toNamed(
+      AppRoutes.kAddressView,
+    );
+    if (result != null && result == true) {
+      addresses = [];
+      getAddresses();
+    }
   }
 }

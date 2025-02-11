@@ -38,13 +38,19 @@ class OrdersControllerImpl extends OrdersController {
     statusRequest = handlingData(response);
     log("response: $response");
     log("statusRequest: $statusRequest");
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == 'success') {
-        Get.snackbar('Success', 'Cancel Order Successfully');
-        pendingOrdersModel
-            .removeWhere((element) => element.ordersId == ordersid);
-      }
-    }
+    response.fold(
+      (l) {},
+      (r) {
+        if (StatusRequest.success == statusRequest) {
+          if (r['status'] == 'success') {
+            Get.snackbar('Success', 'Cancel Order Successfully');
+            pendingOrdersModel
+                .removeWhere((element) => element.ordersId == ordersid);
+          }
+        }
+      },
+    );
+
     update();
   }
 
@@ -59,13 +65,25 @@ class OrdersControllerImpl extends OrdersController {
       },
     );
     statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      List listdata = response['data'];
-      pendingOrdersModel =
-          listdata.map((item) => PendingOrdersModel.fromJson(item)).toList();
-      log("pendingOrders: $pendingOrdersModel");
-    } else {}
-    update();
+    response.fold(
+      (l) {},
+      (r) {
+        if (StatusRequest.success == statusRequest) {
+          if (r['status'] == "success") {
+            List listdata = r['data'] ?? [];
+            pendingOrdersModel = listdata
+                .map((item) => PendingOrdersModel.fromJson(item))
+                .toList();
+            log("============================================pendingOrders: $pendingOrdersModel");
+            statusRequest = StatusRequest.none;
+            update();
+          } else {
+            statusRequest = StatusRequest.none;
+            update();
+          }
+        } else {}
+      },
+    );
   }
 
   @override

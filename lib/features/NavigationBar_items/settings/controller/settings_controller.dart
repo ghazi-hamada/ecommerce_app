@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/routes_app.dart';
+
 import '../../../../core/class/status_request.dart';
 import '../../../../core/services/services.dart';
 import 'package:get/get.dart';
@@ -20,5 +22,12 @@ class SettingsController extends GetxController {
     email = myServices.sharedPreferences.getString('email') ?? '';
     statusRequest = StatusRequest.none;
     update();
+  }
+
+  logoutuser() async {
+    statusRequest = StatusRequest.loading;
+    myServices.sharedPreferences.clear();
+    statusRequest = StatusRequest.none;
+    Get.offAllNamed(AppRoutes.kLogin);
   }
 }

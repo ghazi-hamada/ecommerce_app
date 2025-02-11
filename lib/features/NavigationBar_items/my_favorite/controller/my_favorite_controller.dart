@@ -19,13 +19,14 @@ abstract class MyFavoriteController extends GetxController {
   getMyFavorite();
   deleteItemFromFavorite(int id);
   // Check if the product is in the cart
-  isProductInCart(int itemsId);
+  // isProductInCart(int itemsId);
 }
 
 class MyFavoriteControllerImpl extends MyFavoriteController {
-  final controllerCart = Get.put(CartControllerImp());
+  // final controllerCart = Get.put(CartControllerImp());
   @override
   getMyFavorite() async {
+    myFavorite = [];
     statusRequest = StatusRequest.loading;
     update();
     var response = await myFavoriteData.getdata(
@@ -36,7 +37,6 @@ class MyFavoriteControllerImpl extends MyFavoriteController {
       log("response $response");
       if (response['status'] == "success") {
         List<dynamic> data = response['data'];
-
         myFavorite
             .addAll(data.map((e) => MyFavoriteModel.fromJson(e)).toList());
 
@@ -73,15 +73,16 @@ class MyFavoriteControllerImpl extends MyFavoriteController {
     update();
   }
 
-  @override
-  bool isProductInCart(int itemsId) {
-    return controllerCart.myCart
-        .any((element) => element['items_id'] == itemsId);
-  }
+ 
 
   @override
-  showProductDetails(MyFavoriteModel itemsModel) {
-    Get.toNamed(AppRoutes.kProductDetails,
-        arguments: {'itemsmodel': itemsModel as ItemsModel});
+  showProductDetails(MyFavoriteModel itemsModel) async {
+    ItemsModel itemDetails = ItemsModel.fromJson(itemsModel.toJson());
+    var result = await Get.toNamed(AppRoutes.kProductDetails,
+        arguments: {'itemsmodel': itemDetails});
+
+    if (result != null && result == true) {
+      getMyFavorite(); // استدعاء دالة لتحديث حالة العناصر
+    }
   }
 }

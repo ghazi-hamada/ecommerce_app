@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../core/constant/app_apis.dart';
 import '../../../../core/constant/color.dart';
+import '../../../../core/localization/strings_keys.dart';
 import '../../../../core/widgets/custom_price_widget.dart';
 import '../../../NavigationBar_items/home/data/models/items_model.dart';
 import '../../controller/favorite_controller.dart';
@@ -37,7 +38,23 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  // show Rating
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: AppColor.yallow,
+                        size: 20,
+                      ),
+                      Text(
+                        double.parse(itemsModel.rating!).toStringAsFixed(1),
+                        style: const TextStyle(
+                            color: AppColor.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                   Text(itemsModel.itemsName!,
                       style: TextStyle(
                           color: AppColor.black,
@@ -45,7 +62,7 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                           height: 1.h)),
-                  SizedBox(height: 10.h),
+
                   //Description
 
                   //info price and discount
@@ -61,7 +78,6 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                         if (itemsModel.itemInCart == 1) {
                         } else {
                           controller.showProductDetails(itemsModel);
-                          controller.getItems();
                         }
                       },
                       child: Container(
@@ -72,15 +88,14 @@ class CustomGridViewItems extends GetView<ItemsControllerImpl> {
                           vertical: 2.h,
                         ),
                         decoration: BoxDecoration(
-                          color: itemsModel.itemInCart ==
-                                  1 // controller.isProductInCart(itemsModel.itemsId!)
+                          color: itemsModel.itemInCart == 1
                               ? AppColor.grey
                               : AppColor.primaryColor,
                           borderRadius: BorderRadius.circular(7),
                         ),
-                        child: const Text(
-                          "Add to Cart",
-                          style: TextStyle(
+                        child: Text(
+                          StringsKeys.addToCart.tr,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 14,
                               fontWeight: FontWeight.w500),

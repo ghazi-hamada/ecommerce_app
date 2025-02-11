@@ -1,10 +1,13 @@
 import 'dart:developer';
 
+import 'package:ecommerce_app/features/address/controller/address_view_controller.dart';
+
 import '../../../core/class/status_request.dart';
 import '../../../core/functions/handling_data.dart';
 import '../../../core/services/services.dart';
+import '../../../routes_app.dart';
 import '../data/remote/addres_data.dart';
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class AddressAddDetailsController extends GetxController {
@@ -59,7 +62,12 @@ class AddressAddDetailsControllerImpl extends AddressAddDetailsController {
       log('Status Request: $statusRequest');
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          Get.offAllNamed("/");
+          AddressViewControllerImpl addressViewControllerImpl =
+              Get.find<AddressViewControllerImpl>();
+          addressViewControllerImpl.viewData();
+          Get.back();
+          Get.back();
+
           Get.rawSnackbar(
             message: "Add Address Success",
             duration: const Duration(seconds: 1),

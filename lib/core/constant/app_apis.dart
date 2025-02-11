@@ -4,11 +4,11 @@ class AppApis {
 
   //====================== Notification ======================
   static const String notification = '$server/notifications.php';
-
   //====================== Images ======================
   static const String imageStatic = '$server/upload';
   static const String imageCategories = '$imageStatic/categories';
   static const String imageItems = '$imageStatic/items';
+ static const String imagesBsnners = '$imageStatic/upload/banners';
 
   //====================== Testing ======================
   static const String test = '$server/test.php';
@@ -58,4 +58,14 @@ class AppApis {
   static const String orderArchived = '$server/orders/archive.php';
   static const String orderDetails = '$server/orders/details.php';
   static const String orderDelete = '$server/orders/delete.php';
+
+  //====================== offers ======================
+  static const String offers = '$server/offers/offers.php';
+  static const String offersSearch = '$server/offers/search.php';
+
+  //====================== Rating ======================
+  static const String rating = '$server/rating/ratingsadd.php';
+
+  //====================== banner ======================
+  static const String banner = '$server/banners/get_banners.php';
 }

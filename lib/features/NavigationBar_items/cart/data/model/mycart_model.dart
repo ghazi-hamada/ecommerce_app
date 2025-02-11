@@ -13,7 +13,7 @@ class MycartModel {
   String? itemsDescAr;
   String? itemsImage;
   int? itemsCount;
-  int? itemsActive;
+  String? itemsActive;
   int? itemsPrice;
   int? itemsDiscount;
   String? itemsDate;

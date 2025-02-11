@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/localization/strings_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -15,8 +16,8 @@ class MyFavoriteScreen extends StatelessWidget {
     Get.lazyPut(() => MyFavoriteControllerImpl());
     return ListView(
       children: [
-        const CustomAppBarWidget(
-          title: "My Favorite",
+        CustomAppBarWidget(
+          title: StringsKeys.myFavorite.tr,
         ),
         GetBuilder<MyFavoriteControllerImpl>(builder: (controller) {
           return HandlingDataViewRequesst(

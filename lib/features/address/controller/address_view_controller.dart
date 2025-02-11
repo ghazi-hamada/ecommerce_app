@@ -3,7 +3,7 @@ import '../../../core/functions/handling_data.dart';
 import '../../../core/services/services.dart';
 import '../data/model/address_model.dart';
 import '../data/remote/addres_data.dart';
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class AddressViewController extends GetxController {
@@ -19,6 +19,7 @@ abstract class AddressViewController extends GetxController {
 class AddressViewControllerImpl extends AddressViewController {
   @override
   viewData() async {
+    address.clear();
     statusRequest = StatusRequest.loading;
     update();
     var response = await addressData

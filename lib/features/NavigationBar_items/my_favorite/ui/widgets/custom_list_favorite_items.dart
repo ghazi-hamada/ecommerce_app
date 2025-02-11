@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../../core/constant/app_apis.dart';
 import '../../../../../core/constant/color.dart';
 import '../../../../../core/functions/translate_database.dart';
+import '../../../../../core/localization/strings_keys.dart';
 import '../../../../../core/widgets/custom_price_widget.dart';
 import '../../controller/my_favorite_controller.dart';
 import '../../data/model/my_fevorite_model.dart';
@@ -58,7 +59,7 @@ class CustomListFavoriteItems extends GetView<MyFavoriteControllerImpl> {
                   GetBuilder<MyFavoriteControllerImpl>(builder: (controller) {
                     return InkWell(
                       onTap: () {
-                        controller.isProductInCart(itemsModel.itemsId!)
+                        itemsModel.itemInCart! == 1
                             ? null
                             : controller.showProductDetails(itemsModel);
                       },
@@ -69,13 +70,13 @@ class CustomListFavoriteItems extends GetView<MyFavoriteControllerImpl> {
                           vertical: 2.h,
                         ),
                         decoration: BoxDecoration(
-                          color: controller.isProductInCart(itemsModel.itemsId!)
+                          color: itemsModel.itemInCart! == 1
                               ? Colors.grey
                               : AppColor.primaryColor,
                           borderRadius: BorderRadius.circular(7),
                         ),
-                        child: const Text(
-                          "Add to Cart",
+                        child:   Text(
+                         StringsKeys.addToCart.tr,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,

@@ -1,3 +1,10 @@
+import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../../core/localization/change_local.dart';
+import '../../../../../core/localization/strings_keys.dart';
+import '../../controller/settings_controller.dart';
+import '../../language_selection_screen.dart';
 import 'build_listTile_items_settings.dart';
 
 import '../../../../../routes_app.dart';
@@ -5,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class BodyWidget extends StatelessWidget {
+class BodyWidget extends GetView<SettingsController> {
   const BodyWidget({super.key});
 
   @override
@@ -19,43 +26,73 @@ class BodyWidget extends StatelessWidget {
           ),
           ListTile(
               trailing: Switch(value: false, onChanged: (value) {}),
-              title: const Text(
-                "Disable Notification",
+              title: Text(
+                StringsKeys.disableNotification.tr,
               )),
           //build_listTile_items_settings
           buildListTileItemsSettings(
-            title: "Orders",
+            title: StringsKeys.orders.tr,
             icon: Icons.receipt_long_outlined,
             onTap: () {
               Get.toNamed(AppRoutes.kpending);
             },
           ),
           buildListTileItemsSettings(
-            title: "Archive",
+            title: StringsKeys.archive.tr,
             icon: Icons.archive_outlined,
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(AppRoutes.kArchivedOrders);
+            },
           ),
           buildListTileItemsSettings(
-              title: "Address",
+              title: StringsKeys.address.tr,
               icon: Icons.location_on_outlined,
               onTap: () {
                 Get.toNamed(AppRoutes.kAddressView);
               }),
           buildListTileItemsSettings(
-              title: "About Us",
+              title: StringsKeys.aboutUs.tr,
               icon: Icons.help_outline_rounded,
               onTap: () {}),
           buildListTileItemsSettings(
-              title: "Contact Us",
+              title: StringsKeys.contactUs.tr,
               icon: Icons.phone_callback_outlined,
-              onTap: () {}),
+              onTap: () async {
+                await launchUrl(Uri.parse("tel:+972 56-703-8090"));
+              }),
           buildListTileItemsSettings(
-            title: "Logout",
+              title: StringsKeys.language.tr,
+              icon: Icons.language_outlined,
+              onTap: () async {
+                Get.to(() => const LanguageSelectionScreen());
+              }),
+          buildListTileItemsSettings(
+            title: StringsKeys.logout.tr,
             icon: Icons.logout,
-            onTap: () {},
+            onTap: () {
+              Get.defaultDialog(
+                title: StringsKeys.logout.tr,
+                middleText: StringsKeys.logoutConfirmation.tr,
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text(StringsKeys.cancel.tr),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      controller.logoutuser();
+                    },
+                    child: const Text("Logout"),
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
     );
   }
 }
+// language_selection_screen
